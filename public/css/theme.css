@@ -77,7 +77,7 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #f6f9fc;
+  background-color: #f6f6f6;
 }
 
 [tabindex="-1"]:focus {
@@ -10390,6 +10390,7 @@ body.side-nav-on-action .u-content {
   border-top: 1px solid #eaf2f9;
   padding: 1.25rem 1.875rem;
   margin-top: auto;
+  background: #fff;
 }
 
 .is-valid .form-label-text {
