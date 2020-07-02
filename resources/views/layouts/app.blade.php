@@ -11,7 +11,6 @@
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="keywords" content="Mevo">
 	<meta name="description" content="Mevo">
-	<meta name="author" content="Carlos Ferrer Hernandez">
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="{{ asset('favicon.ico')}}" type="image/x-icon">

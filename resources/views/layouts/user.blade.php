@@ -11,7 +11,6 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="keywords" content="Mevo">
     <meta name="description" content="Mevo">
-    <meta name="author" content="Carlos Ferrer Hernandez">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('favicon.ico')}}" type="image/x-icon">
@@ -194,7 +193,7 @@
         <!-- Footer -->
         <footer class="u-footer d-md-flex align-items-md-center text-center text-md-left text-muted">
             <small class="text-muted ml-auto">&copy; 2019
-                <a class="text-muted" href="https://github.com/Carlosferrerhernandez/" target="_blank">Mevo 2020
+                <a class="text-muted" href="https://github.com/rafaarraez/" target="_blank">Mevo 2020
                 </small>
             </footer>
             <!-- End Footer -->

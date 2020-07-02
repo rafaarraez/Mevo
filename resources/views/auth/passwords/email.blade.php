@@ -16,7 +16,7 @@
 
             <div class="form-group mb-4">
                 <label for="email">Tu correo electrónico</label>
-                <input id="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" type="email" placeholder="carlos@example.com" value="{{ old('email') }}" required>
+                <input id="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" type="email" placeholder="example@example.com" value="{{ old('email') }}" required>
                 @if ($errors->has('email'))
                 <small class="form-text invalid-feedback">{{ $errors->first('email') }}</small>
                 @endif
@@ -31,7 +31,7 @@
     </div>
 
     <div class="u-login-form text-muted py-3 mt-auto">
-        <small><i class="far fa-question-circle mr-1"></i> Si no puede recuperar su contraseña <a href="https://github.com/Carlosferrerhernandez" target="_blank">contáctanos</a>.</small>
+        <small><i class="far fa-question-circle mr-1"></i> Si no puede recuperar su contraseña <a href="https://github.com/rafaarraez" target="_blank">contáctanos</a>.</small>
     </div>
 </div>
 
