@@ -8,8 +8,8 @@
 
 ### Instalación ###
 
-* `git clone https://github.com/Carlosferrerhernandez/auth-users.git`
-* `cd auth-users`
+* `git clone https://github.com/raffaarraez/Mevo.git`
+* `cd Mevo`
 * `composer install`
 * `cp .env.example .env`
 * `php artisan key:generate`
