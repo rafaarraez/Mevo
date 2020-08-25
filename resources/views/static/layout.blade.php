@@ -89,7 +89,7 @@
                             </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profile-dropdown">
-                            <a class="dropdown-item" href="{{ route('perfil') }}">
+                            <a class="dropdown-item" href="/static/profile">
                                 <span class="h3 mb-0"><i class="far fa-user-circle text-muted mr-2"></i></span>Ver perfil
                             </a>
                             <a class="dropdown-item" href="{{ route('reserves') }}">

@@ -34,7 +34,7 @@
         </div>
         <div class="col-12 order-1 col-md-2 order-md-3">
             <div class="text-md-right">
-                <a href="" class="btn btn-primary btn-sm mb-3 mb-md-0">Editar perfil</a>
+                <a href="{{ route('editProfile') }}" class="btn btn-primary btn-sm mb-3 mb-md-0">Editar perfil</a>
             </div>
         </div>
     </div>
@@ -45,7 +45,7 @@
         </li>
     </ul>
 
-      <div class="tab-content" id="myTabContent">
+    <div class="tab-content" id="myTabContent">
         <div class="tab-pane show active" id="products" role="tabpanel">
             <div class="py-4">
                 <h3 class="text-secondary font-weight-bold mb-3 mb-md-4">Mis pedidos</h3>
