@@ -73,3 +73,4 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 * Rutas de -maquetación-
 */
 Route::get('/static/products', 'StaticController@staticProducts');
+Route::get('/static/profile', 'StaticController@staticProfile');

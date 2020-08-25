@@ -10,4 +10,8 @@ class StaticController extends Controller
     {
         return view('static/products');
     }
+    public function staticProfile()
+    {
+        return view('static/profile');
+    }
 }
