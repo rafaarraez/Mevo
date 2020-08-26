@@ -1,0 +1,36 @@
+@import 'variables'
+
+$primary:       #e93237
+$secondary:     #202033
+$danger:        #F54141
+$success:       #0AC856
+
+$enable-rounded: false
+
+$enable-responsive-font-sizes: true
+$rfs-class: 'disable'
+$min-contrast-ratio: 1
+
+$body-color: #39425B
+$body-bg: #F6F8FA
+$text-muted: #8D93A4
+
+$nav-tabs-link-active-color:        $primary
+$nav-tabs-link-active-bg:           rgba($primary, .15)
+$nav-tabs-link-active-border-color: transparent transparent transparent
+$nav-tabs-link-hover-border-color:  transparent transparent transparent
+
+$badge-font-weight:                 600
+$badge-padding-y:                   .5em
+$badge-padding-x:                   1em
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap'
+
+@import "custom-bs-mixins"
+@import "custom-bs-utilities"
+
+@import "global"
+
+// Custom style
+@import "custom"
