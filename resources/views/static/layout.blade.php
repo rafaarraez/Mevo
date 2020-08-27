@@ -22,10 +22,6 @@
 	<!-- App Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css')}}">
 
-	<!-- Select 2 css-->
-	<link href="{{ asset('css/select2/select2.min.css')}}" rel="stylesheet"/>
-	<link rel="stylesheet" type="text/css" href="{{ asset('/css/select2/select2-bootstrap.css')}}">
-
 </head>
 <body>
 
@@ -87,15 +83,13 @@
     <footer class="bg-white text-center text-lg-right py-4 text-muted">
         <div class="container">
             <small>
-                <a class="text-muted" href="https://github.com/rafaarraez/" target="_blank">Mevo &copy; 2020
+                <a class="text-muted text-decoration-none" href="https://github.com/rafaarraez/" target="_blank">Copyright &copy; Mevo 2020
             </small>
         </div>
     </footer>
     <!-- End Footer -->
 
     <!-- Global Vendor -->
-	<!-- <script src="{{ asset('js/popper.js/dist/umd/popper.min.js')}}"></script>
-    <script src="{{ asset('js/bootstrap/bootstrap.min.js')}}"></script> -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     @yield('scripts')

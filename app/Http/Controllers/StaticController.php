@@ -18,4 +18,8 @@ class StaticController extends Controller
     {
         return view('static/profile-edit');
     }
+    public function staticLogin()
+    {
+        return view('static/login');
+    }
 }

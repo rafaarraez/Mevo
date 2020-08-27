@@ -75,3 +75,4 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 Route::get('/static/products', 'StaticController@staticProducts');
 Route::get('/static/profile', 'StaticController@staticProfile');
 Route::get('/static/profile/edit', 'StaticController@staticEditProfile')->name('editProfile');
+Route::get('/static/login', 'StaticController@staticLogin');

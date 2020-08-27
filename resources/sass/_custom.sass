@@ -5,3 +5,15 @@
 
 .badge
     text-transform: uppercase
+
+.auth-bg
+    background: $body-bg no-repeat center/cover
+    &:before
+        content: ''
+        +absolute(0, 0, 0, 0)
+        background-color: $secondary
+        opacity: .8
+        z-index: 0
+
+.backdrop-blur-4
+    backdrop-filter: blur(4px)
