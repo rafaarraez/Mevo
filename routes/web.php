@@ -76,3 +76,4 @@ Route::get('/static/products', 'StaticController@staticProducts');
 Route::get('/static/profile', 'StaticController@staticProfile');
 Route::get('/static/profile/edit', 'StaticController@staticEditProfile')->name('editProfile');
 Route::get('/static/login', 'StaticController@staticLogin');
+Route::get('/static/signup', 'StaticController@staticSignup');

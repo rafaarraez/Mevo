@@ -7628,6 +7628,18 @@ button.close {
   visibility: hidden !important;
 }
 
+.fs-xs {
+  font-size: 0.75rem !important;
+}
+
+.fs-sm {
+  font-size: 0.8125rem !important;
+}
+
+.fs-md {
+  font-size: 0.875rem !important;
+}
+
 @media (min-width: 576px) {
   .float-sm-left {
     float: left !important;

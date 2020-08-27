@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-lg-6 col-xl-8">
                     <h6 class="font-weight-bold lh-1 h5">Butil Glicol 180kg</h6>
-                    <p class="text-muted lh-1 mb-0">Butil Cellosolve, Butil Oxitol, Butil Cellosolve,  Butil Oxitol.</p>
+                    <p class="text-muted fs-md lh-1 mb-0">Butil Cellosolve, Butil Oxitol, Butil Cellosolve,  Butil Oxitol.</p>
                 </div>
                 <div class="col-lg-6 col-xl-4">
                     <div class="d-flex justify-content-between justify-content-lg-end align-items-center mt-3 mt-lg-0">
