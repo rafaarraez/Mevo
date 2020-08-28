@@ -26,31 +26,78 @@
 <body>
 
     <!-- new navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+    <nav class="navbar navbar-expand-md navbar-dark bg-secondary">
         <div class="container">
-            <a class="navbar-brand" href="/">
-                <img src="{{ asset('img/logo/LogoMEVOblanco2.png')}}" title="MEVO" alt="Logo MEVO" style="max-height: 3rem">
-            </a>
+
+            <div class="logo-wrapper">
+                <a class="navbar-brand mr-0 mr-md-3" href="/">
+                    <img src="{{ asset('img/logo/LogoMEVOblanco2.png')}}" title="MEVO" alt="Logo MEVO" style="max-height: 3rem">
+                </a>
+            </div>
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
+            <ul class="navbar-nav align-items-center flex-row d-md-none ml-auto">
+
+                <!-- login button -->
+                    <!-- <li class="nav-item">
+                        <a href="/static/login" class="btn btn-primary btn-sm">Ingresar</a>
+                    </li> -->
+                <!-- end login button -->
+
+                <li class="nav-item d-md-none dropdown">
+                    <a href="#" class="nav-link" id="mobile-profile-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="avatar mr-1">
+                            <!-- use ".avatar-text" with name initials when user don't have profile picture -->
+                            <!-- leave empty to hide -->
+                            <span class="avatar-text">ad</span>
+                            <img src="{{ asset('img/avatars/img5.jpg') }}" class="avatar-img rounded-circle" alt="Foto de perfil">
+                        </span>
+                        <small class="fa fa-angle-down"></small>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right position-absolute" aria-labelledby="mobile-profile-dropdown" style="min-width: 200px">
+                        <a class="dropdown-item py-2" href="/static/profile">
+                            <i class="far fa-user-circle text-muted mr-2"></i>Perfil
+                        </a>
+                        <a class="dropdown-item py-2" href="/static/profile">
+                                <i class="fas fa-history text-muted mr-2"></i>Mis pedidos
+                            </a>
+                        <a class="dropdown-item py-2" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                            <i class="far fa-share-square text-muted mr-2"></i>Salir
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+            </ul>
+
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav py-3 py-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Home</a>
+                        <a class="nav-link text-center text-lg-left" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/static/products">Productos</a>
+                        <a class="nav-link text-center text-lg-left" href="/static/products">Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#!">Empresa</a>
+                        <a class="nav-link text-center text-lg-left" href="#!">Empresa</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#!">Nuestro equipo</a>
+                        <a class="nav-link text-center text-lg-left" href="#!">Nuestro equipo</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item dropdown">
+                <ul class="navbar-nav align-items-center d-none d-md-flex ml-auto">
+
+                    <!-- login button -->
+                    <!-- <li class="nav-item">
+                        <a href="/static/login" class="btn btn-primary btn-sm">Ingresar</a>
+                    </li> -->
+                    <!-- end login button -->
+
+                    <li class="nav-item  dropdown">
                         <a href="#" class="nav-link" id="profile-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="avatar mr-1">
                                 <!-- use ".avatar-text" with name initials when user don't have profile picture -->
@@ -62,12 +109,15 @@
                                 {{ Auth::user()->name }}<small class="fa fa-angle-down ml-2"></small>
                             </span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profile-dropdown">
-                            <a class="dropdown-item" href="/static/profile">
+                        <div class="dropdown-menu dropdown-menu-right position-absolute" aria-labelledby="profile-dropdown" style="min-width: 200px">
+                            <a class="dropdown-item py-2" href="/static/profile">
                                 <i class="far fa-user-circle text-muted mr-2"></i>Perfil
                             </a>
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                <i class="fas fa-history text-muted mr-2"></i>Salir
+                            <a class="dropdown-item py-2" href="/static/profile">
+                                <i class="fas fa-history text-muted mr-2"></i>Mis pedidos
+                            </a>
+                            <a class="dropdown-item py-2" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                <i class="far fa-share-square text-muted mr-2"></i>Salir
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
@@ -76,6 +126,7 @@
                     </li>
                 </ul>
             </div>
+
         </div>
     </nav>
     <!-- End navbar -->

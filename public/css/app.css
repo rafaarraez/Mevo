@@ -10901,5 +10901,22 @@ label {
           backdrop-filter: blur(4px);
 }
 
+@media (max-width: 767.98px) {
+  .logo-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0.5rem;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .logo-wrapper > .navbar-brand {
+    pointer-events: all;
+  }
+}
+
 
 /*# sourceMappingURL=app.css.map*/

@@ -17,3 +17,12 @@
 
 .backdrop-blur-4
     backdrop-filter: blur(4px)
+
+@include media-breakpoint-down(md)
+    .logo-wrapper
+        +absolute(0, 0, 0, 0)
+        padding: $navbar-padding-y $navbar-padding-x
+        text-align: center
+        pointer-events: none
+        > .navbar-brand
+            pointer-events: all
