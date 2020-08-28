@@ -16,9 +16,6 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('favicon.ico')}}" type="image/x-icon">
 
-	<!-- Components Vendor Styles -->
-	<link rel="stylesheet" href="{{ asset('font-awesome/css/all.min.css')}}">
-
 	<!-- App Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css')}}">
 
@@ -62,8 +59,9 @@
                             <i class="far fa-user-circle text-muted mr-2"></i>Perfil
                         </a>
                         <a class="dropdown-item py-2" href="/static/profile">
-                                <i class="fas fa-history text-muted mr-2"></i>Mis pedidos
-                            </a>
+                                <i class="fas fa-adjust text-muted mr-2"></i>Mis pedidos
+                                <i class="fas fa-adjust"></i>
+                        </a>
                         <a class="dropdown-item py-2" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                             <i class="far fa-share-square text-muted mr-2"></i>Salir
                         </a>

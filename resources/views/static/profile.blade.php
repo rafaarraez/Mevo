@@ -30,11 +30,27 @@
 
             <!-- social links -->
             <ul class="list-inline">
-                <li class="list-inline-item">
-                    <a href="" class="d-inline-block text-muted">
+                <li class="list-inline-item m-0">
+                    <a href="" class="d-inline-block text-white" data-toggle="tooltip" title="Facebook">
                         <span class="fa-stack fa-lg">
                             <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-facebook fa-stack-1x text-primary"></i>
+                            <i class="fab fa-facebook fa-stack-1x fa-facebook-color"></i>
+                        </span>
+                    </a>
+                </li>
+                <li class="list-inline-item m-0">
+                    <a href="" class="d-inline-block text-white" data-toggle="tooltip" title="Instagram">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fab fa-instagram fa-stack-1x fa-instagram-color"></i>
+                        </span>
+                    </a>
+                </li>
+                <li class="list-inline-item m-0">
+                    <a href="" class="d-inline-block text-white" data-toggle="tooltip" title="Twitter">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fab fa-twitter fa-stack-1x fa-twitter-color"></i>
                         </span>
                     </a>
                 </li>

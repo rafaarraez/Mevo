@@ -16,9 +16,6 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('favicon.ico')}}" type="image/x-icon">
 
-	<!-- Components Vendor Styles -->
-	<link rel="stylesheet" href="{{ asset('font-awesome/css/all.min.css')}}">
-
 	<!-- App Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css')}}">
 
