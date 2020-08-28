@@ -1,0 +1,56 @@
+// add bootstrap's ".rounded-circle" class in the image for rounded circles.
+
+// variables
+$avatar-size:       2rem
+$avatar-sm-size:    ($avatar-size * 0.75)
+$avatar-lg-size:    ($avatar-size * 1.5)
+$avatar-xl-size:    ($avatar-size * 2)
+
+$avatar-font-size:       1rem
+$avatar-sm-font-size:    ($avatar-font-size * 0.75)
+$avatar-lg-font-size:    ($avatar-font-size * 1.5)
+$avatar-xl-font-size:    ($avatar-font-size * 1.75)
+
+// mixin
+@mixin avatar($size, $fontsize)
+    width: $size
+    height: $size
+    line-height: $size
+    font-size: $fontsize
+
+// css
+.avatar
+    position: relative
+    display: inline-flex
+    justify-content: center
+    align-content: center
+    +avatar($avatar-size, $avatar-font-size)
+    color: rgba($white, .75)
+    vertical-align: middle
+    background-color: $red-300
+    border-radius: 100%
+    &.avatar-sm
+        +avatar($avatar-sm-size, $avatar-sm-font-size)
+    &.avatar-lg
+        +avatar($avatar-lg-size, $avatar-lg-font-size)
+    &.avatar-xl
+        +avatar($avatar-xl-size, $avatar-xl-font-size)
+
+    // avatar image
+    .avatar-img
+        position: relative
+        +square(100%)
+        object-fit: cover
+        z-index: 10
+
+    // text useful for initials when user don't have profile picture
+    .avatar-text
+        +absolute(0, 0, 0, 0)
+        width: 100%
+        height: 100%
+        z-index: 5
+        text-align: center
+        user-select: none
+        text-transform: uppercase
+        &:empty
+            display: none

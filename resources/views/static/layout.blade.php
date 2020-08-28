@@ -52,7 +52,12 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link" id="profile-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <!-- <img class="rounded-circle mr-2" src="{{ asset('img/avatars/img5.jpg') }}" alt="User Profile Picture"> -->
+                            <span class="avatar mr-1">
+                                <!-- use ".avatar-text" with name initials when user don't have profile picture -->
+                                <!-- leave empty to hide -->
+                                <span class="avatar-text">ad</span>
+                                <img src="{{ asset('img/avatars/img5.jpg') }}" class="avatar-img rounded-circle" alt="Foto de perfil">
+                            </span>
                             <span class="d-none d-sm-inline-block">
                                 {{ Auth::user()->name }}<small class="fa fa-angle-down ml-2"></small>
                             </span>
