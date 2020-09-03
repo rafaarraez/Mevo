@@ -8,6 +8,45 @@
             <i class="far fa-list-alt u-sidebar-nav-menu__item-icon"></i>
             <h3 class="h3 card-header-title">Productos Recientes</h3>
         </header>
+        <div class="d-flex justify-content-between align-items-end border-bottom my-4 flex-wrap pb-3">
+            <form action="" method="get" class="form-inline flex-md-nowrap ml-md-3">
+                
+
+                <div class="input-group mb-3 mb-md-0 mr-3" style="width: 300px">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fa fa-search text-muted"></i>
+                        </span>
+                    </div>
+                    <input type="text" class="form-control" name="user-name" value="{{request()['user-name']}}" placeholder="Buscar por nombre">
+                </div>
+                <div class="input-group mb-3 mb-md-0 mr-3" style="width: 300px">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fa fa-search text-muted"></i>
+                        </span>
+                    </div>
+                    <input type="text" class="form-control" name="user-lastname" value="{{request()['user-lastname']}}" placeholder="Buscar por Locación de Llegada">
+                </div>
+                <div class="input-group mb-3 mb-md-0 mr-3" style="width: 300px">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fa fa-search text-muted"></i>
+                        </span>
+                    </div>
+                    <input type="text" class="form-control" name="user-email" value="{{request()['user-email']}}" placeholder="Buscar por Email">
+                </div>
+                <div class="input-group mb-3 mb-md-0">
+                    <input type="submit" class="ml-3 btn btn-primary" value="Filtrar">
+                </div>
+                
+                @if (request()['user-name'] || request()['user-lastname'] || request()['user-email'] || request()['status']|| request()['date-range'] )
+                <div class="input-group mb-3 mb-md-0">
+                    <a href="/user-profiles" class="ml-3 btn btn-primary">Limpiar</a>
+                </div>
+                @endif
+            </form>
+        </div>
         @foreach($products as $product)
             @if($product->total_disponible > 0 || $product->total_disponible == null && $product->cantidad_total != $product->total_reservado)
                 <div class="card-body" style="backgroung: #f6f6f6;">
@@ -23,7 +62,7 @@
                                             <h3 class="mt-0 font-weight-bold mb-2">{{ $product->name }}</h3>
                                             <p class="font-italic text-muted mb-0 small">{{ $product->synonymous }} / COA: <a href="{{ $product->coa }}" target="_blank">Archivo</a> / MSDS: <a href="{{ $product->msds }}" target="_blank">Archivo</a></p>
                                             <div class="d-flex align-items-center justify-content-between mt-1">
-                                                <h5 class="font-weight-bold my-2">Disponibles: <td class="text-center">{{ $product->total_disponible == null ? $product->cantidad_total : $product->total_disponible  }}</h5>
+                                                <h5 class="font-weight-bold my-2">Disponibles: <td class="text-center"> {{ $product->total_disponible == null ? $product->cantidad_total : $product->total_disponible  }}<progress value="{{ $product->total_disponible == null ? $product->cantidad_total : $product->total_disponible  }}" max="{{$product->cantidad_total}}"></progress>{{$product->cantidad_total}}</h5>
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-1">
                                                 <h5 class="font-weight-bold my-2">Presentación: <td class="text-center">{{ $product->presentation }}</h5>
@@ -36,9 +75,9 @@
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <h5 class="font-weight-bold my-2">Fecha maxima de reserva: {{ Carbon\Carbon::parse($product->deadline)->format('d/m/Y') }}</h5>
                                             </div>
-                                            <div class="d-flex align-items-center justify-content-between">
+                                            <!-- <div class="d-flex align-items-center justify-content-between">
                                                 <h5 class="font-weight-bold my-2">Fecha aproximada: {{ Carbon\Carbon::parse($product->approximate_date)->format('d/m/Y') }}</h5>
-                                            </div>
+                                            </div> -->
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <h5 class="font-weight-bold my-2">Fecha de llegada: {{ Carbon\Carbon::parse($product->arrival_to)->format('d/m/Y') }}</h5>
                                             </div>
