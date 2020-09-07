@@ -64,9 +64,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 	//Reportes
 	Route::get('/reserveReports', 'ProductsController@allRerserves')->name('allreserves');
+	Route::get('/reserve-details/{id}', 'ProductsController@getReserveDetails')->name('detailsreserves');
 	Route::get('/reservations-per-day', 'ProductsController@reservationsPerDay')->name('products.reservationsPerDay');
 	Route::post('/get-charts', 'ProductsController@getCharts');
-
+	Route::post('/change-status/{id}', 'ProductsController@changeStatus');
 });
 
 /*

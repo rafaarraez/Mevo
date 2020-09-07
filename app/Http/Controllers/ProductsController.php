@@ -258,6 +258,21 @@ class ProductsController extends Controller
         return view('admin.reports.index')->with(compact('reserves'));
     }
 
+    public function getReserveDetails($id){
+        $reserve = ReservationProducts::where('id', $id)->with('products', 'user', 'userPersonProfile')->first();
+        return view('admin.reports.details')->with(compact('reserve'));
+    }
+
+    public function changeStatus(Request $request, $id){
+        $reserve = ReservationProducts::where('id', $id)->first();
+        $inputs = request()->all();
+        $reserve->status = $inputs['status'];
+        $reserve->save();
+        SWAL::message('Estado Actualizado','','success',['timer'=>5000]);
+        return redirect()->back();
+
+    }
+
     public function reservationsPerDay(){
         return view('admin.reports.graphis');
     }

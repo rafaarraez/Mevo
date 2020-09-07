@@ -67,9 +67,11 @@
                                             @if($product->status === 1)
                                             <span class="badge bg-warning rounded-pill">Esperando Confirmación</span>
                                             @elseif($product->status === 2)
-                                            <span class="badge bg-warning rounded-pill">En Trancito</span>
+                                            <span class="badge bg-success rounded-pill">En Tránsito</span>
                                             @elseif($product->status === 3)
                                             <span class="badge bg-success rounded-pill">Entregado</span>
+                                            @elseif($product->status === 4)
+                                            <span class="badge bg-danger rounded-pill">Cancelado</span>
                                             @endif
                                         </div>
                                     </div>
@@ -119,7 +121,7 @@
                                 <div class="col-6 col-lg-2">
                                     <div class="text-muted small">Fecha aprox. de llegada</div>
                                     <div class="font-weight-bold small">
-                                        {{ Carbon\Carbon::parse($product->arrival_to)->toFormattedDateString('d/m/Y') }}
+                                        {{ Carbon\Carbon::parse($product->products->arrival_to)->toFormattedDateString('d/m/Y') }}
                                     </div>
                                 </div>
                             </div>
