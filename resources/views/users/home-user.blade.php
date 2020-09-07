@@ -131,7 +131,7 @@
             <!-- End Small Size -->
         @endif
     @endforeach
-
+    {{ $products->links() }}
 </div>
 @endsection
 

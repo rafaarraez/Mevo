@@ -43,7 +43,7 @@
                         <a href="/static/login" class="btn btn-primary btn-sm">Ingresar</a>
                     </li> -->
                 <!-- end login button -->
-
+    
                 <li class="nav-item d-md-none dropdown">
                     <a href="#" class="nav-link" id="mobile-profile-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="avatar mr-1">
@@ -74,11 +74,15 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav py-3 py-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link text-center text-lg-left" href="/">Home</a>
+                        @if(Auth::user()->hasRole('admin'))
+                            <a class="nav-link text-center text-lg-left" href="/home">Home</a>
+                        @else
+                            <a class="nav-link text-center text-lg-left" href="/inicio">Home</a>
+                        @endif
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link text-center text-lg-left" href="/static/products">Productos</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link text-center text-lg-left" href="#!">Empresa</a>
                     </li>
@@ -96,21 +100,19 @@
 
                     <li class="nav-item  dropdown">
                         <a href="#" class="nav-link" id="profile-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="avatar mr-1">
-                                <!-- use ".avatar-text" with name initials when user don't have profile picture -->
-                                <!-- leave empty to hide -->
+                            <!-- <span class="avatar mr-1">
                                 <span class="avatar-text">ad</span>
                                 <img src="{{ asset('img/avatars/img5.jpg') }}" class="avatar-img rounded-circle" alt="Foto de perfil">
-                            </span>
+                            </span> -->
                             <span class="d-none d-sm-inline-block">
                                 {{ Auth::user()->name }}<small class="fa fa-angle-down ml-2"></small>
                             </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right position-absolute" aria-labelledby="profile-dropdown" style="min-width: 200px">
-                            <a class="dropdown-item py-2" href="/static/profile">
+                            <a class="dropdown-item py-2" href="{{ route('perfil')}}">
                                 <i class="far fa-user-circle text-muted mr-2"></i>Perfil
                             </a>
-                            <a class="dropdown-item py-2" href="/static/profile">
+                            <a class="dropdown-item py-2" href="{{ route('perfil')}}">
                                 <i class="fas fa-history text-muted mr-2"></i>Mis pedidos
                             </a>
                             <a class="dropdown-item py-2" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
@@ -144,7 +146,8 @@
 
     <!-- Global Vendor -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+    @include('sweetalert::cdn')
+    @include('sweetalert::view')
     @yield('scripts')
 
 </body>

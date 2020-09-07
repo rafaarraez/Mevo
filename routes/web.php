@@ -25,6 +25,7 @@ Auth::routes();
 Route::middleware(['auth', 'role:user'])->group(function () {
 	Route::get('/inicio', 'HomeController@index')->name('inicio');
 	Route::get('/perfil', 'UserController@showprofile')->name('perfil');
+	Route::get('/perfil/edit', 'UserController@editProfileUser')->name('edit');
 	Route::post('/usuarioos/{user}', 'UserController@updateByUser')->name('usuarios.updateByuser');
 	Route::post('/updateProfile/{user}', 'UserController@updateProfile')->name('user.updateProfile');
 	Route::post('/changePassword/{user}', 'UserController@changePassword')->name('user.changePassword');
@@ -42,7 +43,6 @@ Route::post('/changePassword/{user}', 'UserController@changePassword')->name('us
 Route::middleware(['auth', 'role:admin'])->group(function () {
 
 	Route::get('/home', 'HomeController@indexAdmin')->name('home');
-
 	// Rutas de  Usuarios
 	Route::get('/usuarios', 'UserController@index')->name('usuarios.index');
 	Route::get('/usuarios/create', 'UserController@create')->name('usuarios.create');
