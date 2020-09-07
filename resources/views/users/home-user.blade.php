@@ -63,12 +63,6 @@
                                 {{ Carbon\Carbon::parse($product->deadline)->toFormattedDateString('d/m/Y') }}
                             </div>
                         </div>
-                        <div class="col-6 col-lg-2">
-                            <div class="text-muted small">Fecha aprox. de llegada</div>
-                            <div class="font-weight-bold small">
-                                {{ Carbon\Carbon::parse($product->arrival_to)->toFormattedDateString('d/m/Y') }}
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="card-footer bg-white py-3">

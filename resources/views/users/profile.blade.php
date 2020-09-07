@@ -47,12 +47,9 @@
                                 <div class="col-lg-6 col-xl-8">
                                     <h6 class="font-weight-bold lh-1 h5">Aún no haces tu primera reserva</h6>
                                     <p class="text-muted fs-md lh-1 mb-0">Ve a los productos para realizar tu primera operación <a href="/">Productos</a></p>
-
                                 </div>
-
                             </div>
                         </div>
-
                     </article>
                 @endif
                 @foreach($reserves as $product)
@@ -67,7 +64,13 @@
                                     <div class="d-flex justify-content-between justify-content-lg-end align-items-center mt-3 mt-lg-0">
                                         <div class="font-weight-bold mr-3 h5 mb-0"></div>
                                         <div>
+                                            @if($product->status === 1)
+                                            <span class="badge bg-warning rounded-pill">Esperando Confirmación</span>
+                                            @elseif($product->status === 2)
+                                            <span class="badge bg-warning rounded-pill">En Trancito</span>
+                                            @elseif($product->status === 3)
                                             <span class="badge bg-success rounded-pill">Entregado</span>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

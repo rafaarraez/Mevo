@@ -29,7 +29,6 @@
 						<th class="text-center" scope="col">COA</th>
 						<th class="text-center" scope="col">MSDS</th>
 						<th class="text-center" scope="col">Fecha maxima de reserva</th>
-						<th class="text-center" scope="col">Fecha Aprox. De Llegada</th>
 						<th class="text-center" scope="col">Fecha de Llegada</th>
 						<th class="text-center" scope="col">Total</th>
 						<th class="text-center" scope="col">Reservados</th>
@@ -49,7 +48,6 @@
 						<td class="text-center"><a href="{{ $product->coa }}" target="_blank">Archivo</a></td>
 						<td class="text-center"><a href="{{ $product->msds }}" target="_blank">Archivo</a></td>
 						<td class="text-center">{{ Carbon\Carbon::parse($product->deadline)->format('d/m/Y') }}</td>
-						<td class="text-center">{{ Carbon\Carbon::parse($product->approximate_date)->format('d/m/Y') }}</td>
 						<td class="text-center">{{ Carbon\Carbon::parse($product->arrival_to)->format('d/m/Y') }}</td>
 						<td class="text-center">{{ $product->cantidad_total }}</td>
 						<td class="text-center">{{ $product->total_reservado === null ? 0 : $product->total_reservado }}</td>

@@ -35,7 +35,7 @@
 						<div class="row">
 							<div class="col-md-6 col-sm-12 form-group mb-4">
 								<label for="coa">Presentación</label>
-								<input id="coa" class="form-control{{ $errors->has('presentation') ? ' is-invalid' : '' }}" type="text" name="Tipo de presentación" placeholder="presentation" value="{{ old('presentation') }}" required>
+								<input id="coa" class="form-control{{ $errors->has('presentation') ? ' is-invalid' : '' }}" type="text" name="presentation" placeholder="presentation" value="{{ old('presentation') }}" required>
 								@if ($errors->has('presentation'))
 				                <small class="form-text invalid-feedback">{{ $errors->first('presentation') }}</small>
 				                @endif
@@ -85,16 +85,7 @@
 				                <small class="form-text invalid-feedback">{{ $errors->first('deadline') }}</small>
 				                @endif
 							</div>
-							<div class="col-md-6 col-sm-12 form-group mb-4">
-								<label for="approximate_date">Fecha Aprox.</label>
-								<input id="approximate_date" class="form-control{{ $errors->has('approximate_date') ? ' is-invalid' : '' }}" type="date" placeholder="Ingrese correo electronico" name="approximate_date" value="{{ old('approximate_date') }}" required>
-								@if ($errors->has('approximate_date'))
-				                <small class="form-text invalid-feedback">{{ $errors->first('approximate_date') }}</small>
-				                @endif
-							</div>
-						</div>
-
-						<div class="row">
+					
 							<div class="col-md-6 col-sm-12 form-group mb-4">
 								<label for="arrival_to">Fecha de Llegada</label>
 								<input id="arrival_to" class="form-control{{ $errors->has('arrival_to') ? ' is-invalid' : '' }}" type="date" name="arrival_to" placeholder="Fecha de llegada" value="{{ old('arrival_to') }}" required>

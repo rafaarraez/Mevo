@@ -95,7 +95,6 @@ class ProductsController extends Controller
         }
  
         $product->deadline = $inputs['deadline'];
-        $product->approximate_date = $inputs['approximate_date'];
         $product->arrival_to = $inputs['arrival_to'];
         $product->quantity = $inputs['quantity'];
 
@@ -185,7 +184,6 @@ class ProductsController extends Controller
         }
 
         $product->deadline = $inputs['deadline'];
-        $product->approximate_date = $inputs['approximate_date'];
         $product->arrival_to = $inputs['arrival_to'];
         $product->quantity = $inputs['quantity'];
         $product->arrival_location  = $inputs['arrival_location'];
