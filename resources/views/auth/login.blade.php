@@ -91,9 +91,9 @@
 
                                 <button class="btn btn-primary btn-block" type="submit">Iniciar sesión</button>
                             </form>
-                            <div class="small mt-4 font-sm">
+                            <!-- <div class="small mt-4 font-sm">
                                 ¿No tienes cuenta? <a href="/static/signup" class="text-light">Crear cuenta</a>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
