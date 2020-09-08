@@ -278,7 +278,7 @@ class UserController extends Controller
                                     ->selectRaw('(products.quantity - SUM(r.quantity)) AS total_disponible')
                                     ->leftjoin('reservation_products AS r', 'r.product_id', '=', 'products.id')
                                     ->groupBy('products.id')
-                                    ->get();
+                                    ->paginate(5);
             
             SWAL::message('Perfil Actualizado','','c',['timer'=>5000]);
 
