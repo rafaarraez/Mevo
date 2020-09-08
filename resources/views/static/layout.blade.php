@@ -15,7 +15,7 @@
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('favicon.ico')}}" type="image/x-icon">
-
+    <link rel="stylesheet" href="{{ asset('font-awesome/css/all.min.css')}}">
 	<!-- App Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css')}}">
 
@@ -47,10 +47,9 @@
                 <li class="nav-item d-md-none dropdown">
                     <a href="#" class="nav-link" id="mobile-profile-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="avatar mr-1">
-                            <!-- use ".avatar-text" with name initials when user don't have profile picture -->
-                            <!-- leave empty to hide -->
-                            <span class="avatar-text">ad</span>
-                            <img src="{{ asset('img/avatars/img5.jpg') }}" class="avatar-img rounded-circle" alt="Foto de perfil">
+                        
+                            <!-- <span class="avatar-text">ad</span>
+                            <img src="{{ asset('img/avatars/img5.jpg') }}" class="avatar-img rounded-circle" alt="Foto de perfil"> -->
                         </span>
                         <small class="fa fa-angle-down"></small>
                     </a>
@@ -74,7 +73,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav py-3 py-lg-0">
                     <li class="nav-item">
-                        @if(Auth::user()->hasRole('admin'))
+                        @if( Auth::user()->hasRole('admin') )
                             <a class="nav-link text-center text-lg-left" href="/home">Home</a>
                         @else
                             <a class="nav-link text-center text-lg-left" href="/inicio">Home</a>
@@ -148,6 +147,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     @include('sweetalert::cdn')
     @include('sweetalert::view')
+
     @yield('scripts')
 
 </body>
