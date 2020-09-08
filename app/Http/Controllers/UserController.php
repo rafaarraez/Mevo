@@ -271,7 +271,7 @@ class UserController extends Controller
             $userProfile->status                = 2;
             $userProfile->save();
             
-            var_dump($request);
+            // var_dump($request);
     
             $products = Products::select('products.*', 'products.quantity AS cantidad_total')
                                     ->selectRaw('SUM(r.quantity) AS total_reservado')
