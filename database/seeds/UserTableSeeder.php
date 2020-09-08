@@ -22,20 +22,20 @@ class UserTableSeeder extends Seeder
         /*
         * Registrar un usuario con el rol user
         */
-        $user = new User();
-        $user->name = 'User';
-        $user->email = 'user@example.com';
-        $user->password = bcrypt('secret');
-        $user->save();
-        $user->roles()->attach($role_user);
+        // $user = new User();
+        // $user->name = 'User';
+        // $user->email = 'user@example.com';
+        // $user->password = bcrypt('secret');
+        // $user->save();
+        // $user->roles()->attach($role_user);
 
         /*
         * Registrar un usuario con el rol admin
         */
         $user = new User();
         $user->name = 'Admin';
-        $user->email = 'admin@example.com';
-        $user->password = bcrypt('secret');
+        $user->email = 'mevo@admin.com';
+        $user->password = bcrypt('@GMda50!15*01mKw');
         $user->save();
         $user->roles()->attach($role_admin);
     }
