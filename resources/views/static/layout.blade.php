@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css')}}">
 
 </head>
-<body>
+<body class="user-body">
 
     <!-- new navbar -->
     <nav class="navbar navbar-expand-md navbar-dark bg-secondary">
@@ -43,7 +43,7 @@
                         <a href="/static/login" class="btn btn-primary btn-sm">Ingresar</a>
                     </li> -->
                 <!-- end login button -->
-    
+
                 <li class="nav-item d-md-none dropdown">
                     <a href="#" class="nav-link" id="mobile-profile-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="avatar mr-1">
@@ -135,7 +135,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-white text-center text-lg-right py-4 text-muted">
+    <footer class="user-footer bg-white text-center text-lg-right py-4 text-muted">
         <div class="container">
             <small>
                 <a class="text-muted text-decoration-none" href="https://github.com/rafaarraez/" target="_blank">Copyright &copy; Mevo 2020

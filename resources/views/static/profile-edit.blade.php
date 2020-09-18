@@ -10,7 +10,10 @@
                 <h5 class="text-secondary font-weight-bold mb-3">Foto de perfil</h5>
                 <div class="row g-2 g-md-3 mb-3">
                     <div class="col-5 col-md-12">
-                        <img src="{{ asset('img/avatars/img5.jpg')}}" class="img-fluid">
+                        <div class="aspect-ratio aspect-ratio-1by1">
+                            <img src="{{ asset('img/avatars/img5.jpg')}}">
+
+                        </div>
                     </div>
                     <div class="col-7 col-md-12">
                         <label for="select-file" class="btn btn-outline-dark btn-sm btn-block">Seleccionar archivo</label>
