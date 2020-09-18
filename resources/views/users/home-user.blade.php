@@ -139,11 +139,17 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <p class="mb-3">Por favor confirme la cantidad a reservar</p>
-                                <div class="mb-3">
-                                    <input type="hidden" id="availible_quantity" name="availible_quantity" value="{{ $product->total_disponible == null ? $product->cantidad_total : $product->total_disponible }}">
-                                    <label for="reserve_quantity-{{$product->id}}">Cantidad</label>
-                                    <input type="number" id="reserve_quantity-{{$product->id}}" name="quantity" class="form-control" placeholder="Cantidad a reservar" required>
+                                <p class="mb-3">Por favor confirme la cantidad a reservar.</p>
+                                <div class="row">
+                                    <div class="col-8">
+                                        <div class="mb-4">
+                                            <input type="hidden" id="availible_quantity" name="availible_quantity" value="{{ $product->total_disponible == null ? $product->cantidad_total : $product->total_disponible }}">
+                                            <label for="reserve_quantity-{{$product->id}}">Cantidad</label>
+                                            <input type="number" id="reserve_quantity-{{$product->id}}" name="quantity" class="form-control" placeholder="Cantidad a reservar" min="1" max="{{ $product->total_disponible == null ? $product->cantidad_total : $product->total_disponible }}" value="1" autocomplete="off" required>
+                                            <small class="form-text d-block fs-sm text-muted">Cantidad disponible: <b>{{ $product->total_disponible == null ? $product->cantidad_total : $product->total_disponible }}</b></small>
+                                        </div>
+
+                                    </div>
                                 </div>
 
                                 <div class="mb-3">

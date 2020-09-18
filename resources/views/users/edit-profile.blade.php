@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h1 class="text-secondary font-weight-bold h3 mb-4">
-        <a href="/perfil" class="text-muted text-decoration-none pr-2 mr-2"><i class="fas fa-arrow-left"></i></a>Editar perfil
+        <a href="/perfil" class="text-muted text-decoration-none pr-2 mr-2" title="Volver"><i class="fas fa-arrow-left"></i></a>Editar perfil
     </h1>
 
     <div class="row">
@@ -54,7 +54,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="nombres">Pais</label>
+                                <label for="merchant-select-country">Pais</label>
                                 <select id="merchant-select-country" class="form-select" name="country">
                                     <optgroup label="Sur América">
                                         <option {{ $userProfile->country === 'VE' ? 'selected':''
@@ -192,17 +192,17 @@
                                 </select>
                             </div>
                             <div class="col-md-6">
-                                <label for="nombres">Estado</label>
-                                <input type="text" class="form-control" name="state" value="{{ $userProfile->state }}">
+                                <label for="state">Estado</label>
+                                <input id="state" type="text" class="form-control" name="state" value="{{ $userProfile->state }}">
                             </div>
                             <div class="col-md-6">
-                                <label for="nombres">Ciudad</label>
-                                <input type="text" class="form-control" name="city" value="{{ $userProfile->city }}">
+                                <label for="city">Ciudad</label>
+                                <input id="city" type="text" class="form-control" name="city" value="{{ $userProfile->city }}">
                             </div>
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button type="submit" class="btn btn-primary px-4">Guardar</button>
                 </form>
             </div>
         </div>

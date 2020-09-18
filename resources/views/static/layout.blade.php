@@ -75,19 +75,19 @@
                 <ul class="navbar-nav py-3 py-lg-0">
                     <li class="nav-item">
                         @if(Auth::user()->hasRole('admin'))
-                            <a class="nav-link text-center text-lg-left" href="/home">Home</a>
+                            <a class="nav-link text-center text-lg-left text-uppercase fs-md" href="/home">Home</a>
                         @else
-                            <a class="nav-link text-center text-lg-left" href="/inicio">Home</a>
+                            <a class="nav-link text-center text-lg-left text-uppercase fs-md" href="/inicio">Home</a>
                         @endif
                     </li>
                     <!-- <li class="nav-item">
-                        <a class="nav-link text-center text-lg-left" href="/static/products">Productos</a>
+                        <a class="nav-link text-center text-lg-left text-uppercase fs-md" href="/static/products">Productos</a>
                     </li> -->
                     <li class="nav-item">
-                        <a class="nav-link text-center text-lg-left" href="#!">Empresa</a>
+                        <a class="nav-link text-center text-lg-left text-uppercase fs-md" href="#!">Empresa</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-center text-lg-left" href="#!">Nuestro equipo</a>
+                        <a class="nav-link text-center text-lg-left text-uppercase fs-md" href="#!">Nuestro equipo</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav align-items-center d-none d-md-flex ml-auto">
@@ -98,8 +98,11 @@
                     </li> -->
                     <!-- end login button -->
 
+                    <li class="nav-item mx-2 d-none d-lg-inline-block">
+                        <a href="{{ route('perfil') }}" class="nav-link text-uppercase fs-md">Mis pedidos</a>
+                    </li>
                     <li class="nav-item  dropdown">
-                        <a href="#" class="nav-link" id="profile-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a href="#" class="nav-link text-uppercase fs-md" id="profile-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <!-- <span class="avatar mr-1">
                                 <span class="avatar-text">ad</span>
                                 <img src="{{ asset('img/avatars/img5.jpg') }}" class="avatar-img rounded-circle" alt="Foto de perfil">
@@ -109,11 +112,11 @@
                             </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right position-absolute" aria-labelledby="profile-dropdown" style="min-width: 200px">
-                            <a class="dropdown-item py-2" href="{{ route('perfil')}}">
-                                <i class="far fa-user-circle text-muted mr-2"></i>Perfil
-                            </a>
-                            <a class="dropdown-item py-2" href="{{ route('perfil')}}">
+                            <a class="dropdown-item py-2" href="{{ route('perfil') }}">
                                 <i class="fas fa-history text-muted mr-2"></i>Mis pedidos
+                            </a>
+                            <a class="dropdown-item py-2" href="{{ route('edit') }}">
+                                <i class="far fa-user-circle text-muted mr-2"></i>Editar perfil
                             </a>
                             <a class="dropdown-item py-2" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                 <i class="far fa-share-square text-muted mr-2"></i>Salir

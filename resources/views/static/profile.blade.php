@@ -74,7 +74,7 @@
 
                 @for($i = 0; $i <= 2; $i++)
                 <article class="card mb-4">
-                    <div class="d-flex g-0">
+                    <div class="d-flex">
                         <div class="flex-shrink-0">
                             <a href="{{ asset('img/assets/login-bg.jpg') }}" class="product__sideImage d-none d-lg-block aspect-ratio aspect-ratio-1by1" target="_blank" style="width: 150px">
                                 <img src="{{ asset('img/assets/login-bg.jpg') }}">

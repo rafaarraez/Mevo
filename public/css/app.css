@@ -2402,7 +2402,7 @@ progress {
 .form-select:focus {
   border-color: #e93237;
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(233, 50, 55, 0.25);
+  box-shadow: none !important;
 }
 
 .form-select:focus::-ms-value {
@@ -5568,7 +5568,7 @@ button.close {
   z-index: 1040;
   width: 100vw;
   height: 100vh;
-  background-color: #000;
+  background-color: #202033;
 }
 
 .modal-backdrop.fade {
@@ -5576,7 +5576,7 @@ button.close {
 }
 
 .modal-backdrop.show {
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 .modal-header {
@@ -10881,6 +10881,16 @@ body {
   position: relative;
 }
 
+::-moz-selection {
+  color: #fff;
+  background-color: #e93237;
+}
+
+::selection {
+  color: #fff;
+  background-color: #e93237;
+}
+
 .user-body {
   min-height: 100vh;
   padding-bottom: 4.5rem;
@@ -10989,10 +10999,19 @@ body {
 .product__sideImage {
   width: 100%;
   height: 100%;
+  overflow: hidden;
+}
+
+.product__sideImage > img {
+  transition: transform 0.8s ease;
+}
+
+.product__sideImage > img:hover {
+  transform: scale(1.2);
 }
 
 .dropdown-menu {
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+  box-shadow: 0 1rem 3rem -0.5rem rgba(32, 32, 51, 0.3);
   padding: 0.5rem;
 }
 
