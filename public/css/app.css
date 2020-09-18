@@ -3918,9 +3918,9 @@ fieldset:disabled .btn {
   color: #39425B;
   text-align: left;
   list-style: none;
-  background-color: #fff;
+  background-color: rgba(32, 32, 51, 0.85);
   background-clip: padding-box;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .dropdown-menu-left {
@@ -4100,7 +4100,7 @@ fieldset:disabled .btn {
   padding: 0.25rem 1rem;
   clear: both;
   font-weight: 400;
-  color: #212529;
+  color: white;
   text-align: inherit;
   text-decoration: none;
   white-space: nowrap;
@@ -4110,8 +4110,8 @@ fieldset:disabled .btn {
 
 .dropdown-item:hover,
 .dropdown-item:focus {
-  color: #16181b;
-  background-color: #f8f9fa;
+  color: white;
+  background-color: rgba(32, 32, 51, 0.5);
 }
 
 .dropdown-item.active,
@@ -4137,14 +4137,14 @@ fieldset:disabled .btn {
   padding: 0.5rem 1rem;
   margin-bottom: 0;
   font-size: 0.875rem;
-  color: #6c757d;
+  color: rgba(255, 255, 255, 0.75);
   white-space: nowrap;
 }
 
 .dropdown-item-text {
   display: block;
   padding: 0.25rem 1rem;
-  color: #212529;
+  color: white;
 }
 
 .btn-group,
@@ -11011,8 +11011,11 @@ body {
 }
 
 .dropdown-menu {
-  box-shadow: 0 1rem 3rem -0.5rem rgba(32, 32, 51, 0.3);
+  box-shadow: 0 1rem 3rem -0.5rem rgba(32, 32, 51, 0.4);
   padding: 0.5rem;
+  -webkit-backdrop-filter: blur(0.5rem);
+          backdrop-filter: blur(0.5rem);
+  background-clip: border-box;
 }
 
 

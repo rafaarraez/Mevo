@@ -45,26 +45,22 @@
                 <!-- end login button -->
 
                 <li class="nav-item d-md-none dropdown">
-                    <a href="#" class="nav-link" id="mobile-profile-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="avatar mr-1">
-                            <!-- use ".avatar-text" with name initials when user don't have profile picture -->
-                            <!-- leave empty to hide -->
-                            <span class="avatar-text">ad</span>
-                            <img src="{{ asset('img/avatars/img5.jpg') }}" class="avatar-img rounded-circle" alt="Foto de perfil">
-                        </span>
-                        <small class="fa fa-angle-down"></small>
+                    <a href="#" class="nav-link text-uppercase fs-md" id="mobile-profile-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <?php $first_name = explode(" ", Auth::user()->name); ?>
+                        {{ $first_name[0] }}<small class="fa fa-angle-down ml-2"></small>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right position-absolute" aria-labelledby="mobile-profile-dropdown" style="min-width: 200px">
-                        <a class="dropdown-item py-2" href="/static/profile">
-                            <i class="far fa-user-circle text-muted mr-2"></i>Perfil
-                        </a>
-                        <a class="dropdown-item py-2" href="/static/profile">
+                        <div><h6 class="dropdown-header">{{ Auth::user()->name }}</h6></div>
+                        <a class="dropdown-item py-2" href="{{ route('perfil') }}">
                             <i class="fas fa-history text-muted mr-2"></i>Mis pedidos
                         </a>
-                        <a class="dropdown-item py-2" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                        <a class="dropdown-item py-2" href="{{ route('edit') }}">
+                            <i class="far fa-user-circle text-muted mr-2"></i>Editar perfil
+                        </a>
+                        <a class="dropdown-item py-2" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form-mobile').submit();">
                             <i class="far fa-share-square text-muted mr-2"></i>Salir
                         </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        <form id="logout-form-mobile" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
                     </div>
@@ -98,7 +94,7 @@
                     </li> -->
                     <!-- end login button -->
 
-                    <li class="nav-item mx-2 d-none d-lg-inline-block">
+                    <li class="nav-item mr-3 d-none d-lg-inline-block">
                         <a href="{{ route('perfil') }}" class="nav-link text-uppercase fs-md">Mis pedidos</a>
                     </li>
                     <li class="nav-item  dropdown">
