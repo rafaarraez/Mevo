@@ -2,7 +2,9 @@
 
 @section('content')
 <div class="container">
-    <h1 class="text-secondary font-weight-bold h3 mb-4">Editar perfil</h1>
+    <h1 class="text-secondary font-weight-bold h3 mb-4">
+        <a href="/perfil" class="text-muted text-decoration-none pr-2 mr-2" title="Volver"><i class="fas fa-arrow-left"></i></a>Editar perfil
+    </h1>
 
     <div class="row">
         <!-- <div class="col-md-4 col-lg-3">
@@ -24,7 +26,7 @@
 
             </div>
         </div> -->
-        <div class="col-md-8 col-lg-8 offset-lg-1">
+        <div class="col-lg-6 col-xl-7">
             <div class="card card-body p-md-5 mb-3 mb-lg-4">
                 <form class="form-cotrol" id="merchant-natural" action="{{ route('user.updateProfile', Auth::user()->id) }}" enctype="multipart/form-data"
                             method="post">
@@ -52,20 +54,8 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="nombres">Estado</label>
-                                <input type="text" class="form-control"
-                                    name="state" value="{{ $userProfile->state }}">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="nombres">Ciudad</label>
-                                <input type="text" class="form-control"
-                                    name="city" value="{{ $userProfile->city }}">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="nombres">Pais</label>
-								<select id="merchant-select-country"
-                                        class="form-control"
-                                        name="country">
+                                <label for="merchant-select-country">Pais</label>
+                                <select id="merchant-select-country" class="form-select" name="country">
                                     <optgroup label="Sur América">
                                         <option {{ $userProfile->country === 'VE' ? 'selected':''
                                     }} value="VE" data-flag="/img/landing/flags/ve.svg">Venezuela
@@ -201,12 +191,22 @@
                                     </option>
                                 </select>
                             </div>
+                            <div class="col-md-6">
+                                <label for="state">Estado</label>
+                                <input id="state" type="text" class="form-control" name="state" value="{{ $userProfile->state }}">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="city">Ciudad</label>
+                                <input id="city" type="text" class="form-control" name="city" value="{{ $userProfile->city }}">
+                            </div>
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button type="submit" class="btn btn-primary px-4">Guardar</button>
                 </form>
             </div>
+        </div>
+        <div class="col-lg-6 col-xl-5">
             <div class="card card-body p-md-5 mb-3 mb-lg-5">
                 <!-- change password -->
                 <form class="form-cotrol" id="merchant-natural" action="{{ route('user.changePassword', Auth::user()->id) }}" enctype="multipart/form-data"
@@ -214,28 +214,26 @@
                     {{ csrf_field() }}
                     <h5 class="text-secondary font-weight-bold mb-3">Contraseña</h5>
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <div class="mb-3">
                                 <label for="actual-pw">Contraseña actual</label>
                                 <input id="actual-pw" type="text" class="form-control">
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6 col-lg-6">
+                        <div class="col-sm-6 col-md-6 col-lg-12 col-xl-6">
                             <div class="mb-3">
                                 <label for="new-pw">Nueva contraseña</label>
                                 <input id="new-pw" type="text" class="form-control" name="password">
                             </div>
                         </div>
-                        <div class="col-sm-6 col-lg-6">
+                        <div class="col-sm-6 col-md-6 col-lg-12 col-xl-6">
                             <div class="mb-3">
                                 <label for="repeat-new-pw">Repetir nueva contraseña</label>
                                 <input id="repeat-new-pw" name="password_confirmation" type="text" class="form-control">
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-danger">Cambiar contraseña</button>
+                    <button type="button" class="btn btn-danger px-3"><i class="fas fa-lock small mr-2"></i> Cambiar contraseña</button>
                 </form>
             </div>
         </div>

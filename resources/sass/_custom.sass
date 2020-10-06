@@ -1,3 +1,11 @@
+.user-body
+    min-height: 100vh
+    padding-bottom: 4.5rem
+
+.user-footer
+    +absolute(null, null, 0, 0)
+    width: 100%
+
 .custom-tab-link
     font-size: .875rem
     font-weight: 600
@@ -35,3 +43,34 @@
     color: #1E7FF0
 .fa-twitter-color
     color: #1BB3F4
+
+.aspect-ratio
+    display: block
+    position: relative
+    width: 100%
+    &.aspect-ratio-16by9
+        padding-top: (9 / 16 * 100%)
+    &.aspect-ratio-4by3
+        padding-top: (3 / 4 * 100%)
+    &.aspect-ratio-1by1
+        padding-top: 100%
+    > img
+        +absolute( 0, 0, 0, 0)
+        +square(100%)
+        object-fit: cover
+
+.product
+    &__sideImage
+        width: 100%
+        height: 100%
+        overflow: hidden
+        > img
+            transition: transform .8s ease
+            &:hover
+                transform: scale(1.2)
+
+.dropdown-menu
+    box-shadow: 0 1rem 3rem -.5rem rgba($secondary, .4)
+    padding: $dropdown-padding-y
+    backdrop-filter: blur(.5rem)
+    background-clip: border-box
