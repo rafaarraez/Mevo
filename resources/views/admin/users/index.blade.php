@@ -41,9 +41,9 @@
 							<a class="link-muted" href="{{ URL::to('usuarios/' . $usuario->id . '/edit')}}" aria-expanded="false" title="Editar usuario" data-toggle="tooltip" data-placement="left"><i class="fa fa-sliders-h"></i>
 							</a>
 
-							<a class="link-muted" href="#deletef" aria-expanded="false" title="Eliminar usuario" data-toggle="modal" data-dismiss="modal" data-backdrop="false">
+							<!-- <a class="link-muted" href="#deletef" aria-expanded="false" title="Eliminar usuario" data-toggle="modal" data-dismiss="modal" data-backdrop="false">
                                 <i class="fa fa-trash"></i>
-							</a>
+							</a> -->
 						</td>
 					</tr>
 					@endforeach

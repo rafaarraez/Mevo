@@ -1,0 +1,76 @@
+.user-body
+    min-height: 100vh
+    padding-bottom: 4.5rem
+
+.user-footer
+    +absolute(null, null, 0, 0)
+    width: 100%
+
+.custom-tab-link
+    font-size: .875rem
+    font-weight: 600
+    color: $text-muted
+
+.badge
+    text-transform: uppercase
+
+.auth-bg
+    background: $body-bg no-repeat center/cover
+    &:before
+        content: ''
+        +absolute(0, 0, 0, 0)
+        background-color: $secondary
+        opacity: .8
+        z-index: 0
+
+.backdrop-blur-4
+    backdrop-filter: blur(4px)
+
+@include media-breakpoint-down(md)
+    .logo-wrapper
+        +absolute(0, 0, 0, 0)
+        padding: $navbar-padding-y $navbar-padding-x
+        text-align: center
+        pointer-events: none
+        > .navbar-brand
+            pointer-events: all
+
+.fa-instagram-color
+    color: transparent
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)
+    background-clip: text
+.fa-facebook-color
+    color: #1E7FF0
+.fa-twitter-color
+    color: #1BB3F4
+
+.aspect-ratio
+    display: block
+    position: relative
+    width: 100%
+    &.aspect-ratio-16by9
+        padding-top: (9 / 16 * 100%)
+    &.aspect-ratio-4by3
+        padding-top: (3 / 4 * 100%)
+    &.aspect-ratio-1by1
+        padding-top: 100%
+    > img
+        +absolute( 0, 0, 0, 0)
+        +square(100%)
+        object-fit: cover
+
+.product
+    &__sideImage
+        width: 100%
+        height: 100%
+        overflow: hidden
+        > img
+            transition: transform .8s ease
+            &:hover
+                transform: scale(1.2)
+
+.dropdown-menu
+    box-shadow: 0 1rem 3rem -.5rem rgba($secondary, .4)
+    padding: $dropdown-padding-y
+    backdrop-filter: blur(.5rem)
+    background-clip: border-box

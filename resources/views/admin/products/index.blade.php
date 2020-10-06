@@ -29,7 +29,6 @@
 						<th class="text-center" scope="col">COA</th>
 						<th class="text-center" scope="col">MSDS</th>
 						<th class="text-center" scope="col">Fecha maxima de reserva</th>
-						<th class="text-center" scope="col">Fecha Aprox. De Llegada</th>
 						<th class="text-center" scope="col">Fecha de Llegada</th>
 						<th class="text-center" scope="col">Total</th>
 						<th class="text-center" scope="col">Reservados</th>
@@ -49,7 +48,6 @@
 						<td class="text-center"><a href="{{ $product->coa }}" target="_blank">Archivo</a></td>
 						<td class="text-center"><a href="{{ $product->msds }}" target="_blank">Archivo</a></td>
 						<td class="text-center">{{ Carbon\Carbon::parse($product->deadline)->format('d/m/Y') }}</td>
-						<td class="text-center">{{ Carbon\Carbon::parse($product->approximate_date)->format('d/m/Y') }}</td>
 						<td class="text-center">{{ Carbon\Carbon::parse($product->arrival_to)->format('d/m/Y') }}</td>
 						<td class="text-center">{{ $product->cantidad_total }}</td>
 						<td class="text-center">{{ $product->total_reservado === null ? 0 : $product->total_reservado }}</td>
@@ -58,9 +56,9 @@
 							<a class="link-muted" href="{{ URL::to('products/' . $product->id . '/edit')}}" aria-expanded="false" title="Editar usuario" data-toggle="tooltip" data-placement="left"><i class="fa fa-sliders-h"></i>
 							</a>
 
-							<a class="link-muted" href="#deletef-{{$product->id}}" aria-expanded="false" title="Eliminar usuario" data-toggle="modal" data-dismiss="modal" data-backdrop="false">
+							<!-- <a class="link-muted" href="#deletef-{{$product->id}}" aria-expanded="false" title="Eliminar usuario" data-toggle="modal" data-dismiss="modal" data-backdrop="false">
 								<i class="fa fa-trash"></i>
-							</a>
+							</a> -->
 						</td>
 					</tr>
 

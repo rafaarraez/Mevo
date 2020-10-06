@@ -95,7 +95,6 @@ class ProductsController extends Controller
         }
  
         $product->deadline = $inputs['deadline'];
-        $product->approximate_date = $inputs['approximate_date'];
         $product->arrival_to = $inputs['arrival_to'];
         $product->quantity = $inputs['quantity'];
 
@@ -185,7 +184,6 @@ class ProductsController extends Controller
         }
 
         $product->deadline = $inputs['deadline'];
-        $product->approximate_date = $inputs['approximate_date'];
         $product->arrival_to = $inputs['arrival_to'];
         $product->quantity = $inputs['quantity'];
         $product->arrival_location  = $inputs['arrival_location'];
@@ -258,6 +256,21 @@ class ProductsController extends Controller
         $user = Auth::user()->id;
         $reserves = ReservationProducts::with('products', 'user')->get();
         return view('admin.reports.index')->with(compact('reserves'));
+    }
+
+    public function getReserveDetails($id){
+        $reserve = ReservationProducts::where('id', $id)->with('products', 'user', 'userPersonProfile')->first();
+        return view('admin.reports.details')->with(compact('reserve'));
+    }
+
+    public function changeStatus(Request $request, $id){
+        $reserve = ReservationProducts::where('id', $id)->first();
+        $inputs = request()->all();
+        $reserve->status = $inputs['status'];
+        $reserve->save();
+        SWAL::message('Estado Actualizado','','success',['timer'=>5000]);
+        return redirect()->back();
+
     }
 
     public function reservationsPerDay(){

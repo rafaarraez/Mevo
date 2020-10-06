@@ -1,0 +1,66 @@
+@import 'variables'
+
+$primary:       #e93237
+$secondary:     #202033
+$danger:        #e12e2e
+$success:       #029f69
+$warning:       #ffac01
+$info:          #009ee3
+$dark:          #6c757d
+
+$enable-rounded: false
+
+$enable-responsive-font-sizes: true
+$rfs-class: 'disable'
+$min-contrast-ratio: 1
+
+$body-color:    #39425B
+$body-bg:       #F6F8FA
+$text-muted:    #8D93A4
+
+$nav-tabs-link-active-color:        $primary
+$nav-tabs-link-active-bg:           rgba($primary, .15)
+$nav-tabs-link-active-border-color: transparent transparent transparent
+$nav-tabs-link-hover-border-color:  transparent transparent transparent
+
+$badge-font-weight:                 600
+$badge-padding-y:                   .5em
+$badge-padding-x:                   1em
+
+$form-check-label-cursor:       pointer
+$input-btn-focus-box-shadow:    none !important
+$input-focus-border-color:      $primary
+$form-select-focus-box-shadow:  $input-btn-focus-box-shadow
+
+$navbar-toggler-focus-width: 0
+$navbar-dark-toggler-border-color: transparent
+
+$modal-backdrop-bg:                 $secondary
+$modal-backdrop-opacity:            .7
+
+$dropdown-bg: rgba($secondary, .85)
+$dropdown-border-color: rgba(#fff, .1)
+$dropdown-link-color: white
+$dropdown-link-hover-bg: rgba($secondary, .5)
+$dropdown-link-hover-color: white
+$dropdown-header-color: rgba(white, .75)
+
+// custom utilities
+@import "custom-bs-utilities"
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap'
+
+@import "custom-bs-mixins"
+
+// components
+@import "components/avatars"
+
+// Custom style
+@import "global"
+@import "custom"
+
+// vendors
+
+//// fontawesome
+@import "~@fortawesome/fontawesome-free/css/all.min.css"

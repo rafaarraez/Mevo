@@ -3,6 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use App\UserProfile;
+
+/*
+** status
+** 1: reserva sin verificar
+** 2: concretdo esperando que llegue
+** 3: entregada en puerto
+** 4: cancelada o no concretada
+*/
 
 class ReservationProducts extends Model
 {
@@ -13,7 +23,8 @@ class ReservationProducts extends Model
         'id',
         'user_id',
         'product_id',
-        'quantity'
+        'quantity',
+        'status'
     ];
 
     /**
@@ -27,5 +38,10 @@ class ReservationProducts extends Model
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo('App\User', 'user_id');
+    }
+
+    public function userPersonProfile(): HasOne
+    {
+        return $this->hasOne(UserProfile::class, 'user_id', 'user_id');
     }
 }

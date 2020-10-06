@@ -1,0 +1,16 @@
+$utilities: () !default;
+
+$utilities: map-merge(
+    (
+        "font-size": (
+            property: font-size,
+            class: fs,
+            values: (
+                xs: 0.75rem,
+                sm: 0.8125rem,
+                md: 0.875rem,
+            ),
+        )
+    ),
+    $utilities
+);

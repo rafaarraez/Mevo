@@ -1,280 +1,161 @@
-@extends('layouts.user')
+@extends('static.layout')
 
 @section('content')
 
-<div class="card mb-4">
-    <div class="card-body">
-        <div class="row">
-            <div class="col-md-12 border-md-right border-light text-center" style="margin: auto;">
-                <img class="img-fluid rounded-circle mb-3"
-                    src="{{ asset('img/avatars/img3.jpg') }}" alt="Image description" width="84">
-
-                <h2 class="mb-2">{{ $usuario->name }}</h2>
-
-
-                <!-- <a class="link-muted" href="#!">
-					<i class="fa fa-envelope mr-2"></i> Enviar mensaje
-				</a> -->
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h1 class="text-secondary font-weight-bold h3 mb-4">
+                <a href="/" class="text-muted text-decoration-none pr-2 mr-2" title="Volver"><i class="fas fa-arrow-left"></i></a>Perfil
+            </h1>
+        </div>
+        <div class="col-6">
+            <div class="text-right">
+                <a href="{{ route('edit') }}" class="btn btn-primary btn-sm mb-3 mb-md-0">Editar perfil</a>
             </div>
-
-            <div class="col-md-12">
-
-                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#userProfile" role="tab"
-                            aria-controls="pills-home" aria-selected="true">Información del Usuario</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#userPasword" role="tab"
-                            aria-controls="pills-profile" aria-selected="false">Contraseña</a>
-                    </li>
-
-                </ul>
-                <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="userProfile" role="tabpanel"
-                        aria-labelledby="pills-home-tab">
-                        <form class="form-cotrol" id="merchant-natural" action="{{ route('user.updateProfile', Auth::user()->id) }}" enctype="multipart/form-data"
-                            method="post">
-                            {{ csrf_field() }}
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="nombres" class="text-primary">Empresa</label>
-                                    <input type="text" class="form-control edit-userprofile"
-                                        name="company_name" value="{{ $userProfile->company_name }}" disabled>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="nombres" class="text-primary">Nivel Organizacional</label>
-                                    <select name="organitational_level" class="form-control edit-userprofile custom-select{{ $errors->has('organitational_level') ? ' is-invalid' : '' }}" id="roles" disabled>
-										<option disabled>Seleccione una Categoria</option>
-										<option {{ $userProfile->organitational_level === '1' ? 'selected':''}} value="1">Industria</option>
-										<option {{ $userProfile->organitational_level === '2' ? 'selected':''}} value="2">Mediana</option>
-										<option {{ $userProfile->organitational_level === '3' ? 'selected':''}} value="3">Pequeña</option>
-									</select>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="nombres" class="text-primary">Nombre</label>
-                                    <input type="text" class="form-control edit-userprofile"
-                                        name="job" value="{{ $userProfile->job }}" disabled>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="nombres" class="text-primary">Posicion</label>
-                                    <input type="text" class="form-control edit-userprofile"
-                                        name="position" value="{{ $userProfile->position }}" disabled>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="nombres" class="text-primary">Pais</label>
-									<select id="merchant-select-country"
-                                                            class="custom-select edit-userprofile flag-selector flag-selector--full"
-                                                            name="country" disabled>
-                                                        <optgroup label="Sur América">
-                                                            <option {{ $userProfile->country === 'VE' ? 'selected':''
-                                                        }} value="VE" data-flag="/img/landing/flags/ve.svg">Venezuela
-                                                            </option>
-                                                            <option {{ $userProfile->country === 'CO' ? 'selected':''
-                                                        }} value="CO" data-flag="/img/landing/flags/co.svg">Colombia
-                                                            </option>
-                                                            <option {{ $userProfile->country === 'PE' ? 'selected':''
-                                                        }} value="PE" data-flag="/img/landing/flags/pe.svg">Perú
-                                                            </option>
-                                                            <option {{ $userProfile->country === 'CL' ? 'selected':''
-                                                        }} value="CL" data-flag="/img/landing/flags/cl.svg">Chile
-                                                            </option>
-                                                            <option {{ $userProfile->country === 'AR' ? 'selected':''
-                                                        }} value="AR" data-flag="/img/landing/flags/ar.svg">Argentina
-                                                            </option>
-                                                            <option {{ $userProfile->country === 'BR' ? 'selected':''
-                                                        }} value="BR" data-flag="/img/landing/flags/br.svg">Brazil
-                                                            </option>
-                                                            <option {{ $userProfile->country === 'EC' ? 'selected':''
-                                                        }} value="EC" data-nb="true"
-                                                                    data-flag="/img/landing/flags/ec.svg">Ecuador
-                                                            </option>
-                                                            <option {{ $userProfile->country === 'BO' ? 'selected':''
-                                                        }} value="BO" data-nb="true"
-                                                                    data-flag="/img/landing/flags/bo.svg">Bolivia
-                                                            </option>
-                                                            <option {{ $userProfile->country === 'PY' ? 'selected':''
-                                                        }} value="PY" data-nb="true"
-                                                                    data-flag="/img/landing/flags/py.svg">Paraguay
-                                                            </option>
-                                                            <option {{ $userProfile->country === 'UY' ? 'selected':''
-                                                        }} value="UY" data-nb="true"
-                                                                    data-flag="/img/landing/flags/uy.svg">Uruguay
-                                                            </option>
-                                                        </optgroup>
-                                                        <optgroup label="Centro América">
-                                                            <option {{ $userProfile->country === 'PA' ? 'selected':''
-                                                        }} value="PA" data-flag="/img/landing/flags/pa.svg">Panamá
-                                                            </option>
-                                                            <option {{ $userProfile->country === 'GT' ? 'selected':''
-                                                        }} value="GT" data-nb="true"
-                                                                    data-flag="/img/landing/flags/gt.svg">Guatemala
-                                                            </option>
-                                                            <option {{ $userProfile->country === 'SV' ? 'selected':''
-                                                        }} value="SV" data-nb="true"
-                                                                    data-flag="/img/landing/flags/sv.svg">El Salvador
-                                                            </option>
-                                                            <option {{ $userProfile->country === 'HN' ? 'selected':''
-                                                        }} value="HN" data-nb="true"
-                                                                    data-flag="/img/landing/flags/hn.svg">Honduras
-                                                            </option>
-                                                            <option {{ $userProfile->country === 'NI' ? 'selected':''
-                                                        }} value="NI" data-nb="true"
-                                                                    data-flag="/img/landing/flags/ni.svg">Nicaragua
-                                                            </option>
-                                                            <option {{ $userProfile->country === 'CR' ? 'selected':''
-                                                        }} value="CR" data-nb="true"
-                                                                    data-flag="/img/landing/flags/cr.svg">Costa Rica
-                                                            </option>
-                                                            <option {{ $userProfile->country === 'BZ' ? 'selected':''
-                                                        }} value="BZ" data-nb="true"
-                                                                    data-flag="/img/landing/flags/bz.svg">Belize
-                                                            </option>
-                                                        </optgroup>
-                                                        <optgroup label="Norte América">
-                                                            <option {{ $userProfile->country === 'MX' ? 'selected':''
-                                                        }} value="MX" data-flag="/img/landing/flags/mx.svg">México
-                                                            </option>
-                                                            <option {{ $userProfile->country === 'US' ? 'selected':''
-                                                        }} value="US" data-flag="/img/landing/flags/us.svg">United
-                                                                States
-                                                            </option>
-                                                            <option {{ $userProfile->country === 'CA' ? 'selected':''
-                                                        }} value="CA" data-nb="true"
-                                                                    data-flag="/img/landing/flags/ca.svg">Canada
-                                                            </option>
-                                                        </optgroup>
-                                                        <optgroup label="Islas del Caribe">
-                                                            <option {{ $userProfile->country === 'DO' ? 'selected':''
-                                                        }} value="DO" data-nb="true"
-                                                                    data-flag="/img/landing/flags/do.svg">República
-                                                                Dominicana
-                                                            </option>
-                                                            <option {{ $userProfile->country === 'PR' ? 'selected':''
-                                                        }} value="PR" data-nb="true"
-                                                                    data-flag="/img/landing/flags/pr.svg">Puerto Rico
-                                                            </option>
-                                                            <option {{ $userProfile->country === 'AW' ? 'selected':''
-                                                        }} value="AW" data-nb="true"
-                                                                    data-flag="/img/landing/flags/aw.svg">Aruba
-                                                            </option>
-                                                            <option {{ $userProfile->country === 'CW' ? 'selected':''
-                                                        }} value="CW" data-nb="true"
-                                                                    data-flag="/img/landing/flags/cw.svg">Curacao
-                                                            </option>
-                                                            <option {{ $userProfile->country === 'TT' ? 'selected':''
-                                                        }} value="TT" data-nb="true"
-                                                                    data-flag="/img/landing/flags/tt.svg">Trinidad y
-                                                                Tobago
-                                                            </option>
-                                                            <option {{ $userProfile->country === 'BS' ? 'selected':''
-                                                        }} value="BS" data-nb="true"
-                                                                    data-flag="/img/landing/flags/bs.svg">Bahamas
-                                                            </option>
-                                                            <option {{ $userProfile->country === 'BB' ? 'selected':''
-                                                        }} value="BB" data-nb="true"
-                                                                    data-flag="/img/landing/flags/bb.svg">Barbados
-                                                            </option>
-                                                        </optgroup>
-                                                        <optgroup label="Europa">
-                                                            <option {{ $userProfile->country === 'GB' ? 'selected':''
-                                                        }} value="GB" data-flag="/img/landing/flags/gb.svg">Reino Unido
-                                                            </option>
-                                                            <option {{ $userProfile->country === 'ES' ? 'selected':''
-                                                        }} value="ES" data-flag="/img/landing/flags/es.svg">España
-                                                            </option>
-                                                            <option {{ $userProfile->country === 'PT' ? 'selected':''
-                                                        }} value="PT" data-flag="/img/landing/flags/pt.svg">Portugal
-                                                            </option>
-                                                            <option {{ $userProfile->country === 'IT' ? 'selected':''
-                                                        }} value="IT" data-flag="/img/landing/flags/it.svg">Italia
-                                                            </option>
-                                                            <option {{ $userProfile->country === 'FR' ? 'selected':''
-                                                        }} value="FR" data-flag="/img/landing/flags/fr.svg">Francia
-                                                            </option>
-                                                            <option {{ $userProfile->country === 'DE' ? 'selected':''
-                                                        }} value="DE" data-flag="/img/landing/flags/de.svg">Alemania
-                                                            </option>
-                                                        </optgroup>
-                                                        <option {{ $userProfile->country === 'AU' ? 'selected':''}} value="AU"
-                                                                data-flag="/img/landing/flags/au.svg">Australia
-                                                        </option>
-                                                    </select>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="nombres" class="text-primary">Estado</label>
-                                    <input type="text" class="form-control edit-userprofile"
-                                        name="state" value="{{ $userProfile->state }}" disabled>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="nombres" class="text-primary">Ciudad</label>
-                                    <input type="text" class="form-control edit-userprofile"
-                                        name="city" value="{{ $userProfile->city }}" disabled>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="nombres" class="text-primary">Numero de Telefóno</label>
-                                    <input type="text" class="form-control edit-userprofile"
-                                        name="mobile" value="{{ $userProfile->mobile }}" disabled>
-                                </div>
-                                <div class="col-md-6">
-                                    <button class="btn btn-secondary my-4" id="edit-profile">Editar Perfil
-                                    </button>
-                                    <button class="btn btn-secondary my-4" id="save-edit-profile" hidden>Guardar
-                                        Cambios
-                                    </button>
-                                    <button class="btn btn-danger my-4" id="cancel-edit-profile" hidden>
-                                        Cancelar
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-					
-                    <div class="tab-pane fade" id="userPasword" role="tabpanel" aria-labelledby="pills-profile-tab">
-						<form class="form-cotrol" id="merchant-natural" action="{{ route('user.changePassword', Auth::user()->id) }}" enctype="multipart/form-data"
-                            method="post">
-                            {{ csrf_field() }}
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="password" class="text-primary">Contraseña</label>
-                                    <input type="password" class="form-control" placeholder="Ingrese su nueva Contraseñá" name="password">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="password_confirmation" class="text-primary">Confirme su nueva contraseña</label>
-                                    <input type="password" class="form-control" placeholder="Re-ingrese su contraseña nueva" name="password_confirmation">
-                                </div>
-
-                                <div class="col-md-6">
-                                    <button class="btn btn-secondary my-4" >
-										Guardar Cambios
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-            <!-- <div class="row">
-					<div class="col-lg-4 mb-5 mb-lg-0">
-
-
-					<div class="col-lg-8">
-						<h4 class="h3 mb-3">Habilidades</h4>
-
-						<div class="d-flex flex-wrap align-items-center">
-							<span class="bg-light text-muted rounded py-2 px-3 mb-2 mr-2">Tag</span>
-							<span class="bg-light text-muted rounded py-2 px-3 mb-2 mr-2">Web Design</span>
-							<span class="bg-light text-muted rounded py-2 px-3 mb-2 mr-2">HTML5</span>
-							<span class="bg-light text-muted rounded py-2 px-3 mb-2 mr-2">CSS</span>
-							<span class="bg-light text-muted rounded py-2 px-3 mb-2 mr-2">Marketing</span>
-							<span class="bg-light text-muted rounded py-2 px-3 mb-2 mr-2">JavaScript</span>
-						</div>
-					</div>
-				</div> -->
-
         </div>
     </div>
+
+    <div class="row g-2 g-md-3 g-lg-4 mb-4">
+        <!-- <div class="col-4 col-md-3 order-2">
+            <img src="{{ asset('img/avatars/img5.jpg') }}" class="img-fluid">
+        </div> -->
+        <div class="col-8 col-md-7 order-3">
+            <h3 class="text-primary">{{ $usuario->name }}</h3>
+
+            <!-- user info -->
+            <ul class="list-unstyled">
+                <li class="text-muted lh-sm">{{ $userProfile->city }}, {{ $userProfile->state }}, {{$userProfile->country}}</li>
+                <li class="text-muted lh-sm">{{ $userProfile->mobile }}</li>
+                <li class="text-muted lh-sm">{{ $userProfile->email }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link custom-tab-link text-uppercase active" data-toggle="tab" href="#products" role="tab" aria-controls="products" aria-selected="true">Mis pedidos</a>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane show active" id="products" role="tabpanel">
+            <div class="py-4">
+                <h5 class="text-secondary font-weight-bold mb-4">Mis pedidos</h5>
+
+                <!-- empty state -->
+                @if(count($reserves) === 0)
+                <div class="text-center py-sm-5">
+                    <div class="mb-4">
+                        <img src="{{ asset('/img/assets/no-data.svg') }}" class="img-fluid" alt="No data" style="max-width: 130px">
+                    </div>
+                    <h5 class="font-weight-bold">Aún no haces tu primera reserva</h5>
+                    <p class="text-muted fs-md mb-0">Mira nuestros <a href="/">Productos disponibles</a> para reservar el que quieras.</p>
+                </div>
+                @endif
+                <!-- end empty state -->
+
+                @foreach($reserves as $product)
+                    <article class="card mb-4">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0">
+                                <a href="{{ asset('img/assets/login-bg.jpg') }}" class="product__sideImage d-none d-lg-block aspect-ratio aspect-ratio-1by1" target="_blank" style="width: 150px">
+                                    <img src="{{ asset('img/assets/login-bg.jpg') }}">
+                                </a>
+                            </div>
+                            <div class="flex-grow-1">
+                                <div class="card-header bg-white border-0 pt-3">
+                                    <div class="row gy-3 gy-lg-0">
+                                        <div class="col-lg-6 col-xl-7">
+                                            <div class="d-flex align-items-center">
+                                                <div class="d-lg-none mr-3">
+                                                    <a href="{{ asset('img/assets/login-bg.jpg') }}" class="aspect-ratio aspect-ratio-1by1" target="_blank" style="width: 5rem">
+                                                        <img src="{{ asset('img/assets/login-bg.jpg') }}">
+                                                    </a>
+                                                </div>
+                                                <div>
+                                                    <h6 class="font-weight-bold lh-1 h5">{{ $product->products->name }}</h6>
+                                                    <p class="text-muted fs-md lh-1 mb-0">{{ $product->products->synonymous }}</p>
+                                                </div>
+                                            </div>
+                                            <!-- <h6 class="font-weight-bold lh-1 h5">{{ $product->products->name }}</h6>
+                                            <p class="text-muted fs-md lh-1 mb-0">{{ $product->products->synonymous }}</p> -->
+                                        </div>
+                                        <div class="col-lg-6 col-xl-5">
+                                            <div class="d-flex justify-content-between justify-content-lg-end align-items-center mt-3 mt-lg-0">
+                                                <div class="font-weight-bold mr-3 h5 mb-0"></div>
+                                                <div>
+                                                    @if($product->status === 1)
+                                                    <span class="badge bg-warning rounded-pill">Esperando Confirmación</span>
+                                                    @elseif($product->status === 2)
+                                                    <span class="badge bg-success rounded-pill">En Tránsito</span>
+                                                    @elseif($product->status === 3)
+                                                    <span class="badge bg-success rounded-pill">Entregado</span>
+                                                    @elseif($product->status === 4)
+                                                    <span class="badge bg-danger rounded-pill">Cancelado</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-4">
+                                            <div class="d-flex align-items-center mb-3 mb-lg-0">
+                                                <div class="flex-shrink-0 d-none d-sm-block">
+                                                    <svg class="text-muted mr-2" width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <circle opacity="0.15" cx="17" cy="17" r="17" fill="currentColor"/>
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M17 27C17 27 24.5 19.8925 24.5 14.5C24.5 12.5109 23.7098 10.6032 22.3033 9.1967C20.8968 7.79018 18.9891 7 17 7C15.0109 7 13.1032 7.79018 11.6967 9.1967C10.2902 10.6032 9.5 12.5109 9.5 14.5C9.5 19.8925 17 27 17 27ZM17 18.25C17.9946 18.25 18.9484 17.8549 19.6517 17.1517C20.3549 16.4484 20.75 15.4946 20.75 14.5C20.75 13.5054 20.3549 12.5516 19.6517 11.8483C18.9484 11.1451 17.9946 10.75 17 10.75C16.0054 10.75 15.0516 11.1451 14.3483 11.8483C13.6451 12.5516 13.25 13.5054 13.25 14.5C13.25 15.4946 13.6451 16.4484 14.3483 17.1517C15.0516 17.8549 16.0054 18.25 17 18.25Z" fill="currentColor"/>
+                                                    </svg>
+                                                </div>
+                                                <div class="flex-grow-1" style="min-width: 1px">
+                                                    <div class="text-muted small">Puerto destino</div>
+                                                    <a hhref="https://www.google.com/maps/place/{{ $product->products->arrival_location }}" class="d-block text-truncate text-reset font-weight-bold small" target="_blank">
+                                                        {{ $product->products->arrival_location }}
+                                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-box-arrow-up-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h8a1.5 1.5 0 0 0 1.5-1.5V9a.5.5 0 0 0-1 0v4a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 5v8zm7-11a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0V2.5H9a.5.5 0 0 1-.5-.5z"/>
+                                                            <path fill-rule="evenodd" d="M14.354 1.646a.5.5 0 0 1 0 .708l-8 8a.5.5 0 0 1-.708-.708l8-8a.5.5 0 0 1 .708 0z"/>
+                                                        </svg>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-lg-2">
+                                            <div class="text-muted small">COA</div>
+                                            <div class="font-weight-bold small">
+                                                <a href="{{ $product->products->coa }}" class="text-reset" target="_blank">Adjunto</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-lg-2">
+                                            <div class="text-muted small">MSDS</div>
+                                            <div class="font-weight-bold small">
+                                                <a href="{{ $product->products->msds }}" class="text-reset" target="_blank">Adjunto</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-lg-2">
+                                            <div class="text-muted small">Fecha reservado</div>
+                                            <div class="font-weight-bold small">
+                                                {{ Carbon\Carbon::parse($product->created_at)->toFormattedDateString('d/m/Y') }}
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-lg-2">
+                                            <div class="text-muted small">Fecha aprox. de llegada</div>
+                                            <div class="font-weight-bold small">
+                                                {{ Carbon\Carbon::parse($product->products->arrival_to)->toFormattedDateString('d/m/Y') }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                @endforeach
+                {{ $reserves->links() }}
+            </div>
+        </div>
+    </div>
+
 </div>
 
 @endsection
@@ -297,6 +178,6 @@
         $('#save-edit-profile').attr('hidden', 'true');
         $('#cancel-edit-profile').attr('hidden', 'true');
     });
-    
+
 </script>
 @stop

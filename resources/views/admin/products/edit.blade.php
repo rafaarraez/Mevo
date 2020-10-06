@@ -88,13 +88,6 @@
 				                <small class="form-text invalid-feedback">{{ $errors->first('deadline') }}</small>
 				                @endif
 							</div>
-							<div class="col-md-6 col-sm-12 form-group mb-4">
-								<label for="approximate_date">Fecha Aprox.</label>
-								<input id="approximate_date" class="form-control{{ $errors->has('approximate_date') ? ' is-invalid' : '' }}" type="date" placeholder="Ingrese correo electronico" name="approximate_date" value="{{ date('Y-m-d',strtotime($product->approximate_date)) }}" required>
-								@if ($errors->has('approximate_date'))
-				                <small class="form-text invalid-feedback">{{ $errors->first('approximate_date') }}</small>
-				                @endif
-							</div>
 						</div>
 
 						<div class="row">

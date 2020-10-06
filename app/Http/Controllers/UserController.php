@@ -9,6 +9,8 @@ use Auth;
 use App\User;
 use App\Products;
 use App\UserProfile;
+use App\ReservationProducts;
+
 
 class UserController extends Controller
 {   
@@ -120,10 +122,26 @@ class UserController extends Controller
         $user = Auth::user()->id;
 
         $usuario = User::findOrFail($user);
+
+        $reserves = ReservationProducts::where('user_id', $user)->with('products', 'user')->orderBy('id', 'desc')->paginate(10);
+
         $userProfile = UserProfile::where('user_id', $user)->first();
         //var_dump($usuario);
 
-        return view('users.profile')->with(compact('usuario', 'userProfile'));
+        return view('users.profile')->with(compact('usuario', 'userProfile', 'reserves'));
+    }
+
+    public function editProfileUser()
+    {   
+        $user = Auth::user()->id;
+
+        $usuario = User::findOrFail($user);
+
+
+        $userProfile = UserProfile::where('user_id', $user)->first();
+        //var_dump($usuario);
+
+        return view('users.edit-profile')->with(compact('usuario', 'userProfile'));
     }
 
     
@@ -233,9 +251,10 @@ class UserController extends Controller
 
 
         $user = User::findOrFail($id);
+        $validatedData = $request->validate([
+                'password' => ['required', 'min:6', 'confirmed']
+        ]);
 
-       
-            //code...
         if($request->password === $request->password_confirmation){
             $user->password = Hash::make($request->password);
             $user->save();
@@ -245,27 +264,29 @@ class UserController extends Controller
             $userProfile->mobile                = $request->mobile;
             $userProfile->company_name          = $request->company_name;
             $userProfile->organitational_level  = $request->organitational_level;
-            $userProfile->job                   = $request->job;
             $userProfile->position              = $request->position;
             $userProfile->country               = $request->country;
             $userProfile->state                 = $request->state;
             $userProfile->city                  = $request->city;
             $userProfile->status                = 2;
             $userProfile->save();
-    
+            
+            // var_dump($request);
     
             $products = Products::select('products.*', 'products.quantity AS cantidad_total')
                                     ->selectRaw('SUM(r.quantity) AS total_reservado')
                                     ->selectRaw('(products.quantity - SUM(r.quantity)) AS total_disponible')
                                     ->leftjoin('reservation_products AS r', 'r.product_id', '=', 'products.id')
                                     ->groupBy('products.id')
-                                    ->get();
+                                    ->paginate(5);
             
             SWAL::message('Perfil Actualizado','','c',['timer'=>5000]);
+
             return view('users.home-user')->with(compact('products'));
+
         }else{
 
-            SWAL::message('Su contraseña no coinciden con la confirmació','','error',['timer'=>5000]);
+            SWAL::message('Su contraseña no coinciden','','error',['timer'=>5000]);
             return back();
         }
         
