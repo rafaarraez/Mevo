@@ -34,6 +34,23 @@
 				                @endif
 							</div>
 						</div>
+						
+						<div class="row">
+							<div class="col-md-6 col-sm-12 form-group mb-4">
+								<label for="sale_price">Precio de Venta:</label>
+								<input id="sale_price" class="form-control{{ $errors->has('sale_price') ? ' is-invalid' : '' }}" type="number" name="sale_price" placeholder="Ingrese precio de venta del producto ($)" value="{{ $product->sale_price }}" required>
+								@if ($errors->has('sale_price'))
+				                <small class="form-text invalid-feedback">{{ $errors->first('sale_price') }}</small>
+				                @endif
+							</div>
+							<div class="col-md-6 col-sm-12 form-group mb-4">
+								<label for="reserve_price">Precio de Reserva:</label>
+								<input id="reserve_price" class="form-control{{ $errors->has('reserve_price') ? ' is-invalid' : '' }}" type="number" name="reserve_price" placeholder="Ingrese precio de reserva del producto ($)" value="{{ $product->reserve_price }}" required>
+								@if ($errors->has('reserve_price'))
+				                <small class="form-text invalid-feedback">{{ $errors->first('reserve_price') }}</small>
+				                @endif
+							</div>
+						</div>
 
 						<div class="row">
 							<div class="col-md-6 col-sm-12 form-group mb-4">
@@ -41,6 +58,16 @@
 								<input id="origin_product" class="form-control{{ $errors->has('presentation') ? ' is-invalid' : '' }}" type="text" name="presentation" placeholder="Ingrese la ubicación de llegada" value="{{ $product->presentation }}" required>
 								@if ($errors->has('presentation'))
 				                <small class="form-text invalid-feedback">{{ $errors->first('presentation') }}</small>
+				                @endif
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6 col-sm-12 form-group mb-4">
+								<label for="img">Imagen del Producto</label>
+								<input id="img" class="form-control{{ $errors->has('img') ? ' is-invalid' : '' }}" type="file" name="img" placeholder="img" value="{{ old('img') }}" required>
+								@if ($errors->has('img'))
+				                <small class="form-text invalid-feedback">{{ $errors->first('img') }}</small>
 				                @endif
 							</div>
 						</div>

@@ -49,7 +49,7 @@
 						<td class="text-center"><a href="{{ $product->msds }}" target="_blank">Archivo</a></td>
 						<td class="text-center">{{ Carbon\Carbon::parse($product->deadline)->format('d/m/Y') }}</td>
 						<td class="text-center">{{ Carbon\Carbon::parse($product->arrival_to)->format('d/m/Y') }}</td>
-						<td class="text-center">{{ $product->cantidad_total }}</td>
+						<td class="text-center">{{ $product->quantity }}</td>
 						<td class="text-center">{{ $product->total_reservado === null ? 0 : $product->total_reservado }}</td>
 
 						<td class="text-center ">

@@ -9,9 +9,15 @@
             <article class="card mb-4">
                 <div class="row g-0">
                     <div class="col-lg-2">
+                        @if($product->file)
+                        <a href="{{ $product->file }}" class="product__sideImage d-none d-lg-block aspect-ratio aspect-ratio-1by1" target="_blank">
+                            <img src="{{  $product->file }}">
+                        </a>
+                        @else
                         <a href="{{ asset('img/assets/login-bg.jpg') }}" class="product__sideImage d-none d-lg-block aspect-ratio aspect-ratio-1by1" target="_blank">
                             <img src="{{ asset('img/assets/login-bg.jpg') }}">
                         </a>
+                        @endif
                     </div>
                     <div class="col-lg-10">
                         <div class="card-header bg-white border-0 pt-3">
@@ -33,14 +39,14 @@
 
                                     <div class="row g-1 align-items-center">
                                         <div class="col-6">
-                                            <a href="#!" class="btn btn-success btn-sm btn-block text-uppercase" title="Comprar">
-                                                <small class="d-block text-nowrap fs-sm"><b>$ 1.350,00 USD</b></small>
+                                            <a href="#sell-{{$product->id}}" class="btn btn-success btn-sm btn-block text-uppercase" title="Comprar" aria-expanded="false" data-toggle="modal">
+                                                <small class="d-block text-nowrap fs-sm"><b>$ {{ @money_format($product->sale_price, 2) }}</b></small>
                                                 Comprar
                                             </a>
                                         </div>
                                         <div class="col-6">
                                             <a href="#reserve-{{$product->id}}" class="btn btn-dark btn-sm btn-block text-uppercase" title="Reservar" aria-expanded="false" data-toggle="modal">
-                                                <small class="d-block text-nowrap fs-sm"><b>$ 1.900,00 USD</b></small>
+                                                <small class="d-block text-nowrap fs-sm"><b>$ {{ @money_format($product->reserve_price, 2) }}</b></small>
                                                 Reservar
                                             </a>
                                         </div>
@@ -140,6 +146,52 @@
                             </div>
                             <div class="modal-body">
                                 <p class="mb-3">Por favor confirme la cantidad a reservar.</p>
+                                <div class="row">
+                                    <div class="col-8">
+                                        <div class="mb-4">
+                                            <input type="hidden" id="availible_quantity" name="availible_quantity" value="{{ $product->total_disponible == null ? $product->cantidad_total : $product->total_disponible }}">
+                                            <label for="reserve_quantity-{{$product->id}}">Cantidad</label>
+                                            <input type="number" id="reserve_quantity-{{$product->id}}" name="quantity" class="form-control" placeholder="Cantidad a reservar" min="1" max="{{ $product->total_disponible == null ? $product->cantidad_total : $product->total_disponible }}" value="1" autocomplete="off" required>
+                                            <small class="form-text d-block fs-sm text-muted">Cantidad disponible: <b>{{ $product->total_disponible == null ? $product->cantidad_total : $product->total_disponible }}</b></small>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" id="delivery-{{$product->id}}" type="checkbox" value="1" name="delivery">
+                                        <label class="form-check-label" for="delivery-{{$product->id}}">¿Desea servicio de entrega?</label>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light text-reset" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary px-4">Reservar</button>
+                            </div>
+                        </form>
+                        @endisset
+                    </div>
+                </div>
+            </div>
+            <!-- Reserve modal -->
+
+            <!-- Reserve modal -->
+            <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" id="sell-{{$product->id}}">
+                <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+                    <div class="modal-content">
+                        @isset( $product)
+                        <form action="{{ url('/products/reserve/' . Auth::user()->id . '/' . $product->id) }}" method="POST">
+                            {{ csrf_field() }}
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="exampleModalLabel">¿Desea comprar {{ $product->name }}?</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="mb-3">Por favor confirme la cantidad a comprar.</p>
                                 <div class="row">
                                     <div class="col-8">
                                         <div class="mb-4">

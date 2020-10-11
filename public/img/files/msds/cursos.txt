@@ -1,0 +1,82 @@
+Estimados colegas que sufren el percance de la pagina de descargas nsn, aqui les traigo unas paginas muy buenas y espero que les puedan servir como a mi.
+
+https://descargasmegatotal.com/
+https://www.redvirtual.bid/
+https://cursosparatodospormega.blogspot.com/
+
+Espero que les sirva
+https://descargasmegatotal.com/
+NO SE POR QUE NO ABRE
+Citar
+
+
+
+
+remote:   https://bitbucket.org/akb_source/local-plumoney/pull-requests/new?source=rafael-arraez&t=1
+
+
+
+
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+
+
+
+
+
+
+// Al filtrar por dia solo se tomara en cuanta unicamente los usuarios que realizaron operaciones ese dia, tomando ✅
+// sus montos respectivos (Diario, semana, mensual, anual) ✅
+
+//Filtro de fecha usar uno que muestre por dia, dia anterior, mes, mes anterior, anual, rango ✅
+//si se selecciona un rango de fecha se tomara datos de cuanto proceso en ese rango ✅
+
+// mostrar en la lista que dia, que semana, que mes y que año se estan obteniendo los datos ✅
+
+//DETALLES
+// Aparecer una tabla ✅
+// personas a quienes les envio de manera de mauyor a menor o como este en el filtro
+// nombre y apellido a quien le envio, monto que le envio durante el dia, mes, año
+// al darle click al usuario saldra l tracking del envio, fecha del envio y monto del envio
+// colocar checkmark para cada operacion entre tracking (se maracara como sospechoso el que envia y el qye recibe) para justificar los datos de los montos
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//traducir al ingles!!
+// cambiar fecha a la primera fecha tomada ✅
+// agregar filtro trimestre ✅
+
+// filtros en el modal de view details ✅
+
+//fecha (DD-MM-YYY) -- Tranking (_blank a la informacion de la operacion) -- Tipo via de la operacion (de bs adolares de cuanto se entro y cuando se cargo y si es zelle igual), -- direcciones IP de donde se hizo la recarga (agregar ip) ✅
+
+// Boton de marcar sospechoso al lado de nombre y apellido ✅ (emitir red flag ¿quiere marcar cliente como red flag?) 
+
+// Al marcar como sospechosa deberia salir una confirmación de si esta seguro que desea marcar la operación ✅
+// Mostrar el nombre del usuario logeado ¿Rafael esta seguro que desea marcar la operación? ✅
+// Enviar un correo cuando se marque el nivel de tier con todo lo que debe cargar
+
+// Mostrar que nivel de tier en la tabla tier (barrita de carga) ✅
+
+// Crear pestañas por tier en el perfil ✅
+// Configuración de TIER (se agregaran los requerimientos, tipos de tier y los campos necesraio, agregar un campo de comentarios) ✅
+// En configuración TIER se creara niveles de tier, se agregaran a solicitar documentos necesarios! ✅
+//
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Operaciones en revision para customer transaction (si supera un limite de los establecido la operacion no se mostrara en /exchange-transactions-list sino que ira a AML/confirmar-operaciones para una posible aprobacion o revisión)
+// CREAR un boton donde muestre un historial de ip (con sus filtros respectivos similar a los demas)
+// 
+// DEJAR bien planteado lo de las ip para el siguiente proyecto!
+// 
+// RECEPTION
+// Manejar con usuriaros que no estan registrado, sera quien envio dinero desde AKB hasta un cuenta
+// Se bloquearan los numero de cuenta, correo, numero de telefono!
+// Mostrar mayor a menor por cada rango de fecha
+// Mostrar cuanto ha RECIBIDO y si se puede de quien
+
+
+//recargar componentes
+
+// Cargar datos de la persona que le envia deinero al usuario en transferencua entre wallet, tomar todos sus operaciones entre wallet ✅

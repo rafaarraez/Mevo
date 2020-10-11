@@ -59,9 +59,15 @@
                     <article class="card mb-4">
                         <div class="d-flex">
                             <div class="flex-shrink-0">
-                                <a href="{{ asset('img/assets/login-bg.jpg') }}" class="product__sideImage d-none d-lg-block aspect-ratio aspect-ratio-1by1" target="_blank" style="width: 150px">
-                                    <img src="{{ asset('img/assets/login-bg.jpg') }}">
-                                </a>
+                                @if($product->products->file)
+                                    <a href="{{ $product->products->file }}" class="product__sideImage d-none d-lg-block aspect-ratio aspect-ratio-1by1" target="_blank" style="width: 150px">
+                                        <img src="{{ $product->products->file }}">
+                                    </a>
+                                @else
+                                    <a href="{{ asset('img/assets/login-bg.jpg') }}" class="product__sideImage d-none d-lg-block aspect-ratio aspect-ratio-1by1" target="_blank" style="width: 150px">
+                                        <img src="{{ asset('img/assets/login-bg.jpg') }}">
+                                    </a>
+                                @endif
                             </div>
                             <div class="flex-grow-1">
                                 <div class="card-header bg-white border-0 pt-3">

@@ -15,6 +15,7 @@
 
 				<div class="card-body">
 					<div class="container-fluid">
+
 						<div class="row">
 							<div class="col-md-6 col-sm-12 form-group mb-4">
 								<label for="name">Nombre</label>
@@ -34,8 +35,25 @@
 
 						<div class="row">
 							<div class="col-md-6 col-sm-12 form-group mb-4">
+								<label for="sale_price">Precio de Venta:</label>
+								<input id="sale_price" class="form-control{{ $errors->has('sale_price') ? ' is-invalid' : '' }}" type="number" name="sale_price" placeholder="Ingrese precio de venta del producto ($)" value="{{ old('sale_price') }}" required>
+								@if ($errors->has('sale_price'))
+				                <small class="form-text invalid-feedback">{{ $errors->first('sale_price') }}</small>
+				                @endif
+							</div>
+							<div class="col-md-6 col-sm-12 form-group mb-4">
+								<label for="reserve_price">Precio de Reserva:</label>
+								<input id="reserve_price" class="form-control{{ $errors->has('reserve_price') ? ' is-invalid' : '' }}" type="number" name="reserve_price" placeholder="Ingrese precio de reserva del producto ($)" value="{{ old('reserve_price') }}" required>
+								@if ($errors->has('reserve_price'))
+				                <small class="form-text invalid-feedback">{{ $errors->first('reserve_price') }}</small>
+				                @endif
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6 col-sm-12 form-group mb-4">
 								<label for="coa">Presentación</label>
-								<input id="coa" class="form-control{{ $errors->has('presentation') ? ' is-invalid' : '' }}" type="text" name="presentation" placeholder="presentation" value="{{ old('presentation') }}" required>
+								<input id="coa" class="form-control{{ $errors->has('presentation') ? ' is-invalid' : '' }}" type="text" name="presentation" placeholder="Ingrese el tipo presentation" value="{{ old('presentation') }}" required>
 								@if ($errors->has('presentation'))
 				                <small class="form-text invalid-feedback">{{ $errors->first('presentation') }}</small>
 				                @endif
@@ -55,6 +73,16 @@
 								<input id="msds" class="form-control{{ $errors->has('msds') ? ' is-invalid' : '' }}" type="file" placeholder="MSDS" name="msds" value="{{ old('msds') }}" required>
 								@if ($errors->has('msds'))
 				                <small class="form-text invalid-feedback">{{ $errors->first('msds') }}</small>
+				                @endif
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6 col-sm-12 form-group mb-4">
+								<label for="img">Imagen del Producto</label>
+								<input id="img" class="form-control{{ $errors->has('img') ? ' is-invalid' : '' }}" type="file" name="img" placeholder="img" value="{{ old('img') }}" required>
+								@if ($errors->has('img'))
+				                <small class="form-text invalid-feedback">{{ $errors->first('img') }}</small>
 				                @endif
 							</div>
 						</div>

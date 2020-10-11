@@ -59,6 +59,25 @@ class ProductsController extends Controller
         $product->arrival_location  = $inputs['arrival_location'];
         $product->origin_product    = $inputs['origin_product'];
         $product->presentation      = $inputs['presentation'];
+        $product->reserve_price     = $inputs['reserve_price'];
+        $product->sale_price        = $inputs['sale_price'];
+
+        if (isset($inputs['img'])) {
+            $file_name = strtolower(str_replace(
+                ' ',
+                '',
+                $inputs['img']->getClientOriginalName()
+            ));
+            $file_name = preg_replace('/[^A-Za-z0-9 _ .-]/', '', $file_name);
+
+            $inputs['img']->move(
+                base_path() . '/public/img/files/img/',
+                $file_name
+            );
+
+            $product->file = '/img/files/img/' .
+                $file_name;
+        }
 
         if (isset($inputs['coa'])) {
             $file_name = strtolower(str_replace(
@@ -183,9 +202,29 @@ class ProductsController extends Controller
             }
         }
 
-        $product->deadline = $inputs['deadline'];
-        $product->arrival_to = $inputs['arrival_to'];
-        $product->quantity = $inputs['quantity'];
+        if($inputs['img'] !== null){
+            if (isset($inputs['img'])) {
+                $file_name = strtolower(str_replace(
+                    ' ',
+                    '',
+                    $inputs['img']->getClientOriginalName()
+                ));
+                $file_name = preg_replace('/[^A-Za-z0-9 _ .-]/', '', $file_name);
+    
+                $inputs['img']->move(
+                    base_path() . '/public/img/files/img/',
+                    $file_name
+                );
+    
+                $product->img = '/img/files/img/' .
+                    $file_name;
+            }
+        }
+        $product->reserve_price     = $inputs['reserve_price'];
+        $product->sale_price        = $inputs['sale_price'];
+        $product->deadline          = $inputs['deadline'];
+        $product->arrival_to        = $inputs['arrival_to'];
+        $product->quantity          = $inputs['quantity'];
         $product->arrival_location  = $inputs['arrival_location'];
         $product->origin_product    = $inputs['origin_product'];
         $product->presentation      = $inputs['presentation'];
