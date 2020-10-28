@@ -40,12 +40,14 @@ class HomeController extends Controller
 
             //
             $products = Products::select('products.*', 'products.quantity AS cantidad_total')
-                                ->selectRaw('SUM(r.quantity) AS total_reservado')
-                                ->selectRaw('(products.quantity - SUM(r.quantity)) AS total_disponible')
+                                ->selectRaw('SUM(CASE WHEN r.status != 4 THEN r.quantity ELSE 0 END ) AS total_reservado')
+                                ->selectRaw('(products.quantity - SUM(CASE WHEN r.status != 4 THEN r.quantity ELSE 0 END )) AS total_disponible')
                                 ->leftjoin('reservation_products AS r', 'r.product_id', '=', 'products.id')
                                 ->groupBy('products.id')
                                 ->paginate(5);
+        
             
+            //dd($products);
             return view('users.home-user')->with(compact('products'));
         }
     }

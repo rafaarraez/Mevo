@@ -22,8 +22,8 @@ class ProductsController extends Controller
     {
      
         $products = Products::select('products.*', 'products.quantity AS cantidad_total')
-                                ->selectRaw('SUM(r.quantity) AS total_reservado')
-                                ->selectRaw('(products.quantity - SUM(r.quantity)) AS total_disponible')
+                                ->selectRaw('(CASE WHEN r.status != 4 THEN r.quantity ELSE 0 END ) AS total_reservado')
+                                ->selectRaw('(products.quantity - (CASE WHEN r.status != 4 THEN r.quantity ELSE 0 END )) AS total_disponible')
                                 ->leftjoin('reservation_products AS r', 'r.product_id', '=', 'products.id')
                                 ->groupBy('products.id')
                                 ->get();
@@ -270,7 +270,9 @@ class ProductsController extends Controller
             $reservationProduct->user_id = $user->id;
             $reservationProduct->product_id = $product->id;
             $reservationProduct->quantity = $inputs['quantity'];
-
+            $reservationProduct->pricing = $product->sale_price;
+            $reservationProduct->is_reserve = 1;
+            
             if(isset($inputs['delivery'])){
                 $reservationProduct->delivery = 1;
             }else{

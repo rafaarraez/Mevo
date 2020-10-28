@@ -82,6 +82,9 @@
                                                 <div>
                                                     <h6 class="font-weight-bold lh-1 h5">{{ $product->products->name }}</h6>
                                                     <p class="text-muted fs-md lh-1 mb-0">{{ $product->products->synonymous }}</p>
+                                                    <p class="text-muted fs-md lh-1 mt-1 mb-0">Cantidad: {{ $product->quantity }}</p>
+                                                    <p class="text-muted fs-md lh-1 mt-1 mb-0">Precio Individuak: ${{ $product->pricing }} USD</p>
+                                                    <p class="text-muted fs-md lh-1 mt-1 mb-0">Total a cancelar: ${{ $product->pricing*$product->quantity  }} USD</p>
                                                 </div>
                                             </div>
                                             <!-- <h6 class="font-weight-bold lh-1 h5">{{ $product->products->name }}</h6>
@@ -89,6 +92,15 @@
                                         </div>
                                         <div class="col-lg-6 col-xl-5">
                                             <div class="d-flex justify-content-between justify-content-lg-end align-items-center mt-3 mt-lg-0">
+                                                <div class="font-weight-bold mr-3 h5 mb-0"></div>
+                                                <div>
+                                                    @if($product->is_reserve === 0)
+                                                    <span class="badge bg-warning rounded-pill">Compra</span>
+                                                    @elseif($product->is_reserve === 1)
+                                                    <span class="badge bg-success rounded-pill">Reserva</span>
+                                                    @endif
+                                                </div>
+                                                
                                                 <div class="font-weight-bold mr-3 h5 mb-0"></div>
                                                 <div>
                                                     @if($product->status === 1)

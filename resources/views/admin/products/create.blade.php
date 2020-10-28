@@ -80,7 +80,7 @@
 						<div class="row">
 							<div class="col-md-6 col-sm-12 form-group mb-4">
 								<label for="img">Imagen del Producto</label>
-								<input id="img" class="form-control{{ $errors->has('img') ? ' is-invalid' : '' }}" type="file" name="img" placeholder="img" value="{{ old('img') }}" required>
+								<input id="img" class="form-control{{ $errors->has('img') ? ' is-invalid' : '' }}" type="file" name="img" placeholder="img" value="{{ old('img') }}">
 								@if ($errors->has('img'))
 				                <small class="form-text invalid-feedback">{{ $errors->first('img') }}</small>
 				                @endif
