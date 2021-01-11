@@ -33,49 +33,49 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('favicon.ico')}}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('font-awesome/css/all.min.css')}}">
+
 	<!-- App Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css')}}">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 </head>
 <body class="user-body">
 
-    <!-- new navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-secondary">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-secondary sticky-top">
         <div class="container">
 
             <div class="logo-wrapper">
-                <a class="navbar-brand mr-0 mr-md-3" href="/">
-                    <img src="{{ asset('img/logo/LogoMEVOblanco2.png')}}" title="MEVO" alt="Logo MEVO" style="max-height: 3rem">
+                <a class="navbar-brand me-0" href="/">
+                    <img src="{{ asset('img/logo/logo-light.svg')}}" title="MEVO" alt="Logo MEVO" style="width: 104px">
                 </a>
             </div>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <ul class="navbar-nav align-items-center flex-row d-md-none ml-auto">
-
-                <!-- login button -->
-                    <!-- <li class="nav-item">
-                        <a href="/static/login" class="btn btn-primary btn-sm">Ingresar</a>
-                    </li> -->
-                <!-- end login button -->
+            <ul class="navbar-nav align-items-center flex-row d-md-none ms-auto">
 
                 <li class="nav-item d-md-none dropdown">
-                    <a href="#" class="nav-link text-uppercase fs-md" id="mobile-profile-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a href="#" class="nav-link text-uppercase fs-md" id="mobile-profile-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <?php $first_name = explode(" ", Auth::user()->name); ?>
-                        {{ $first_name[0] }}<small class="fa fa-angle-down ml-2"></small>
+                        {{ $first_name[0] }}<small class="fa fa-angle-down ms-2"></small>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right position-absolute" aria-labelledby="mobile-profile-dropdown" style="min-width: 200px">
+                    <div class="dropdown-menu dropdown-menu-end position-absolute" aria-labelledby="mobile-profile-dropdown">
+                        <div style="min-width: 200px"></div>
                         <div><h6 class="dropdown-header">{{ Auth::user()->name }}</h6></div>
                         <a class="dropdown-item py-2" href="{{ route('perfil') }}">
-                            <i class="fas fa-history text-muted mr-2"></i>Mis pedidos
+                            <i class="fas fa-history text-muted me-2"></i>Mis pedidos
                         </a>
                         <a class="dropdown-item py-2" href="{{ route('edit') }}">
-                            <i class="far fa-user-circle text-muted mr-2"></i>Editar perfil
+                            <i class="far fa-user-circle text-muted me-2"></i>Editar perfil
                         </a>
                         <a class="dropdown-item py-2" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form-mobile').submit();">
-                            <i class="far fa-share-square text-muted mr-2"></i>Salir
+                            <i class="far fa-share-square text-muted me-2"></i>Salir
                         </a>
                         <form id="logout-form-mobile" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
@@ -87,52 +87,36 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav py-3 py-lg-0">
                     <li class="nav-item">
-                        @if(Auth::user()->hasRole('admin'))
-                            <a class="nav-link text-center text-lg-left text-uppercase fs-md" href="/home">Home</a>
-                        @else
-                            <a class="nav-link text-center text-lg-left text-uppercase fs-md" href="/inicio">Home</a>
-                        @endif
-                    </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link text-center text-lg-left text-uppercase fs-md" href="/static/products">Productos</a>
-                    </li> -->
-                    <li class="nav-item">
-                        <a class="nav-link text-center text-lg-left text-uppercase fs-md" href="#!">Empresa</a>
+                        <a class="nav-link text-center text-lg-left text-uppercase fs-md" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-center text-lg-left text-uppercase fs-md" href="#!">Nuestro equipo</a>
+                        <a class="nav-link text-center text-lg-left text-uppercase fs-md" href="{{ route('inicio') }}">Productos</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav align-items-center d-none d-md-flex ml-auto">
-
-                    <!-- login button -->
-                    <!-- <li class="nav-item">
-                        <a href="/static/login" class="btn btn-primary btn-sm">Ingresar</a>
-                    </li> -->
-                    <!-- end login button -->
-
+                <ul class="navbar-nav align-items-center d-none d-md-flex ms-auto">
                     <li class="nav-item mr-3 d-none d-lg-inline-block">
                         <a href="{{ route('perfil') }}" class="nav-link text-uppercase fs-md">Mis pedidos</a>
                     </li>
-                    <li class="nav-item  dropdown">
-                        <a href="#" class="nav-link text-uppercase fs-md" id="profile-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link text-uppercase fs-md" id="profile-dropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <!-- <span class="avatar mr-1">
                                 <span class="avatar-text">ad</span>
                                 <img src="{{ asset('img/avatars/img5.jpg') }}" class="avatar-img rounded-circle" alt="Foto de perfil">
                             </span> -->
                             <span class="d-none d-sm-inline-block">
-                                {{ Auth::user()->name }}<small class="fa fa-angle-down ml-2"></small>
+                                {{ Auth::user()->name }}<small class="fa fa-angle-down ms-2"></small>
                             </span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right position-absolute" aria-labelledby="profile-dropdown" style="min-width: 200px">
+                        <div class="dropdown-menu dropdown-menu-end position-absolute" aria-labelledby="profile-dropdown">
+                            <div style="min-width: 200px"></div>
                             <a class="dropdown-item py-2" href="{{ route('perfil') }}">
-                                <i class="fas fa-history text-muted mr-2"></i>Mis pedidos
+                                <i class="fas fa-history text-muted me-2"></i>Mis pedidos
                             </a>
                             <a class="dropdown-item py-2" href="{{ route('edit') }}">
-                                <i class="far fa-user-circle text-muted mr-2"></i>Editar perfil
+                                <i class="far fa-user-circle text-muted me-2"></i>Editar perfil
                             </a>
                             <a class="dropdown-item py-2" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                <i class="far fa-share-square text-muted mr-2"></i>Salir
+                                <i class="far fa-share-square text-muted me-2"></i>Salir
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf

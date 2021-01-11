@@ -20,33 +20,30 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    
+
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(Request $request)
-    {   
+    {
         $request->user()->authorizeRoles(['user']);
 
         $id = $request->user()->id;
-        
+
         $userProfile = UserProfile::where('user_id', $id)->first();
 
         if($userProfile->status == 1){
             return view('users.user-setting')->with(compact('userProfile'));
         }else{
-
-            //
             $products = Products::select('products.*', 'products.quantity AS cantidad_total')
                                 ->selectRaw('SUM(CASE WHEN r.status != 4 THEN r.quantity ELSE 0 END ) AS total_reservado')
                                 ->selectRaw('(products.quantity - SUM(CASE WHEN r.status != 4 THEN r.quantity ELSE 0 END )) AS total_disponible')
                                 ->leftjoin('reservation_products AS r', 'r.product_id', '=', 'products.id')
                                 ->groupBy('products.id')
                                 ->paginate(5);
-        
-            
+
             //dd($products);
             return view('users.home-user')->with(compact('products'));
         }
@@ -61,7 +58,5 @@ class HomeController extends Controller
             return Redirect::to('/inicio');
 
         }
-
-        
     }
 }

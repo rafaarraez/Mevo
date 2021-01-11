@@ -1,0 +1,219 @@
+.landing-body
+    background-color: $blue-landing-dark
+    color: #fff
+    font-family: 'Montserrat', sans-serif
+
+.landing-hero
+    position: relative
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    height: 100vh
+    text-align: center
+
+.map-bg
+    background: url('http://webdesign-finder.com/html/plastrix/img/parallax/quote-bg.png') no-repeat right/auto
+
+.img-frame
+    position: relative
+    z-index: 10
+    &:before
+        content: ''
+        +absolute(1rem, -1rem, -1rem, 1rem)
+        background-color: $blue-landing
+        z-index: -1
+    > img
+        border: 6px solid #fff
+
+@include media-breakpoint-down(md)
+    .img-frame
+        &:before
+            +absolute(.5rem, -.25rem, -.75rem, .5rem)
+
+.landing-steps
+    position: relative
+    z-index: 10
+    &:before
+        content: ''
+        +absolute(2rem, 0, null, 0)
+        width: 100%
+        height: 3px
+        background-color: $blue-landing-dark
+        z-index: 0
+        box-shadow: 0 1px 0 rgba(white, .25)
+    .step
+        &-item
+            flex-grow: 1
+            text-align: center
+            z-index: 5
+        &-number
+            display: inline-flex
+            justify-content: center
+            align-items: center
+            flex-shrink: 0
+            +square(4rem)
+            font-size: 1.25rem
+            background-color: $blue-landing-dark
+            font-weight: bold
+            box-shadow: 6px 6px 0px #202033
+        &-content
+            font-family: 'Bebas Neue', cursive
+
+@include media-breakpoint-down(lg)
+    .landing-steps
+        flex-direction: column
+        &:before
+            width: 3px
+            height: 100%
+            +absolute(0, 0, null, 3rem)
+            box-shadow: 1px 0 0 rgba(white, .25)
+        .step
+            &-item
+                text-align: left
+
+.bg-image-cover
+    position: relative
+    background: no-repeat center/cover fixed
+    z-index: 10
+    &:before
+        content: ''
+        +absolute(0, 0, 0, 0)
+        background-color: rgba($blue-landing-dark, .85)
+        z-index: -2
+
+.contact-form
+    position: relative
+    background-color: rgba($blue-landing-dark, .8)
+    backdrop-filter: blur(.5rem)
+
+.form-control-inverse
+    background-color: $blue-landing-dark
+    color: #fff
+    border-color: rgba(#fff, .08)
+    &::placeholder
+        color: rgba(#fff, .4)
+
+%section-name
+    text-align: center
+    font-size: 100px
+    line-height: 1
+    white-space: nowrap
+
+.section-name-wrapper
+    +absolute(calc(-100px / 2), 0, null, 0)
+    text-align: center
+
+.section-name
+    position: relative
+    @extend .section-title
+    color: $blue-landing-dark
+    @extend %section-name
+    display: inline
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+    background-image: linear-gradient(to bottom, $blue-landing 0%, $blue-landing 49%, $blue-landing-dark 50%, $blue-landing-dark 100%)
+    user-select: none
+    &.--inverted
+        background-image: linear-gradient(to bottom, $blue-landing-dark 0%, $blue-landing-dark 49%, $blue-landing 50%, $blue-landing 100%)
+
+@include media-breakpoint-down(sm)
+    %section-name
+        font-size: 4rem
+    .section-name-wrapper
+        top: calc(-4rem / 2)
+
+
+.section-title
+    font-family: 'Bebas Neue', cursive
+
+.social-links-list
+    a
+        display: inline-flex
+        justify-content: center
+        align-items: center
+        +square(2rem)
+        border-radius: 100%
+        border: 1px solid #fff
+        background-color: rgba(white, .08)
+        text-decoration: none
+        transition: all .2s ease
+        &:hover
+            transform: scale(1.1)
+
+@include media-breakpoint-up(md)
+    .landing-body
+        .logo-wrapper
+            +absolute(0, 0, 0, 0)
+            padding: $navbar-padding-y $navbar-padding-x
+            text-align: center
+            pointer-events: none
+            > .navbar-brand
+                pointer-events: all
+
+svg#hero-logo-svg
+    animation: logo-scale 4s ease-out
+    path
+        stroke-dasharray: 1000
+        opacity: 1
+        &:not(.e)
+            stroke: #fff
+            fill: #fff
+            animation: logo-animate 3s ease-out
+        &.e
+            stroke: $blue-landing
+            fill: $blue-landing
+            animation: logo-animate-e 3s ease-out
+
+@keyframes logo-animate-e
+    0%
+        opacity: 0
+        fill: none
+        stroke-dashoffset: 1000
+    30%
+        opacity: 0.1
+        fill: none
+        stroke-dashoffset: 1000
+    70%
+        fill: rgba($blue-landing, 0)
+    100%
+        opacity: 1
+        fill: $blue-landing
+
+@keyframes logo-animate
+    0%
+        opacity: 0
+        fill: none
+        stroke-dashoffset: 1000
+    30%
+        opacity: 0.1
+        fill: none
+        stroke-dashoffset: 1000
+    70%
+        fill: rgba(white, 0)
+    100%
+        opacity: 1
+        fill: white
+
+@keyframes logo-scale
+    0%
+        transform: scale(0.8) translateY(30px)
+    100%
+        transform: scale(1) translateY(0)
+
+.hero-sublogo
+    transform: scale(1)
+    opacity: 0
+    animation: sublogo-scale 2s ease-out
+    animation-delay: 1.5s
+    animation-fill-mode: both
+
+@keyframes sublogo-scale
+    0%
+        transform: scale(0.8)
+        opacity: 0
+    30%
+        opacity: 0
+    100%
+        transform: scale(1)
+        opacity: 1

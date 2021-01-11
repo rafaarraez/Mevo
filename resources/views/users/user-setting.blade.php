@@ -3,17 +3,17 @@
 @section('content')
 
 <div class="container">
-    <h1 class="text-secondary font-weight-bold h3 mb-4">Completar perfil</h1>
+    <h1 class="text-secondary fw-bold h3 mb-4">Completar perfil</h1>
 
     <div class="row">
-        <div class="col-md-8 col-lg-8 offset-lg-1">
+        <div class="col-md-8 col-lg-8">
             <div class="card card-body p-md-5 mb-3 mb-lg-4">
                 <form method="POST" action="{{ route('usuarios.updateByuser', Auth::user()->id) }}">
                     {{ csrf_field() }}
                     <!-- general info -->
                     <div class="mb-4">
-                        <h5 class="text-secondary font-weight-bold mb-3">Datos generales</h5>
-						<span class="text-danger font-weight-bold p-4 mb-2">(*) Se recomienda actualizar su contraseña</span>
+                        <h5 class="text-secondary mb-3">Datos generales</h5>
+						<div class="alert alert-danger fw-bold mb-4">(*) Se recomienda actualizar su contraseña</div>
                         <div class="row">
 							<div class="col-md-6 col-sm-12 form-group mb-4">
 								<label for="name">Nombre y Apellido</label>
@@ -30,22 +30,24 @@
 				                @endif
 							</div>
 							<div class="col-md-6 col-sm-12 form-group mb-4">
-								<label for="password">Nueva Contraseña*</label>
+								<label for="password">Nueva Contraseña <span class="text-danger">*</span></label>
 								<input id="password" value="{{ old('password') }}" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" type="text" name="password" required>
 								@if ($errors->has('password'))
 				                <small class="form-text invalid-feedback">{{ $errors->first('password') }}</small>
 				                @endif
 							</div>
 							<div class="col-md-6 col-sm-12 form-group mb-4">
-								<label for="password_confirmation">Repetir Contraseña*</label>
+								<label for="password_confirmation">Repetir Contraseña <span class="text-danger">*</span></label>
 								<input id="password_confirmation" value="{{ old('password_confirmation') }}" class="form-control{{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}" type="text" name="password_confirmation" required>
 								@if ($errors->has('password_confirmation'))
 				                <small class="form-text invalid-feedback">{{ $errors->first('password_confirmation') }}</small>
 				                @endif
 							</div>
 
-                        	<hr>
-							<h5 class="text-secondary font-weight-bold mb-3">Datos de Trabajo</h5>
+                            <hr class="my-4">
+
+                            <!-- work info -->
+							<h5 class="text-secondary fw-bold mb-3">Datos de Trabajo</h5>
                             <div class="col-md-6 col-sm-12 form-group mb-4">
 								<label for="company_name">Nombre de la Empresa</label>
 								<input id="company_name" value="{{ old('company_name') }}" class="form-control{{ $errors->has('company_name') ? ' is-invalid' : '' }}" type="text" name="company_name" value="{{ $userProfile->company_name }}" required>
@@ -55,7 +57,7 @@
 							</div>
 							<div class="col-md-6 col-sm-12 form-group mb-4">
 								<label for="organitational_level">Nivel Organizacional</label>
-								<select name="organitational_level" value="{{ old('organitational_level') }}" class="form-control custom-select{{ $errors->has('organitational_level') ? ' is-invalid' : '' }}" id="roles">
+								<select name="organitational_level" value="{{ old('organitational_level') }}" class="form-select{{ $errors->has('organitational_level') ? ' is-invalid' : '' }}" id="roles">
 					            	<option selected disabled>Seleccione una Categoria</option>
                                     <option value="1">Industria</option>
                                     <option value="2">Mediana</option>
@@ -63,7 +65,7 @@
 					            </select>
 					            @if ($errors->has('organitational_level'))
 					           	<small class="form-text invalid-feedback">{{ $errors->first('organitational_level') }}</small>
-					            @endif       
+					            @endif
 							</div>
 
 							<div class="col-md-6 col-sm-12 form-group mb-4">
@@ -74,16 +76,18 @@
 				                @endif
 							</div>
 
-                        	<hr>
-							<h5 class="text-secondary font-weight-bold mb-3">Ubicación</h5>
+                        	<hr class="my-4">
+
+                            <!-- location info -->
+							<h5 class="text-secondary fw-bold mb-3">Ubicación</h5>
                             <div class="col-md-6 col-sm-12 form-group mb-4">
 								<label for="country">Pais</label>
-								<select name="country" value="{{ old('country') }}" class="form-control custom-select{{ $errors->has('country') ? ' is-invalid' : '' }}" id="country">
+								<select name="country" value="{{ old('country') }}" class="form-select{{ $errors->has('country') ? ' is-invalid' : '' }}" id="country">
 									<option {{ $userProfile->country === 'VE' ? 'selected':'' }} value="VE">Venezuela
 					            </select>
 					            @if ($errors->has('country'))
 					           	<small class="form-text invalid-feedback">{{ $errors->first('country') }}</small>
-					            @endif       
+					            @endif
 							</div>
 
 							<div class="col-md-6 col-sm-12 form-group mb-4">
@@ -105,7 +109,7 @@
                     </div>
 
 					<button type="submit" class="btn btn-primary">Actualizar Perfil</button>
-					
+
                 </form>
             </div>
         </div>

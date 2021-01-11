@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
-use Softon\SweetAlert\Facades\SWAL; 
+use Softon\SweetAlert\Facades\SWAL;
 use Auth;
 use App\Products;
 use App\User;
@@ -20,7 +20,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-     
+
         $products = Products::select('products.*', 'products.quantity AS cantidad_total')
                                 ->selectRaw('(CASE WHEN r.status != 4 THEN r.quantity ELSE 0 END ) AS total_reservado')
                                 ->selectRaw('(products.quantity - (CASE WHEN r.status != 4 THEN r.quantity ELSE 0 END )) AS total_disponible')
@@ -112,7 +112,7 @@ class ProductsController extends Controller
             $product->msds = '/img/files/msds/' .
                 $file_name;
         }
- 
+
         $product->deadline = $inputs['deadline'];
         $product->arrival_to = $inputs['arrival_to'];
         $product->quantity = $inputs['quantity'];
@@ -121,7 +121,7 @@ class ProductsController extends Controller
 
         SWAL::message('Registro exitoso!','','success',['timer'=>5000]);
         $products = Products::all();
-        return view('admin.products.index')->with(['products' => $products]);        
+        return view('admin.products.index')->with(['products' => $products]);
 
     }
 
@@ -172,17 +172,17 @@ class ProductsController extends Controller
                     $inputs['coa']->getClientOriginalName()
                 ));
                 $file_name = preg_replace('/[^A-Za-z0-9 _ .-]/', '', $file_name);
-    
+
                 $inputs['coa']->move(
                     base_path() . '/public/img/files/coa/',
                     $file_name
                 );
-    
+
                 $product->coa = '/img/files/coa/' .
                     $file_name;
             }
         }
-        
+
         if($inputs['msds'] !== null){
             if (isset($inputs['msds'])) {
                 $file_name = strtolower(str_replace(
@@ -191,12 +191,12 @@ class ProductsController extends Controller
                     $inputs['msds']->getClientOriginalName()
                 ));
                 $file_name = preg_replace('/[^A-Za-z0-9 _ .-]/', '', $file_name);
-    
+
                 $inputs['msds']->move(
                     base_path() . '/public/img/files/msds/',
                     $file_name
                 );
-    
+
                 $product->msds = '/img/files/msds/' .
                     $file_name;
             }
@@ -210,12 +210,12 @@ class ProductsController extends Controller
                     $inputs['img']->getClientOriginalName()
                 ));
                 $file_name = preg_replace('/[^A-Za-z0-9 _ .-]/', '', $file_name);
-    
+
                 $inputs['img']->move(
                     base_path() . '/public/img/files/img/',
                     $file_name
                 );
-    
+
                 $product->img = '/img/files/img/' .
                     $file_name;
             }
@@ -243,9 +243,9 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        
+
         $product = Products::find($id);
-        
+
         $product->delete();
 
         SWAL::message('Eliminado correctamente!','','success',['timer'=>5000]);
@@ -272,15 +272,15 @@ class ProductsController extends Controller
             $reservationProduct->quantity = $inputs['quantity'];
             $reservationProduct->pricing = $product->sale_price;
             $reservationProduct->is_reserve = 1;
-            
+
             if(isset($inputs['delivery'])){
                 $reservationProduct->delivery = 1;
             }else{
                 $reservationProduct->delivery = 0;
             }
-            
+
             $reservationProduct->save();
-    
+
             SWAL::message('Reserva satifactoria','','success',['timer'=>5000]);
             return redirect()->back();
 
@@ -319,7 +319,6 @@ class ProductsController extends Controller
     }
 
     public function getCharts(){
-        
 
         $inputs = request()->all();
 

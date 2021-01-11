@@ -13729,6 +13729,7 @@ body {
 .user-body {
   min-height: 100vh;
   padding-bottom: 4.5rem;
+  font-family: "Montserrat", sans-serif;
 }
 
 .user-footer {
@@ -13769,21 +13770,19 @@ body {
           backdrop-filter: blur(4px);
 }
 
-@media (max-width: 767.98px) {
-  .logo-wrapper {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 0.5rem;
-    text-align: center;
-    pointer-events: none;
-  }
+.logo-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 0.5rem;
+  text-align: center;
+  pointer-events: none;
+}
 
-  .logo-wrapper > .navbar-brand {
-    pointer-events: all;
-  }
+.logo-wrapper > .navbar-brand {
+  pointer-events: all;
 }
 
 .fa-instagram-color {
@@ -13873,14 +13872,12 @@ body {
   background: url("http://webdesign-finder.com/html/plastrix/img/parallax/quote-bg.png") no-repeat right/auto;
 }
 
-.img-frame,
-.contact-wrapper {
+.img-frame {
   position: relative;
   z-index: 10;
 }
 
-.img-frame:before,
-.contact-wrapper:before {
+.img-frame:before {
   content: "";
   position: absolute;
   top: 1rem;
@@ -13891,14 +13888,12 @@ body {
   z-index: -1;
 }
 
-.img-frame > img,
-.contact-wrapper > img {
+.img-frame > img {
   border: 6px solid #fff;
 }
 
 @media (max-width: 767.98px) {
-  .img-frame:before,
-  .contact-wrapper:before {
+  .img-frame:before {
     position: absolute;
     top: 0.5rem;
     right: -0.25rem;

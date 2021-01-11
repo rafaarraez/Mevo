@@ -2,11 +2,21 @@
 
 $primary:       #e93237
 $secondary:     #202033
-$danger:        #e12e2e
 $success:       #029f69
-$warning:       #ffac01
 $info:          #009ee3
+$warning:       #ffac01
+$danger:        #e12e2e
+$light:         #f8f9fa
 $dark:          #6c757d
+$blue-landing:  #2B8DC3
+
+$theme-colors: ("primary": $primary, "secondary": $secondary, "danger": $danger, "success": $success, "warning": $warning, "info": $info, "light": $light, "dark": $dark, "blue-landing": $blue-landing)
+
+$spacer: 1rem
+$spacers: (0: 0, 1: $spacer / 4, 2: $spacer / 2, 3: $spacer, 4: $spacer * 1.5, 5: $spacer * 3)
+
+$new-spacers: (6: ($spacer * 3.5), 7: ($spacer * 4), 8: ($spacer * 5), 9: ($spacer * 8), 10: ($spacer * 10))
+$spacers: map-merge($new-spacers, $spacers)
 
 $enable-rounded: false
 
@@ -38,14 +48,14 @@ $navbar-dark-toggler-border-color: transparent
 $modal-backdrop-bg:                 $secondary
 $modal-backdrop-opacity:            .7
 
-$dropdown-bg: rgba($secondary, .85)
+$dropdown-bg: rgba($secondary, .8)
 $dropdown-border-color: rgba(#fff, .1)
 $dropdown-link-color: white
 $dropdown-link-hover-bg: rgba($secondary, .5)
 $dropdown-link-hover-color: white
 $dropdown-header-color: rgba(white, .75)
 
-// custom utilities
+// Custom utilities
 @import "custom-bs-utilities"
 
 // Bootstrap
@@ -53,12 +63,13 @@ $dropdown-header-color: rgba(white, .75)
 
 @import "custom-bs-mixins"
 
-// components
+// Components
 @import "components/avatars"
 
 // Custom style
 @import "global"
 @import "custom"
+@import "landing"
 
 // vendors
 

@@ -1,6 +1,7 @@
 .user-body
     min-height: 100vh
     padding-bottom: 4.5rem
+    font-family: 'Montserrat', sans-serif
 
 .user-footer
     +absolute(null, null, 0, 0)
@@ -26,14 +27,14 @@
 .backdrop-blur-4
     backdrop-filter: blur(4px)
 
-@include media-breakpoint-down(md)
-    .logo-wrapper
-        +absolute(0, 0, 0, 0)
-        padding: $navbar-padding-y $navbar-padding-x
-        text-align: center
-        pointer-events: none
-        > .navbar-brand
-            pointer-events: all
+// @include media-breakpoint-down(md)
+.logo-wrapper
+    +absolute(0, 0, 0, 0)
+    padding: $navbar-padding-y $navbar-padding-x
+    text-align: center
+    pointer-events: none
+    > .navbar-brand
+        pointer-events: all
 
 .fa-instagram-color
     color: transparent

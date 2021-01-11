@@ -26,4 +26,8 @@ class StaticController extends Controller
     {
         return view('static/signup');
     }
+    public function staticIndex()
+    {
+        return view('static/index');
+    }
 }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Hash;
-use Softon\SweetAlert\Facades\SWAL; 
+use Softon\SweetAlert\Facades\SWAL;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
@@ -13,7 +13,7 @@ use App\ReservationProducts;
 
 
 class UserController extends Controller
-{   
+{
 
     /**
      * Create a new controller instance.
@@ -24,7 +24,7 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -43,7 +43,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
+    {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';
@@ -86,7 +86,7 @@ class UserController extends Controller
 
         $userProfile            = new UserProfile();
         $userProfile->user_id   = $user->id;
-        $userProfile->name      = $request->name; 
+        $userProfile->name      = $request->name;
         $userProfile->email     = $request->email;
         $userProfile->status    = 1;
         $userProfile->save();
@@ -104,7 +104,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($usuario)
-    {   
+    {
         $usuario = User::findOrFail($usuario);
 
         return view('admin.users.show')->with(['usuario'=>$usuario]);
@@ -118,7 +118,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function showprofile()
-    {   
+    {
         $user = Auth::user()->id;
 
         $usuario = User::findOrFail($user);
@@ -132,7 +132,7 @@ class UserController extends Controller
     }
 
     public function editProfileUser()
-    {   
+    {
         $user = Auth::user()->id;
 
         $usuario = User::findOrFail($user);
@@ -144,16 +144,16 @@ class UserController extends Controller
         return view('users.edit-profile')->with(compact('usuario', 'userProfile'));
     }
 
-    
+
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $usuario
      * @return \Illuminate\Http\Response
-     */    
+     */
     public function updateProfile(Request $request, $usuario)
-    {   
+    {
         $user = Auth::user()->id;
 
         $usuario = User::findOrFail($user);
@@ -174,7 +174,7 @@ class UserController extends Controller
 
     }
     public function changePassword(Request $request, $id)
-    {   
+    {
         $user = User::findOrFail($id);
 
         if($request->password === $request->password_confirmation){
@@ -196,7 +196,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($usuario)
-    {   
+    {
         /*
         * Obtener el usuario
         */
@@ -258,7 +258,7 @@ class UserController extends Controller
         if($request->password === $request->password_confirmation){
             $user->password = Hash::make($request->password);
             $user->save();
-    
+
             $userProfile                        = UserProfile::where('user_id', $id)->first();
             $userProfile->name                  = $request->name;
             $userProfile->mobile                = $request->mobile;
@@ -270,16 +270,16 @@ class UserController extends Controller
             $userProfile->city                  = $request->city;
             $userProfile->status                = 2;
             $userProfile->save();
-            
+
             // var_dump($request);
-    
+
             $products = Products::select('products.*', 'products.quantity AS cantidad_total')
                                     ->selectRaw('SUM(r.quantity) AS total_reservado')
                                     ->selectRaw('(products.quantity - SUM(r.quantity)) AS total_disponible')
                                     ->leftjoin('reservation_products AS r', 'r.product_id', '=', 'products.id')
                                     ->groupBy('products.id')
                                     ->paginate(5);
-            
+
             SWAL::message('Perfil Actualizado','','c',['timer'=>5000]);
 
             return view('users.home-user')->with(compact('products'));
@@ -289,9 +289,6 @@ class UserController extends Controller
             SWAL::message('Su contraseña no coinciden','','error',['timer'=>5000]);
             return back();
         }
-        
-
-        
     }
 
     /**

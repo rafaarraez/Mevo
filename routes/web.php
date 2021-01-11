@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/', 'StaticController@staticIndex')->name('landing');
+
 /*
 * Grupo de rutas de usuarios
 */
