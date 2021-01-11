@@ -127,6 +127,7 @@
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             </article>
@@ -224,6 +225,14 @@
             <!-- Reserve modal -->
         @endif
     @endforeach
+    @if(count($products) === 0)
+    <div class="text-center py-sm-5">
+        <div class="mb-4">
+            <img src="{{ asset('/img/assets/no-data.svg') }}" class="img-fluid" alt="No data" style="max-width: 130px">
+        </div>
+        <h5 class="font-weight-bold">No se encontraron productos nuevos</h5>
+    </div>
+    @endif
     {{ $products->links() }}
 </div>
 @endsection

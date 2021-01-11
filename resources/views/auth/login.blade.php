@@ -53,7 +53,7 @@
                 <div class="row justify-content-center">
                     <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
                         <div class="text-center mb-4 mb-md-5">
-                            <a href="/static/products" class="d-inline-block">
+                            <a href="/" class="d-inline-block">
                                 <img src="{{ asset('img/logo/LogoMEVOblanco2.png') }}" class="img-fluid" title="Ir al Inicio" alt="MEVO Logo" style="max-height: 5rem">
                             </a>
                         </div>
