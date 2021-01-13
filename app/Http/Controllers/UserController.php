@@ -177,13 +177,13 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        if($request->password === $request->password_confirmation){
+        if($request->password === $request->password_confirmation && $request->filled('password')){
             $user->password = Hash::make($request->password);
             $user->save();
             SWAL::message('Contraseña Actualizada','','success',['timer'=>5000]);
             return back();
         }else{
-            SWAL::message('Su contraseña no coinciden con la confirmación','','error',['timer'=>5000]);
+            SWAL::message('Su contraseña no coincide con la confirmación','','error',['timer'=>5000]);
             return back();
         }
 

@@ -135,23 +135,23 @@
                         <div class="col-lg-12">
                             <div class="mb-3">
                                 <label for="actual-pw">Contraseña actual</label>
-                                <input id="actual-pw" type="text" class="form-control">
+                                <input id="actual-pw" type="text" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-12 col-xl-6">
                             <div class="mb-3">
                                 <label for="new-pw">Nueva contraseña</label>
-                                <input id="new-pw" type="text" class="form-control" name="password">
+                                <input id="new-pw" type="text" class="form-control" name="password" required>
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-12 col-xl-6">
                             <div class="mb-3">
                                 <label for="repeat-new-pw">Repetir nueva contraseña</label>
-                                <input id="repeat-new-pw" name="password_confirmation" type="text" class="form-control">
+                                <input id="repeat-new-pw" name="password_confirmation" type="text" class="form-control" required>
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-danger px-3"><i class="fas fa-lock small me-2"></i> Cambiar contraseña</button>
+                    <button type="submit" class="btn btn-danger px-3"><i class="fas fa-lock small me-2"></i> Cambiar contraseña</button>
                 </form>
             </div>
         </div>
