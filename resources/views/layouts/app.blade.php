@@ -70,7 +70,7 @@
 			<i class="fa fa-bars u-sidebar-invoker__icon--open"></i>
 			<i class="fa fa-times u-sidebar-invoker__icon--close"></i>
 		</a>
-<!-- 
+<!--
 		<div id="headerSearch" class="u-header-search-form">
 			<form>
 				<div class="input-group">
@@ -102,7 +102,7 @@
 
 					<div class="card-body p-0">
 						<div class="list-group list-group-flush">
-							
+
 							<a class="list-group-item list-group-item-action" href="#">
 								<div class="media align-items-center">
 									<img class="u-avatar--sm rounded-circle mr-3" src="{{ asset('img/avatars/img1.jpg')}}" alt="Image description">
@@ -119,7 +119,7 @@
 									</div>
 								</div>
 							</a>
-							
+
 						</div>
 					</div>
 
@@ -149,7 +149,7 @@
 
 					<div class="card-body p-0">
 						<div class="list-group list-group-flush">
-							
+
 							<a class="list-group-item list-group-item-action" href="#">
 								<div class="media align-items-center">
 									<div class="u-icon u-icon--sm rounded-circle bg-danger text-white mr-3">
@@ -168,7 +168,7 @@
 									</div>
 								</div>
 							</a>
-							
+
 						</div>
 					</div>
 
@@ -194,7 +194,7 @@
 					<div class="card-body">
 						<ul class="list-unstyled mb-0">
 							<li class="mb-4">
-								<a class="d-flex align-items-center link-dark" href="{{ route('perfil') }}">
+								<a class="d-flex align-items-center link-dark" href="{{ route('user.profile') }}">
 									<span class="h3 mb-0"><i class="far fa-user-circle text-muted mr-2"></i></span> Ver perfil
 								</a>
 							</li>
@@ -239,7 +239,7 @@
 					</li>
 
 					<hr/>
-			
+
 					<!-- Usuarios  -->
 					 <li class="u-sidebar-nav-menu__item">
 						  <a class="u-sidebar-nav-menu__link" href="#!"

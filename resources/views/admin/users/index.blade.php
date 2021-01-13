@@ -35,12 +35,12 @@
 						<td>{{$usuario->name}}</td>
 						<td>{{$usuario->email}}</td>
 						@foreach ($usuario->roles as $role)
-						<td><a class="badge badge-soft-info" style="font-size: 12px;" href="{{ url('usuario/' . $usuario->id)}}">{{$role->name}}</a></td>
+						<td><a class="badge badge-soft-info" style="font-size: 12px;" href="{{ route('usuarios.show', ['id' => $usuario->id]) }}">{{$role->name}}</a></td>
 						@endforeach
 						<td class="text-center ">
-							<a class="link-muted" href="{{ URL::to('usuarios/' . $usuario->id . '/edit')}}" aria-expanded="false" title="Editar usuario" data-toggle="tooltip" data-placement="left"><i class="fa fa-sliders-h"></i>
+							<a class="link-muted" href="{{ route('usuarios.edit', ['id' => $usuario->id]) }}" aria-expanded="false" title="Editar usuario" data-toggle="tooltip" data-placement="left">
+                                <i class="fa fa-sliders-h"></i>
 							</a>
-
 							<!-- <a class="link-muted" href="#deletef" aria-expanded="false" title="Eliminar usuario" data-toggle="modal" data-dismiss="modal" data-backdrop="false">
                                 <i class="fa fa-trash"></i>
 							</a> -->

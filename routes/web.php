@@ -25,26 +25,26 @@ Route::get('/', 'StaticController@staticIndex')->name('landing');
 * Grupo de rutas de usuarios
 */
 Route::middleware(['auth', 'role:user'])->group(function () {
-	Route::get('/inicio', 'HomeController@index')->name('inicio');
-	Route::get('/perfil', 'UserController@showprofile')->name('perfil');
-	Route::get('/perfil/edit', 'UserController@editProfileUser')->name('edit');
-	Route::post('/usuarioos/{user}', 'UserController@updateByUser')->name('usuarios.updateByuser');
+	Route::get('/productos', 'HomeController@index')->name('user.products');
+	// Route::get('/perfil', 'UserController@showprofile')->name('user.profile');
+	Route::get('/perfil/editar', 'UserController@editProfileUser')->name('user.profile.edit');
+	Route::post('/usuarios/{user}', 'UserController@updateByUser')->name('usuarios.updateByuser');
 	Route::post('/updateProfile/{user}', 'UserController@updateProfile')->name('user.updateProfile');
 	Route::post('/changePassword/{user}', 'UserController@changePassword')->name('user.changePassword');
 	Route::post('/products/reserve/{user}/{product}', 'ProductsController@reserveProduct');
 	Route::get('/reserves', 'ProductsController@showReserves')->name('reserves');
 });
 
-Route::get('/perfil', 'UserController@showprofile')->name('perfil')->middleware('auth');
+Route::get('/perfil', 'UserController@showprofile')->name('user.profile')->middleware('auth');
 Route::post('/updateProfile/{user}', 'UserController@updateProfile')->name('user.updateProfile')->middleware('auth');;
 Route::post('/changePassword/{user}', 'UserController@changePassword')->name('user.changePassword')->middleware('auth');
 
 /*
 * Grupo de rutas de administrador
 */
-Route::middleware(['auth', 'role:admin'])->group(function () {
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 
-	Route::get('/home', 'HomeController@indexAdmin')->name('home');
+	Route::get('/', 'HomeController@indexAdmin')->name('home');
 	// Rutas de  Usuarios
 	Route::get('/usuarios', 'UserController@index')->name('usuarios.index');
 	Route::get('/usuarios/create', 'UserController@create')->name('usuarios.create');

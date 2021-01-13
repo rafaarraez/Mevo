@@ -50,7 +50,7 @@
 					            </select>
 					            @if ($errors->has('rol_id'))
 					           	<small class="form-text invalid-feedback">{{ $errors->first('rol_id') }}</small>
-					            @endif       
+					            @endif
 							</div>
 						</div>
 						<hr>
@@ -77,7 +77,7 @@
         	theme: "bootstrap",
             ajax: {
             	dataType: 'json',
-            	url: '{{ url("getroles") }}',
+            	url: '{{ route("getroles") }}',
             	delay: 250,
             	data: function(params) {
             		return {

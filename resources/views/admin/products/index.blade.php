@@ -53,10 +53,10 @@
 						<td class="text-center">{{ $product->total_reservado === null ? 0 : $product->total_reservado }}</td>
 
 						<td class="text-center ">
-							<a class="link-muted" href="{{ URL::to('products/' . $product->id . '/edit')}}" aria-expanded="false" title="Editar usuario" data-toggle="tooltip" data-placement="left"><i class="fa fa-sliders-h"></i>
+							<a class="link-muted" href="{{ route('products.edit', ['id' => $product->id]) }}" title="Editar usuario" data-toggle="tooltip" data-placement="left"><i class="fa fa-sliders-h"></i>
 							</a>
 
-							<!-- <a class="link-muted" href="#deletef-{{$product->id}}" aria-expanded="false" title="Eliminar usuario" data-toggle="modal" data-dismiss="modal" data-backdrop="false">
+							<!-- <a class="link-muted" href="#deletef-{{$product->id}}" title="Eliminar usuario" data-toggle="modal" data-dismiss="modal" data-backdrop="false">
 								<i class="fa fa-trash"></i>
 							</a> -->
 						</td>

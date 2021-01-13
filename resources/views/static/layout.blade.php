@@ -68,10 +68,10 @@
                     <div class="dropdown-menu dropdown-menu-end position-absolute" aria-labelledby="mobile-profile-dropdown">
                         <div style="min-width: 200px"></div>
                         <div><h6 class="dropdown-header">{{ Auth::user()->name }}</h6></div>
-                        <a class="dropdown-item py-2" href="{{ route('perfil') }}">
+                        <a class="dropdown-item py-2" href="{{ route('user.profile') }}">
                             <i class="fas fa-history text-muted me-2"></i>Mis pedidos
                         </a>
-                        <a class="dropdown-item py-2" href="{{ route('edit') }}">
+                        <a class="dropdown-item py-2" href="{{ route('user.profile.edit') }}">
                             <i class="far fa-user-circle text-muted me-2"></i>Editar perfil
                         </a>
                         <a class="dropdown-item py-2" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form-mobile').submit();">
@@ -87,15 +87,15 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav py-3 py-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link text-center text-lg-left text-uppercase fs-md" href="/">Home</a>
+                        <a class="nav-link text-center text-lg-left text-uppercase fs-md" href="{{ route('landing') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-center text-lg-left text-uppercase fs-md" href="{{ route('inicio') }}">Productos</a>
+                        <a class="nav-link text-center text-lg-left text-uppercase fs-md" href="{{ route('user.products') }}">Productos</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav align-items-center d-none d-md-flex ms-auto">
                     <li class="nav-item mr-3 d-none d-lg-inline-block">
-                        <a href="{{ route('perfil') }}" class="nav-link text-uppercase fs-md">Mis pedidos</a>
+                        <a href="{{ route('user.profile') }}" class="nav-link text-uppercase fs-md">Mis pedidos</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link text-uppercase fs-md" id="profile-dropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -109,10 +109,10 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-end position-absolute" aria-labelledby="profile-dropdown">
                             <div style="min-width: 200px"></div>
-                            <a class="dropdown-item py-2" href="{{ route('perfil') }}">
+                            <a class="dropdown-item py-2" href="{{ route('user.profile') }}">
                                 <i class="fas fa-history text-muted me-2"></i>Mis pedidos
                             </a>
-                            <a class="dropdown-item py-2" href="{{ route('edit') }}">
+                            <a class="dropdown-item py-2" href="{{ route('user.profile.edit') }}">
                                 <i class="far fa-user-circle text-muted me-2"></i>Editar perfil
                             </a>
                             <a class="dropdown-item py-2" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">

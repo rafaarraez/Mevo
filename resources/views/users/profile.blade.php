@@ -6,12 +6,12 @@
     <div class="row">
         <div class="col-6">
             <h1 class="text-secondary fw-bold h3 mb-4">
-                <a href="/" class="text-muted text-decoration-none pr-2 me-2" title="Volver"><i class="fas fa-arrow-left"></i></a>Perfil
+                <a href="{{ route('user.products') }}" class="text-muted text-decoration-none pe-3 me-3 border-end" title="Volver"><i class="fas fa-arrow-left"></i></a>Perfil
             </h1>
         </div>
         <div class="col-6">
-            <div class="text-right">
-                <a href="{{ route('edit') }}" class="btn btn-primary btn-sm mb-3 mb-md-0">Editar perfil</a>
+            <div class="text-end">
+                <a href="{{ route('user.profile.edit') }}" class="btn btn-primary btn-sm mb-3 mb-md-0">Editar perfil</a>
             </div>
         </div>
     </div>
@@ -34,7 +34,7 @@
 
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-            <a class="nav-link custom-tab-link text-uppercase active" data-toggle="tab" href="#products" role="tab" aria-controls="products" aria-selected="true">Mis pedidos</a>
+            <a class="nav-link custom-tab-link text-uppercase active" data-bs-toggle="tab" href="#products" role="tab" aria-controls="products" aria-selected="true">Mis pedidos</a>
         </li>
     </ul>
 
@@ -50,7 +50,7 @@
                         <img src="{{ asset('/img/assets/no-data.svg') }}" class="img-fluid" alt="No data" style="max-width: 130px">
                     </div>
                     <h5 class="fw-bold">Aún no haces tu primer pedido</h5>
-                    <p class="text-muted fs-md mb-0">Mira nuestros <a href="route('inicio')">Productos disponibles</a> para reservar el que quieras.</p>
+                    <p class="text-muted fs-md mb-0">Mira nuestros <a href="{{ route('user.products') }}">Productos disponibles</a> para reservar el que quieras.</p>
                 </div>
                 @endif
                 <!-- end empty state -->
@@ -64,8 +64,8 @@
                                         <img src="{{ $product->products->file }}">
                                     </a>
                                 @else
-                                    <a href="{{ asset('img/assets/login-bg.jpg') }}" class="product__sideImage d-none d-lg-block aspect-ratio aspect-ratio-1by1" target="_blank" style="width: 150px">
-                                        <img src="{{ asset('img/assets/login-bg.jpg') }}">
+                                    <a href="{{ asset('img/assets/no-img.png') }}" class="product__sideImage d-none d-lg-block aspect-ratio aspect-ratio-1by1" target="_blank" style="width: 150px">
+                                        <img src="{{ asset('img/assets/no-img.png') }}">
                                     </a>
                                 @endif
                             </div>
@@ -75,42 +75,57 @@
                                         <div class="col-lg-6 col-xl-7">
                                             <div class="d-flex align-items-center">
                                                 <div class="d-lg-none me-3">
-                                                    <a href="{{ asset('img/assets/login-bg.jpg') }}" class="aspect-ratio aspect-ratio-1by1" target="_blank" style="width: 5rem">
-                                                        <img src="{{ asset('img/assets/login-bg.jpg') }}">
-                                                    </a>
+                                                    @if($product->products->file)
+                                                        <a href="{{ $product->products->file }}" class="aspect-ratio aspect-ratio-1by1" target="_blank" style="width: 5rem">
+                                                            <img src="{{ $product->products->file }}">
+                                                        </a>
+                                                    @else
+                                                        <a href="{{ asset('img/assets/no-img.png') }}" class="aspect-ratio aspect-ratio-1by1" target="_blank" style="width: 5rem">
+                                                            <img src="{{ asset('img/assets/no-img.png') }}">
+                                                        </a>
+                                                    @endif
                                                 </div>
                                                 <div>
                                                     <h6 class="fw-bold lh-1 h5">{{ $product->products->name }}</h6>
                                                     <p class="text-muted fs-md lh-1 mb-0">{{ $product->products->synonymous }}</p>
-                                                    <p class="text-muted fs-md lh-1 mt-1 mb-0">Cantidad: {{ $product->quantity }}</p>
-                                                    <p class="text-muted fs-md lh-1 mt-1 mb-0">Precio Individuak: ${{ $product->pricing }} USD</p>
-                                                    <p class="text-muted fs-md lh-1 mt-1 mb-0">Total a cancelar: ${{ $product->pricing*$product->quantity  }} USD</p>
+                                                    <p class="text-muted fs-md lh-1 mt-1 mb-0">Cantidad: <span class="font-monospace">{{ $product->quantity }}</span></p>
+                                                    <p class="text-muted fs-md lh-1 mt-1 mb-0">Precio Individual: <span class="font-monospace">${{ $product->pricing }} USD</span></p>
+                                                    <p class="text-muted fs-md lh-1 mt-1 mb-0">Total a cancelar: <span class="font-monospace">${{ $product->pricing*$product->quantity  }} USD</span></p>
                                                 </div>
                                             </div>
                                             <!-- <h6 class="fw-bold lh-1 h5">{{ $product->products->name }}</h6>
                                             <p class="text-muted fs-md lh-1 mb-0">{{ $product->products->synonymous }}</p> -->
                                         </div>
                                         <div class="col-lg-6 col-xl-5">
-                                            <div class="d-flex justify-content-between justify-content-lg-end align-items-center mt-3 mt-lg-0">
-                                                <div class="fw-bold me-3 h5 mb-0"></div>
+                                            <div class="d-flex flex-wrap justify-content-center justify-content-lg-end align-items-center mt-3 mt-lg-0">
+
                                                 <div>
-                                                    @if($product->is_reserve === 0)
-                                                    <span class="badge bg-warning rounded-pill">Compra</span>
-                                                    @elseif($product->is_reserve === 1)
-                                                    <span class="badge bg-success rounded-pill">Reserva</span>
+                                                    @if($product->delivery === 1)
+                                                    <span class="badge bg-light text-muted rounded-pill me-2 mb-1">
+                                                        <svg class="me-1" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
+                                                            <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                                                        </svg>Delivery
+                                                    </span>
                                                     @endif
                                                 </div>
 
-                                                <div class="fw-bold me-3 h5 mb-0"></div>
+                                                <div>
+                                                    @if($product->is_reserve === 0)
+                                                    <span class="badge bg-success rounded-pill me-2 mb-1">Compra</span>
+                                                    @elseif($product->is_reserve === 1)
+                                                    <span class="badge bg-dark rounded-pill me-2 mb-1">Reserva</span>
+                                                    @endif
+                                                </div>
+
                                                 <div>
                                                     @if($product->status === 1)
-                                                    <span class="badge bg-warning rounded-pill">Esperando Confirmación</span>
+                                                    <span class="badge bg-warning rounded-pill me-2 mb-1">Esperando Confirmación</span>
                                                     @elseif($product->status === 2)
-                                                    <span class="badge bg-success rounded-pill">En Tránsito</span>
+                                                    <span class="badge bg-info rounded-pill me-2 mb-1">En Tránsito</span>
                                                     @elseif($product->status === 3)
-                                                    <span class="badge bg-success rounded-pill">Entregado</span>
+                                                    <span class="badge bg-success rounded-pill me-2 mb-1">Entregado</span>
                                                     @elseif($product->status === 4)
-                                                    <span class="badge bg-danger rounded-pill">Cancelado</span>
+                                                    <span class="badge bg-danger rounded-pill me-2 mb-1">Cancelado</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -118,8 +133,8 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-4">
+                                    <div class="row align-items-lg-center">
+                                        <div class="col-6 col-lg-4 order-0 order-lg-0">
                                             <div class="d-flex align-items-center mb-3 mb-lg-0">
                                                 <div class="flex-shrink-0 d-none d-sm-block">
                                                     <svg class="text-muted me-2" width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -139,30 +154,47 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-6 col-lg-2">
-                                            <div class="text-muted small">COA</div>
-                                            <div class="fw-bold small">
-                                                <a href="{{ $product->products->coa }}" class="text-reset" target="_blank">Adjunto</a>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 col-lg-2">
-                                            <div class="text-muted small">MSDS</div>
-                                            <div class="fw-bold small">
-                                                <a href="{{ $product->products->msds }}" class="text-reset" target="_blank">Adjunto</a>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 col-lg-2">
+                                        <div class="col-6 col-lg-2 order-3 order-lg-1">
                                             <div class="text-muted small">Fecha reservado</div>
                                             <div class="fw-bold small">
                                                 {{ Carbon\Carbon::parse($product->created_at)->toFormattedDateString('d/m/Y') }}
                                             </div>
                                         </div>
-                                        <div class="col-6 col-lg-2">
+                                        <div class="col-6 col-lg-2 order-4 order-lg-2">
                                             <div class="text-muted small">Fecha aprox. de llegada</div>
                                             <div class="fw-bold small">
                                                 {{ Carbon\Carbon::parse($product->products->arrival_to)->toFormattedDateString('d/m/Y') }}
                                             </div>
                                         </div>
+                                        <div class="col-3 col-lg-2 order-1 order-lg-3">
+                                            <div class="mb-3 mb-lg-0">
+                                                <div class="text-muted small">COA</div>
+                                                <div class="fw-bold small">
+                                                    <a href="{{ $product->products->coa }}" class="text-reset text-nowrap" target="_blank">
+                                                        Adjunto
+                                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-box-arrow-up-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h8a1.5 1.5 0 0 0 1.5-1.5V9a.5.5 0 0 0-1 0v4a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 5v8zm7-11a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0V2.5H9a.5.5 0 0 1-.5-.5z"/>
+                                                            <path fill-rule="evenodd" d="M14.354 1.646a.5.5 0 0 1 0 .708l-8 8a.5.5 0 0 1-.708-.708l8-8a.5.5 0 0 1 .708 0z"/>
+                                                        </svg>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 col-lg-2 order-2 order-lg-4">
+                                            <div class="mb-3 mb-lg-0">
+                                                <div class="text-muted small">MSDS</div>
+                                                <div class="fw-bold small">
+                                                    <a href="{{ $product->products->msds }}" class="text-reset text-nowrap" target="_blank">
+                                                        Adjunto
+                                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-box-arrow-up-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h8a1.5 1.5 0 0 0 1.5-1.5V9a.5.5 0 0 0-1 0v4a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 5v8zm7-11a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0V2.5H9a.5.5 0 0 1-.5-.5z"/>
+                                                            <path fill-rule="evenodd" d="M14.354 1.646a.5.5 0 0 1 0 .708l-8 8a.5.5 0 0 1-.708-.708l8-8a.5.5 0 0 1 .708 0z"/>
+                                                        </svg>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -177,25 +209,3 @@
 </div>
 
 @endsection
-
-@section('scripts')
-<script type="application/javascript">
-
-    $('#edit-profile').on("click", function(e) {
-        e.preventDefault();
-        $('.edit-userprofile').removeAttr('disabled');
-        $('#edit-profile').attr('hidden', 'true');
-        $('#save-edit-profile').removeAttr('hidden');
-        $('#cancel-edit-profile').removeAttr('hidden');
-    });
-
-    $('#cancel-edit-profile').on("click", function(e) {
-        e.preventDefault();
-        $('.edit-userprofile').attr('disabled', 'true');
-        $('#edit-profile').removeAttr('hidden');
-        $('#save-edit-profile').attr('hidden', 'true');
-        $('#cancel-edit-profile').attr('hidden', 'true');
-    });
-
-</script>
-@stop

@@ -169,7 +169,7 @@ class UserController extends Controller
         $userProfile->city                  = $request->city;
         $userProfile->save();
 
-        SWAL::message('Perfil Actializado','','success',['timer'=>5000]);
+        SWAL::message('Perfil Actualizado','','success',['timer'=>5000]);
         return back();
 
     }
@@ -180,7 +180,7 @@ class UserController extends Controller
         if($request->password === $request->password_confirmation){
             $user->password = Hash::make($request->password);
             $user->save();
-            SWAL::message('Contraseña Actializado','','success',['timer'=>5000]);
+            SWAL::message('Contraseña Actualizada','','success',['timer'=>5000]);
             return back();
         }else{
             SWAL::message('Su contraseña no coinciden con la confirmación','','error',['timer'=>5000]);

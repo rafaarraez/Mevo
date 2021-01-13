@@ -46,10 +46,10 @@ class LoginController extends Controller
     public function redirectPath()
     {
         if (Auth::user()->hasRole('admin')) {
-            return '/home';
+            return route('home');
         }
 
-        return '/inicio';
+        return route('user.products');
 
     }
 }

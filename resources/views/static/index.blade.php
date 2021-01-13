@@ -155,10 +155,10 @@
                                         <i class="fas fa-desktop text-muted me-2"></i>Panel de Admin
                                     </a>
                                 @else
-                                <a class="dropdown-item py-2" href="{{ route('perfil') }}">
+                                <a class="dropdown-item py-2" href="{{ route('user.profile') }}">
                                     <i class="fas fa-history text-muted me-2"></i>Mis pedidos
                                 </a>
-                                <a class="dropdown-item py-2" href="{{ route('edit') }}">
+                                <a class="dropdown-item py-2" href="{{ route('user.profile.edit') }}">
                                     <i class="far fa-user-circle text-muted me-2"></i>Editar perfil
                                 </a>
                                 @endif
@@ -181,12 +181,12 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav py-3 py-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link text-center text-lg-left text-uppercase fs-md" href="/">Home</a>
+                            <a class="nav-link text-center text-lg-left text-uppercase fs-md" href="{{ route('landing') }}">Home</a>
                         </li>
                         @if(Auth::check())
                             @if(!Auth::user()->hasRole('admin'))
                             <li class="nav-item">
-                                <a class="nav-link text-center text-lg-left text-uppercase fs-md" href="{{ route('inicio') }}">Productos</a>
+                                <a class="nav-link text-center text-lg-left text-uppercase fs-md" href="{{ route('user.products') }}">Productos</a>
                             </li>
                             @endif
                         @endif
@@ -196,7 +196,7 @@
                         @if(Auth::check())
                         @if(!Auth::user()->hasRole('admin'))
                         <li class="nav-item mr-3 d-none d-lg-inline-block">
-                            <a href="{{ route('perfil') }}" class="nav-link text-uppercase fs-md">Mis pedidos</a>
+                            <a href="{{ route('user.profile.edit') }}" class="nav-link text-uppercase fs-md">Mis pedidos</a>
                         </li>
                         @endif
                         <li class="nav-item dropdown">
@@ -217,10 +217,10 @@
                                         <i class="fas fa-desktop text-muted me-2"></i>Panel de Admin
                                     </a>
                                 @else
-                                <a class="dropdown-item py-2" href="{{ route('perfil') }}">
+                                <a class="dropdown-item py-2" href="{{ route('user.profile') }}">
                                     <i class="fas fa-history text-muted me-2"></i>Mis pedidos
                                 </a>
-                                <a class="dropdown-item py-2" href="{{ route('edit') }}">
+                                <a class="dropdown-item py-2" href="{{ route('user.profile.edit') }}">
                                     <i class="far fa-user-circle text-muted me-2"></i>Editar perfil
                                 </a>
                                 @endif
@@ -269,7 +269,7 @@
         <section class="bg-blue-landing position-relative py-7 py-xl-9">
             <div class="container">
 
-                <div class="section-name-wrapper" data-content="Cómo funciona">
+                <div class="section-name-wrapper">
                     <h1 class="display-1 section-name mb-0">Cómo funciona</h1>
                 </div>
 
@@ -309,7 +309,7 @@
         <section class="position-relative py-9 py-xl-10">
             <div class="container">
 
-                <div class="section-name-wrapper" data-content="La empresa">
+                <div class="section-name-wrapper">
                     <h1 class="display-1 section-name --inverted mb-0">La empresa</h1>
                 </div>
 

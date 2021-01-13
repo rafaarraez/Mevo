@@ -45,14 +45,14 @@
 
                                     <div class="row g-1 align-items-center">
                                         <div class="col-6">
-                                            <a class="btn btn-success btn-sm text-uppercase w-100" data-bs-toggle="modal" data-bs-target="#sell-{{$product->id}}" title="Comprar">
-                                                <small class="d-block text-nowrap fs-sm"><b>$ {{ @money_format($product->sale_price, 2) }}</b></small>
+                                            <a class="btn btn-success btn-sm text-uppercase w-100 lh-sm" data-bs-toggle="modal" data-bs-target="#sell-{{$product->id}}" title="Comprar">
+                                                <span class="d-block text-nowrap fs-md"><b>$ {{ $product->sale_price }}</b></span>
                                                 Comprar
                                             </a>
                                         </div>
                                         <div class="col-6">
-                                            <a class="btn btn-dark btn-sm text-uppercase w-100" data-bs-toggle="modal" data-bs-target="#reserve-{{$product->id}}" title="Reservar">
-                                                <small class="d-block text-nowrap fs-sm"><b>$ {{ @money_format($product->reserve_price, 2) }}</b></small>
+                                            <a class="btn btn-dark btn-sm text-uppercase w-100 lh-sm" data-bs-toggle="modal" data-bs-target="#reserve-{{$product->id}}" title="Reservar">
+                                                <span class="d-block text-nowrap fs-md"><b>$ {{ $product->reserve_price }}</b></span>
                                                 Reservar
                                             </a>
                                         </div>
@@ -63,7 +63,7 @@
                         </div>
                         <div class="card-body">
                             <div class="row align-items-center">
-                                <div class="col-lg-4">
+                                <div class="col-6 col-lg-4 order-0 order-lg-0">
                                     <div class="d-flex align-items-center mb-3 mb-lg-0">
                                         <div class="flex-shrink-0 d-none d-sm-block">
                                             <svg class="text-muted me-2" width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -83,34 +83,38 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-6 col-lg-2">
-                                    <div class="text-muted small">COA</div>
-                                    <div class="fw-bold small">
-                                        <a href="{{ $product->coa }}" class="text-reset" target="_blank">
-                                            Adjunto
-                                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-box-arrow-up-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h8a1.5 1.5 0 0 0 1.5-1.5V9a.5.5 0 0 0-1 0v4a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 5v8zm7-11a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0V2.5H9a.5.5 0 0 1-.5-.5z"/>
-                                                <path fill-rule="evenodd" d="M14.354 1.646a.5.5 0 0 1 0 .708l-8 8a.5.5 0 0 1-.708-.708l8-8a.5.5 0 0 1 .708 0z"/>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-lg-2">
-                                    <div class="text-muted small">MSDS</div>
-                                    <div class="fw-bold small">
-                                        <a href="{{ $product->msds }}" class="text-reset" target="_blank">
-                                            Adjunto
-                                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-box-arrow-up-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h8a1.5 1.5 0 0 0 1.5-1.5V9a.5.5 0 0 0-1 0v4a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 5v8zm7-11a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0V2.5H9a.5.5 0 0 1-.5-.5z"/>
-                                                <path fill-rule="evenodd" d="M14.354 1.646a.5.5 0 0 1 0 .708l-8 8a.5.5 0 0 1-.708-.708l8-8a.5.5 0 0 1 .708 0z"/>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-lg-2">
-                                    <div class="text-muted small">Fecha limite de reserva</div>
+                                <div class="col-12 col-lg-4 order-3 order-lg-1">
+                                    <div class="text-muted small">Fecha limite de compra/reserva</div>
                                     <div class="fw-bold small">
                                         {{ Carbon\Carbon::parse($product->deadline)->toFormattedDateString('d/m/Y') }}
+                                    </div>
+                                </div>
+                                <div class="col-3 col-lg-2 order-1 order-lg-2">
+                                    <div class="mb-3 mb-lg-0">
+                                        <div class="text-muted small">COA</div>
+                                        <div class="fw-bold small">
+                                            <a href="{{ $product->coa }}" class="text-reset text-nowrap" target="_blank">
+                                                Adjunto
+                                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-box-arrow-up-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h8a1.5 1.5 0 0 0 1.5-1.5V9a.5.5 0 0 0-1 0v4a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 5v8zm7-11a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0V2.5H9a.5.5 0 0 1-.5-.5z"/>
+                                                    <path fill-rule="evenodd" d="M14.354 1.646a.5.5 0 0 1 0 .708l-8 8a.5.5 0 0 1-.708-.708l8-8a.5.5 0 0 1 .708 0z"/>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 col-lg-2 order-2 order-lg-3">
+                                    <div class="mb-3 mb-lg-0">
+                                        <div class="text-muted small">MSDS</div>
+                                        <div class="fw-bold small">
+                                            <a href="{{ $product->msds }}" class="text-reset text-nowrap" target="_blank">
+                                                Adjunto
+                                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-box-arrow-up-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h8a1.5 1.5 0 0 0 1.5-1.5V9a.5.5 0 0 0-1 0v4a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 5v8zm7-11a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0V2.5H9a.5.5 0 0 1-.5-.5z"/>
+                                                    <path fill-rule="evenodd" d="M14.354 1.646a.5.5 0 0 1 0 .708l-8 8a.5.5 0 0 1-.708-.708l8-8a.5.5 0 0 1 .708 0z"/>
+                                                </svg>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
