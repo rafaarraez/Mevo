@@ -13869,7 +13869,7 @@ body {
 }
 
 .map-bg {
-  background: url("http://webdesign-finder.com/html/plastrix/img/parallax/quote-bg.png") no-repeat right/auto;
+  background: url("/img/assets/quote-bg.png") no-repeat right/auto;
 }
 
 .img-frame {

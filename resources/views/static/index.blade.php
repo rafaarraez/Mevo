@@ -46,7 +46,7 @@
 </head>
 <body class="landing-body">
 
-    <section class="landing-hero bg-image-cover" style="background-image: url('https://images.pexels.com/photos/1427107/pexels-photo-1427107.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')">
+    <section class="landing-hero bg-image-cover" style="background-image: url('{{ asset('img/assets/photo_wf8df4ds.jpg') }}')">
 
         @if (!Auth::check())
         <div class="position-absolute top-0 end-0 pt-3">
@@ -325,7 +325,7 @@
             </div>
         </section>
 
-        <section class="bg-image-cover py-9" style="background-image: url('https://images.pexels.com/photos/1427107/pexels-photo-1427107.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')">
+        <section class="bg-image-cover py-9" style="background-image: url('{{ asset('img/assets/photo_wf8df4ds.jpg') }}')">
             <div class="container">
                 <div class="row align-items-lg-center">
                     <div class="col-lg-6 col-xl-5 offset-xl-1">
