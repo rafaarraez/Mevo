@@ -104,4 +104,9 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\UserProfile', 'id');
     }
+
+    public function getRole(): HasOne
+    {
+        return $this->hasOne('App\RoleUser', 'id');
+    }
 }

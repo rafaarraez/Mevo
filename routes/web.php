@@ -20,6 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/', 'StaticController@staticIndex')->name('landing');
+Route::post('/send-form', 'MessageController@sendContact');
 
 /*
 * Grupo de rutas de usuarios
@@ -75,8 +76,8 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 /*
 * Rutas de -maquetación-
 */
-Route::get('/static/products', 'StaticController@staticProducts');
-Route::get('/static/profile', 'StaticController@staticProfile');
-Route::get('/static/profile/edit', 'StaticController@staticEditProfile')->name('editProfile');
-Route::get('/static/login', 'StaticController@staticLogin');
-Route::get('/static/signup', 'StaticController@staticSignup');
+// Route::get('/static/products', 'StaticController@staticProducts');
+// Route::get('/static/profile', 'StaticController@staticProfile');
+// Route::get('/static/profile/edit', 'StaticController@staticEditProfile')->name('editProfile');
+// Route::get('/static/login', 'StaticController@staticLogin');
+// Route::get('/static/signup', 'StaticController@staticSignup');

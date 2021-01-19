@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\Mail;
 use Softon\SweetAlert\Facades\SWAL;
 use Auth;
 use App\Products;
 use App\User;
 use App\ReservationProducts;
-
+use App\Mail\NewProduct;
 class ProductsController extends Controller
 {
     /**
@@ -22,8 +22,8 @@ class ProductsController extends Controller
     {
 
         $products = Products::select('products.*', 'products.quantity AS cantidad_total')
-                                ->selectRaw('(CASE WHEN r.status != 4 THEN r.quantity ELSE 0 END ) AS total_reservado')
-                                ->selectRaw('(products.quantity - (CASE WHEN r.status != 4 THEN r.quantity ELSE 0 END )) AS total_disponible')
+                                ->selectRaw('SUM(CASE WHEN r.status != 4 THEN r.quantity ELSE 0 END ) AS total_reservado')
+                                ->selectRaw('(products.quantity - SUM(CASE WHEN r.status != 4 THEN r.quantity ELSE 0 END )) AS total_disponible')
                                 ->leftjoin('reservation_products AS r', 'r.product_id', '=', 'products.id')
                                 ->groupBy('products.id')
                                 ->get();
@@ -118,6 +118,25 @@ class ProductsController extends Controller
         $product->quantity = $inputs['quantity'];
 
         $product->save();
+
+        $usuarios = User::all();
+        foreach($usuarios as $item){
+            $data = array();
+            $data['email'] = $item->email;
+            $data['name'] = $item->name;
+            $data['product_name'] = $inputs['name'];
+            $data['origin'] = $inputs['origin_product'];
+            $data['arrival_location'] = $inputs['arrival_location'];
+            $data['presentation'] = $inputs['presentation'];
+            $data['quantity'] = $inputs['quantity'];
+            
+            $correo = $item->email;
+            try{
+                Mail::to('rafa.arraez.gue@gmail.com')->queue(new NewProduct($data));
+            }catch (\Exception $e) {
+                return back()->with('error' , 'Error al enviar el mensaje: ' . $e->getMessage());
+            }
+        }
 
         SWAL::message('Registro exitoso!','','success',['timer'=>5000]);
         $products = Products::all();

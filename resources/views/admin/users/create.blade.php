@@ -42,8 +42,11 @@
 							</div>
 							<div class="col-md-6 col-sm-12 form-group mb-4">
 								<label for="rol_id">Asignar rol</label>
-								<select name="rol_id" class="form-control custom-select{{ $errors->has('rol_id') ? ' is-invalid' : '' }}" id="roles">
-					            	<option></option>
+								<select name="rol_id" class="form-control custom-select{{ $errors->has('rol_id') ? ' is-invalid' : '' }}" id="roles" required>
+									<option value="" selected disabled>Seleccion un nivel de usuario</option>
+					            	@foreach ($roles as $item)
+										<option value="{{$item->id}}">{{$item->name}}</option>
+									@endforeach
 					            </select>
 					            @if ($errors->has('rol_id'))
 					           	<small class="form-text invalid-feedback">{{ $errors->first('rol_id') }}</small>
@@ -66,29 +69,5 @@
 
 @section('scripts')
 
-<script type="text/javascript">
-	$(document).ready(function () {
-        // inicializamos el plugin
-        $('#roles').select2({
-        	placeholder: "Seleccionar un rol",
-        	theme: "bootstrap",
-            ajax: {
-            	dataType: 'json',
-            	url: '{{ url("getroles") }}',
-            	delay: 250,
-            	data: function(params) {
-            		return {
-            			term: params.term
-            		}
-            	},
-            	processResults: function (data, page) {
-            		return {
-            			results: data
-            		};
-            	},
-            }
-        });
-    });
-</script>
 
 @endsection

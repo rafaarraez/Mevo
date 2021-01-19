@@ -336,20 +336,21 @@
                         <div class="img-frame">
                             <div class="contact-form p-5">
                                 <h3 class="mb-4">Contacto</h3>
-                                <form action="">
+                                <form action="/send-form" method="POST">
+                                    {{ csrf_field() }}
                                     <div class="mb-3">
                                         <label for="name" class="sr-only">Nombre</label>
-                                        <input type="email" class="form-control form-control-inverse" id="name" placeholder="Nombre">
+                                        <input type="text" name="name" class="form-control form-control-inverse" id="name" placeholder="Nombre">
                                     </div>
                                     <div class="mb-3">
                                         <label for="email" class="sr-only">Correo electrónico</label>
-                                        <input type="email" class="form-control form-control-inverse" id="email" placeholder="Correo electrónico">
+                                        <input type="email" name="email" class="form-control form-control-inverse" id="email" placeholder="Correo electrónico">
                                     </div>
                                     <div class="mb-3">
                                         <label for="message" class="sr-only">Mensaje</label>
-                                        <textarea name="" id="message" rows="4" class="form-control form-control-inverse" placeholder="Mensaje"></textarea>
+                                        <textarea name="message" id="message" rows="4" class="form-control form-control-inverse" placeholder="Mensaje"></textarea>
                                     </div>
-                                    <button type="button" class="btn btn-primary px-4">Enviar</button>
+                                    <button type="submit" class="btn btn-primary px-4">Enviar</button>
                                 </form>
                             </div>
                         </div>

@@ -6,8 +6,12 @@ use Illuminate\Support\Facades\Hash;
 use Softon\SweetAlert\Facades\SWAL;
 use Illuminate\Http\Request;
 use Auth;
+use Redirect;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NewUserAccount;
 use App\User;
 use App\Products;
+use App\Role;
 use App\UserProfile;
 use App\ReservationProducts;
 
@@ -44,13 +48,14 @@ class UserController extends Controller
      */
     public function create()
     {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $roles = Role::all();
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ*$-!';
         $charactersLength = strlen($characters);
         $randomString = '';
         for ($i = 0; $i < 10; $i++) {
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
-        return view('admin.users.create')->with(compact('randomString'));
+        return view('admin.users.create')->with(compact('randomString', 'roles'));
     }
 
     /**
@@ -61,18 +66,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        /*
-        *   Validacion del objeto request
-        */
-
-        /*dd($request);*/
-
-        // $validatedData = $request->validate([
-        //     'name' => ['required', 'string', 'max:255'],
-        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        //     'password' => ['required', 'string', 'min:8'],
-        //     'rol_id' => ['required'],
-        // ]);
 
         /*
         *   Registro de un usuario en la base de datos.
@@ -91,10 +84,17 @@ class UserController extends Controller
         $userProfile->status    = 1;
         $userProfile->save();
 
-        SWAL::message('Registro exitoso!','','success',['timer'=>5000]);
-
-        $usuarios = User::all();
-        return view('admin.users.index')->with(['usuarios' => $usuarios]);
+        $data = [
+            'name'     => $request->name,
+            'email'    => $request->email,
+            'password' => $request->password
+        ];
+        //return view('emails.email-new-user-account')->with(compact('data'));
+        
+        
+       Mail::to('rafa.arraez.gue@gmail.com')->queue(new NewUserAccount($data));
+       SWAL::message('Registro exitoso!','','success',['timer'=>5000]);
+       return Redirect::to('/admin/usuarios');;
     }
 
     /**
@@ -136,7 +136,6 @@ class UserController extends Controller
         $user = Auth::user()->id;
 
         $usuario = User::findOrFail($user);
-
 
         $userProfile = UserProfile::where('user_id', $user)->first();
         //var_dump($usuario);
@@ -200,10 +199,10 @@ class UserController extends Controller
         /*
         * Obtener el usuario
         */
-
-        $usuario = User::findOrFail($usuario);
-
-        return view('admin.users.edit')->with(['usuario'=>$usuario]);
+        $roles = Role::all();
+        $usuario = User::where('id', $usuario)->with('getRole')->first();
+        
+        return view('admin.users.edit')->with(compact('usuario', 'roles'));
     }
 
     /**
@@ -215,19 +214,6 @@ class UserController extends Controller
      */
     public function update(Request $request, $usuario)
     {
-        /*
-        *   Validacion del objeto request
-        */
-
-        /*dd($request);*/
-
-        // $validatedData = $request->validate([
-        //     'name' => ['required', 'string', 'max:255'],
-        //     'email' => ['required', 'string', 'email', 'max:255'],
-        //     'password' => [],
-        //     'rol_id' => ['required'],
-        // ]);
-
         /*
         *   Actualizacion de un usuario en la base de datos.
         */
