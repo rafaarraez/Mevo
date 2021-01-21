@@ -36,14 +36,14 @@
 						<div class="row">
 							<div class="col-md-6 col-sm-12 form-group mb-4">
 								<label for="sale_price">Precio de Venta:</label>
-								<input id="sale_price" class="form-control{{ $errors->has('sale_price') ? ' is-invalid' : '' }}" type="number" name="sale_price" placeholder="Ingrese precio de venta del producto ($)" value="{{ old('sale_price') }}" required>
+								<input id="sale_price" class="form-control{{ $errors->has('sale_price') ? ' is-invalid' : '' }}" type="number" step="0.01" name="sale_price" placeholder="Ingrese precio de venta del producto ($)" value="{{ old('sale_price') }}" required>
 								@if ($errors->has('sale_price'))
 				                <small class="form-text invalid-feedback">{{ $errors->first('sale_price') }}</small>
 				                @endif
 							</div>
 							<div class="col-md-6 col-sm-12 form-group mb-4">
 								<label for="reserve_price">Precio de Reserva:</label>
-								<input id="reserve_price" class="form-control{{ $errors->has('reserve_price') ? ' is-invalid' : '' }}" type="number" name="reserve_price" placeholder="Ingrese precio de reserva del producto ($)" value="{{ old('reserve_price') }}" required>
+								<input id="reserve_price" class="form-control{{ $errors->has('reserve_price') ? ' is-invalid' : '' }}" type="number" step="0.01" name="reserve_price" placeholder="Ingrese precio de reserva del producto ($)" value="{{ old('reserve_price') }}" required>
 								@if ($errors->has('reserve_price'))
 				                <small class="form-text invalid-feedback">{{ $errors->first('reserve_price') }}</small>
 				                @endif

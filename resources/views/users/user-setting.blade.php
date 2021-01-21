@@ -13,7 +13,7 @@
                     <!-- general info -->
                     <div class="mb-4">
                         <h5 class="text-secondary mb-3">Datos generales</h5>
-						<div class="alert alert-danger fw-bold mb-4">(*) Se recomienda actualizar su contraseña</div>
+						<div class="alert alert-danger fw-bold mb-4">(*) Por favor actualice su contraseña</div>
                         <div class="row">
 							<div class="col-md-6 col-sm-12 form-group mb-4">
 								<label for="name">Nombre y Apellido</label>
@@ -31,14 +31,14 @@
 							</div>
 							<div class="col-md-6 col-sm-12 form-group mb-4">
 								<label for="password">Nueva Contraseña <span class="text-danger">*</span></label>
-								<input id="password" value="{{ old('password') }}" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" type="text" name="password" required>
+								<input id="password" value="{{ old('password') }}" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" name="password" required>
 								@if ($errors->has('password'))
 				                <small class="form-text invalid-feedback">{{ $errors->first('password') }}</small>
 				                @endif
 							</div>
 							<div class="col-md-6 col-sm-12 form-group mb-4">
 								<label for="password_confirmation">Repetir Contraseña <span class="text-danger">*</span></label>
-								<input id="password_confirmation" value="{{ old('password_confirmation') }}" class="form-control{{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}" type="text" name="password_confirmation" required>
+								<input id="password_confirmation" value="{{ old('password_confirmation') }}" class="form-control{{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}" type="password" name="password_confirmation" required>
 								@if ($errors->has('password_confirmation'))
 				                <small class="form-text invalid-feedback">{{ $errors->first('password_confirmation') }}</small>
 				                @endif

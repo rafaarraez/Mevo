@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Softon\SweetAlert\Facades\SWAL;
 use Auth;
+use Redirect;
 use App\Products;
 use App\User;
 use App\ReservationProducts;
@@ -22,6 +23,7 @@ class ProductsController extends Controller
     {
 
         $products = Products::select('products.*', 'products.quantity AS cantidad_total')
+                                ->where('products.is_delete', false)
                                 ->selectRaw('SUM(CASE WHEN r.status != 4 THEN r.quantity ELSE 0 END ) AS total_reservado')
                                 ->selectRaw('(products.quantity - SUM(CASE WHEN r.status != 4 THEN r.quantity ELSE 0 END )) AS total_disponible')
                                 ->leftjoin('reservation_products AS r', 'r.product_id', '=', 'products.id')
@@ -251,7 +253,7 @@ class ProductsController extends Controller
 
         SWAL::message('Actualización exitosa!','','success',['timer'=>5000]);
 
-        return back();
+        return Redirect::to('/admin/products');
     }
 
     /**
@@ -272,6 +274,39 @@ class ProductsController extends Controller
         return redirect('products');
     }
 
+    public function hiddenProduct($id)
+    {
+
+        $product = Products::find($id);
+
+        $product->is_delete = true;
+
+        $product->save();
+
+        SWAL::message('Producto sacado de disponibilidad correctamente!','','success',['timer'=>5000]);
+
+        return Redirect::to('/admin/products');
+    }
+
+    public function detailsProduct($id){
+        $product = Products::find($id);
+        $actions_products = ReservationProducts::where('product_id', $id)->get();
+        
+        return view('admin.products.details')->with(compact('product', 'actions_products'));
+    }
+
+    public function getCanceledProducts(){
+            $products = Products::select('products.*', 'products.quantity AS cantidad_total')
+                ->where('products.is_delete', true)
+                ->selectRaw('SUM(CASE WHEN r.status != 4 THEN r.quantity ELSE 0 END ) AS total_reservado')
+                ->selectRaw('(products.quantity - SUM(CASE WHEN r.status != 4 THEN r.quantity ELSE 0 END )) AS total_disponible')
+                ->leftjoin('reservation_products AS r', 'r.product_id', '=', 'products.id')
+                ->groupBy('products.id')
+                ->get();
+
+        return view('admin.products.canceled_products')->with(['products' => $products]);
+    }
+
     public function reserveProduct(Request $request, $userId, $productId){
 
         $product = Products::find($productId);
@@ -290,7 +325,7 @@ class ProductsController extends Controller
             $reservationProduct->product_id = $product->id;
             $reservationProduct->quantity = $inputs['quantity'];
             $reservationProduct->pricing = $product->sale_price;
-            $reservationProduct->is_reserve = 1;
+            $reservationProduct->is_reserve = $inputs['is_reserve'];
 
             if(isset($inputs['delivery'])){
                 $reservationProduct->delivery = 1;

@@ -6,7 +6,10 @@
     <div class="card mb-4">
         <header class="card-header d-flex align-items-center">
             <i class="far fa-list-alt u-sidebar-nav-menu__item-icon"></i>
-            <h3 class="h3 card-header-title">Productos Reservadosaaa</h3>
+            <h3 class="h3 card-header-title">{{$product->name}}  </h3>
+            @if($product->is_delete === 1)
+                 <span class="badge bg-danger text-white rounded-pill">Cancelado</span>
+            @endif
         </header>
 
         <div class="card-body">
@@ -20,13 +23,13 @@
                             <th class="text-center" scope="col">Ubicaciónn de llegada</th>
                             <th class="text-center" scope="col">Fecha de reserva</th>
                             <th class="text-center" scope="col">Fecha de Llegada</th>
-                            <th class="text-center" scope="col">Cantidad Reservada</th>
+                            <th class="text-center" scope="col">Cantidad</th>
                             <th class="text-center" scope="col">Acciones</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        @foreach($reserves as $product)
+                        @foreach($actions_products as $product)
                         <tr>
                             <td class="text-center">{{ $product->id }}</td>
                             <td class="text-center">{{ $product->user->name }}</td>

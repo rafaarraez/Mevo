@@ -94,7 +94,7 @@ class UserController extends Controller
         
        Mail::to('rafa.arraez.gue@gmail.com')->queue(new NewUserAccount($data));
        SWAL::message('Registro exitoso!','','success',['timer'=>5000]);
-       return Redirect::to('/admin/usuarios');;
+       return Redirect::to('/admin/usuarios');
     }
 
     /**
@@ -260,6 +260,7 @@ class UserController extends Controller
             // var_dump($request);
 
             $products = Products::select('products.*', 'products.quantity AS cantidad_total')
+                                    ->where('products.is_delete', false)
                                     ->selectRaw('SUM(r.quantity) AS total_reservado')
                                     ->selectRaw('(products.quantity - SUM(r.quantity)) AS total_disponible')
                                     ->leftjoin('reservation_products AS r', 'r.product_id', '=', 'products.id')

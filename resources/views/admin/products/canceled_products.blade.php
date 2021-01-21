@@ -5,7 +5,7 @@
 <div class="card mb-4">
 	<header class="card-header d-flex align-items-center">
 		<i class="far fa-list-alt u-sidebar-nav-menu__item-icon"></i>
-		<h3 class="h3 card-header-title">Productos</h3>
+		<h3 class="h3 card-header-title">Productos Cancelados</h3>
 		<ul class="list-inline ml-auto mb-0">
 			<li class="list-inline-item">
 				<a class="link-muted h3" href="{{ route('products.create')}}" data-original-title="Nuevo Producto" data-toggle="tooltip" data-placement="left">
@@ -47,8 +47,8 @@
 						<td class="text-center">{{ $product->presentation }}</td>
 						<td class="text-center"><a href="{{ $product->coa }}" target="_blank">Archivo</a></td>
 						<td class="text-center"><a href="{{ $product->msds }}" target="_blank">Archivo</a></td>
-						<td class="text-center">{{ Carbon\Carbon::parse($product->deadline)->format('d/m/Y') }}</td>
-						<td class="text-center">{{ Carbon\Carbon::parse($product->arrival_to)->format('d/m/Y') }}</td>
+						<td class="text-center">¡CANCELADO!</td>
+						<td class="text-center">¡CANCELADO!</td>
 						<td class="text-center">{{ $product->quantity }}</td>
 						<td class="text-center">{{ $product->total_reservado === null ? 0 : $product->total_reservado }}</td>
 
@@ -57,40 +57,8 @@
 								<i class="fa fa-eye"></i>
 							</a>
 
-							
-							<a class="link-muted" href="{{ route('products.edit', ['id' => $product->id]) }}" title="Editar Producto" data-toggle="tooltip" data-placement="left">
-								<i class="fa fa-sliders-h"></i>
-							</a>
-
-							<a class="link-muted" href="#deletef-{{$product->id}}" title="Eliminar Producto" data-toggle="modal" data-dismiss="modal" data-backdrop="false">
-								<i class="fa fa-trash"></i>
-							</a> 
 						</td>
 					</tr>
-
-					<!-- Small Size -->
-					<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" id="deletef-{{$product->id}}">
-						<div class="modal-dialog modal-sm" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h3 class="modal-title" id="exampleModalLabel">¿Eliminar {{ $product->name }}?</h3>
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="modal-body">
-									Por favor confirme si esta seguro de eliminar.
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-									@isset( $product)
-										<a href="{{ route('product.hiddenProduct', ['id' => $product->id]) }}" class="btn btn-primary">Eliminar</a>
-									@endisset
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- End Small Size -->
 					@endforeach
 				</tbody>
 			</table>

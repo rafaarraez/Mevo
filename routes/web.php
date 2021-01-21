@@ -58,12 +58,15 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 	Route::get('getroles', 'SearchController@getroles')->name('getroles');
 
 	// Rotuas de productos
+	Route::get('/products/canceled/', 'ProductsController@getCanceledProducts')->name('products.canceled');
 	Route::get('/products', 'ProductsController@index')->name('products.index');
 	Route::get('/products/create', 'ProductsController@create')->name('products.create');
 	Route::post('/products', 'ProductsController@store')->name('products.store');
 	Route::get('/products/{id}/edit', 'ProductsController@edit')->name('products.edit');
 	Route::put('/products/{id}', 'ProductsController@update')->name('product.update');
-	Route::delete('/products/{id}', 'ProductsController@destroy')->name('product.destroy');
+	Route::get('/products/{id}', 'ProductsController@hiddenProduct')->name('product.hiddenProduct');
+	Route::get('/products/detail/{id}', 'ProductsController@detailsProduct')->name('products.details');
+	
 
 	//Reportes
 	Route::get('/reserveReports', 'ProductsController@allRerserves')->name('allreserves');

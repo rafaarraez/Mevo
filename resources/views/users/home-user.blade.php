@@ -158,6 +158,7 @@
                                 <div class="row">
                                     <div class="col-8">
                                         <div class="mb-4">
+                                            <input type="hidden" id="is_reserve" name="is_reserve" value="1">
                                             <input type="hidden" id="availible_quantity" name="availible_quantity" value="{{ $product->total_disponible == null ? $product->cantidad_total : $product->total_disponible }}">
                                             <label for="reserve_quantity-{{$product->id}}">Cantidad</label>
                                             <input type="number" id="reserve_quantity-{{$product->id}}" name="quantity" class="form-control" placeholder="Cantidad a reservar" min="1" max="{{ $product->total_disponible == null ? $product->cantidad_total : $product->total_disponible }}" value="1" autocomplete="off" required>
@@ -202,6 +203,7 @@
                                 <div class="row">
                                     <div class="col-8">
                                         <div class="mb-4">
+                                            <input type="hidden" id="is_reserve" name="is_reserve" value="0">
                                             <input type="hidden" id="availible_quantity" name="availible_quantity" value="{{ $product->total_disponible == null ? $product->cantidad_total : $product->total_disponible }}">
                                             <label for="reserve_quantity-{{$product->id}}">Cantidad</label>
                                             <input type="number" id="reserve_quantity-{{$product->id}}" name="quantity" class="form-control" placeholder="Cantidad a reservar" min="1" max="{{ $product->total_disponible == null ? $product->cantidad_total : $product->total_disponible }}" value="1" autocomplete="off" required>

@@ -252,13 +252,12 @@
 						  <ul id="baseUI" class="u-sidebar-nav-menu u-sidebar-nav-menu--second-level" style="display: none;">
 								<li class="u-sidebar-nav-menu__item">
 									 <a class="u-sidebar-nav-menu__link" href="{{ route('usuarios.create')}}">
-										  <span class="u-sidebar-nav-menu__item-icon">R</span>
+										  {{-- <span class="u-sidebar-nav-menu__item-icon">R</span> --}}
 										  <span class="u-sidebar-nav-menu__item-title">Registrar usuarios</span>
 									 </a>
 								</li>
 								<li class="u-sidebar-nav-menu__item">
 									 <a class="u-sidebar-nav-menu__link" href="{{ route('usuarios.index')}}">
-										  <span class="u-sidebar-nav-menu__item-icon">V</span>
 										  <span class="u-sidebar-nav-menu__item-title">Ver usuarios</span>
 									 </a>
 								</li>
@@ -280,16 +279,19 @@
 						  <ul id="productsDropDown" class="u-sidebar-nav-menu u-sidebar-nav-menu--second-level" style="display: none;">
 								<li class="u-sidebar-nav-menu__item">
 									 <a class="u-sidebar-nav-menu__link" href="{{ route('products.create') }}">
-										  <span class="u-sidebar-nav-menu__item-icon">P</span>
 										  <span class="u-sidebar-nav-menu__item-title">Registrar Productos</span>
 									 </a>
 								</li>
 								<li class="u-sidebar-nav-menu__item">
 									 <a class="u-sidebar-nav-menu__link" href="{{ route('products.index') }}">
-										  <span class="u-sidebar-nav-menu__item-icon">V</span>
 										  <span class="u-sidebar-nav-menu__item-title">Ver Productos</span>
 									 </a>
 								</li>
+								<li class="u-sidebar-nav-menu__item">
+									<a class="u-sidebar-nav-menu__link" href="{{ route('products.canceled') }}">
+										 <span class="u-sidebar-nav-menu__item-title">Ver Productos Cancelados</span>
+									</a>
+							   </li>
 						  </ul>
 					 </li>
 					 <!-- Final Productos  -->
@@ -308,13 +310,11 @@
 						  <ul id="reportsDropDown" class="u-sidebar-nav-menu u-sidebar-nav-menu--second-level" style="display: none;">
 								<li class="u-sidebar-nav-menu__item">
 									 <a class="u-sidebar-nav-menu__link" href="{{ route('allreserves') }}">
-										  <span class="u-sidebar-nav-menu__item-icon">R</span>
 										  <span class="u-sidebar-nav-menu__item-title">Reservas Realizadas</span>
 									 </a>
 								</li>
 								<li class="u-sidebar-nav-menu__item">
 									 <a class="u-sidebar-nav-menu__link" href="{{ route('products.reservationsPerDay') }}">
-										  <span class="u-sidebar-nav-menu__item-icon">V</span>
 										  <span class="u-sidebar-nav-menu__item-title">Reservas Por Dia</span>
 									 </a>
 								</li>

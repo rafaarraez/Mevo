@@ -28,6 +28,6 @@ class Products extends Model
      */
     public function reserve(): HasMany
     {
-        return $this->hasMany('App\ReservationProdutcs', 'id');
+        return $this->hasMany('App\ReservationProducts', 'id');
     }
 }
