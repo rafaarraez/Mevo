@@ -28,6 +28,6 @@ class NewProduct extends Mailable
      */
     public function build()
     {
-        return $this->subject('Nuevo producto en Mevo')->view('emails.new-product');
+        return $this->subject('Tenemos nuevos producto en Mevo')->view('emails.new-product');
     }
 }

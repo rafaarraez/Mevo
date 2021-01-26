@@ -12,6 +12,7 @@ use App\Products;
 use App\User;
 use App\ReservationProducts;
 use App\Mail\NewProduct;
+use App\Mail\NewReserve;
 class ProductsController extends Controller
 {
     /**
@@ -324,7 +325,6 @@ class ProductsController extends Controller
             $reservationProduct->user_id = $user->id;
             $reservationProduct->product_id = $product->id;
             $reservationProduct->quantity = $inputs['quantity'];
-            $reservationProduct->pricing = $product->sale_price;
             $reservationProduct->is_reserve = $inputs['is_reserve'];
 
             if(isset($inputs['delivery'])){
@@ -333,8 +333,22 @@ class ProductsController extends Controller
                 $reservationProduct->delivery = 0;
             }
 
+            if($inputs['is_reserve'] == 0){
+                $reservationProduct->pricing = $product->sale_price;
+            }else{
+                $reservationProduct->pricing = $product->reserve_price;
+            }
+
             $reservationProduct->save();
 
+            $data = [
+                'name' => $user->name,
+                'product_name' => $product->name,
+                'is_reserve' => $inputs['is_reserve'],
+                'quantity' => $inputs['quantity']
+            ];
+
+            Mail::to('rafa.arraez.gue@gmail.com')->queue(new NewReserve($data));
             SWAL::message('Reserva satifactoria','','success',['timer'=>5000]);
             return redirect()->back();
 

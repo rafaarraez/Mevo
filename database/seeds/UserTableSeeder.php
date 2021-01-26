@@ -34,8 +34,8 @@ class UserTableSeeder extends Seeder
         */
         $user = new User();
         $user->name = 'Admin';
-        $user->email = 'mevo@admin.com';
-        $user->password = bcrypt('@GMda50!15*01mKw');
+        $user->email = 'admin@conmevo.com';
+        $user->password = bcrypt('*Tanquesmevo2020.admin#');
         $user->save();
         $user->roles()->attach($role_admin);
     }

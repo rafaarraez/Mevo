@@ -141,8 +141,8 @@
                     </div>
                 </div>
             </article>
-
-             <!-- Reserve modal -->
+            
+            <!-- Reserve modal -->
             <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" id="reserve-{{$product->id}}">
                 <div class="modal-dialog modal-dialog-centered modal-md" role="document">
                     <div class="modal-content">

@@ -7,6 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>{{var_dump($data)}}</h2>
+    <h2>Hola, {{$data['name']}} te da dejado un mensaje</h2>
+    <p>Email: {{$data['email']}}</p>
+    <p>Mensaje: {{$data['message']}}</p>
+    <br/>
 </body>
 </html>

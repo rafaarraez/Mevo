@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ContactForm extends Mailable
+class NewReserve extends Mailable
 {
     use Queueable, SerializesModels;
     public $data;
@@ -28,6 +28,6 @@ class ContactForm extends Mailable
      */
     public function build()
     {
-        return $this->subject('Dejaron un mensaje en la caja de contacto')->view('emails.contact-form');
+        return $this->subject('Nuevo Pedido para procesar')->view('emails.new-reserve');
     }
 }
