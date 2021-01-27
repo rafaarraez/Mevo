@@ -8,8 +8,8 @@
 </head>
 <body>
     <h2>Hola, {{$data['name']}} te da dejado un mensaje</h2>
-    <p>Email: {{$data['email']}}</p>
-    <p>Mensaje: {{$data['message']}}</p>
+    <p><strong>Email:</strong> {{$data['email']}}</p>
+    <p><strong>Mensaje:</strong> {{$data['message']}}</p>
     <br/>
 </body>
 </html>

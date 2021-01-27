@@ -8,14 +8,14 @@
 </head>
 <body>
     <h2>¡Hola! Tenemos detalle de un nuevo pedido</h2>
-    <p>Nombre: {{$data['name']}}</p>
-    <p>Producto: {{$data['product_name']}}</p>
+    <p><strong>Nombre:</strong> {{$data['name']}}</p>
+    <p><strong>Producto:</strong> {{$data['product_name']}}</p>
     @if($data['is_reserve'] == 0)
-        <p>Tipo de pedido: Compra</p>
+        <p><strong>Tipo de pedido:</strong> Compra</p>
     @elseif($data['is_reserve'] == 1)
-        <p>Tipo de pedido: Reserva</p>
+        <p><strong>Tipo de pedido:</strong> Reserva</p>
     @endif
-    <p>Cantidad: {{$data['quantity']}} </p>
+    <p><strong>Cantidad:</strong> {{$data['quantity']}} </p>
     <br/>
     <p>Ingresa a <a href="conmevo.com">conmevo.com</a> para contactar al cliente lo antes posible</p>
 </body>

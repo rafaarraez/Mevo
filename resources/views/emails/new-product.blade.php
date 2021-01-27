@@ -9,11 +9,11 @@
 <body>
     <h2>Hola {{$data['name']}}</h2>
     <p>Hemos agregado un nuevo producto</p>
-    <p>Nombre: {{$data['product_name']}}</p>
-    <p>En la presentación: {{$data['presentation']}}</p>
-    <p>Cantidad: {{$data['quantity']}} </p>
-    <p>Desde: {{$data['origin']}}</p>
-    <p>Puerto de llegada: {{$data['arrival_location']}}</p>
+    <p><strong>Nombre:</strong> {{$data['product_name']}}</p>
+    <p><strong>En la presentación:</strong> {{$data['presentation']}}</p>
+    <p><strong>Cantidad:</strong> {{$data['quantity']}} </p>
+    <p><strong>Desde:</strong> {{$data['origin']}}</p>
+    <p><strong>Puerto de llegada:</strong> {{$data['arrival_location']}}</p>
     <br/>
     <p>Ingresa a <a href="conmevo.com">conmevo.com</a> para mas información!</p>
 </body>
