@@ -17,6 +17,6 @@
     @endif
     <p><strong>Cantidad:</strong> {{$data['quantity']}} </p>
     <br/>
-    <p>Ingresa a <a href="conmevo.com">conmevo.com</a> para contactar al cliente lo antes posible</p>
+    <p>Ingresa a <a href="conmevo.com" target="_blank">conmevo.com</a> para contactar al cliente lo antes posible</p>
 </body>
 </html>

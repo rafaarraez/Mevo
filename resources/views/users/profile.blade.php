@@ -121,7 +121,7 @@
                                                     @if($product->status === 1)
                                                     <span class="badge bg-warning rounded-pill me-2 mb-1">Esperando Confirmación</span>
                                                     @elseif($product->status === 2)
-                                                    <span class="badge bg-info rounded-pill me-2 mb-1">En Tránsito</span>
+                                                    <span class="badge bg-info rounded-pill me-2 mb-1">Aprobado/En Tránsito</span>
                                                     @elseif($product->status === 3)
                                                     <span class="badge bg-success rounded-pill me-2 mb-1">Entregado</span>
                                                     @elseif($product->status === 4)

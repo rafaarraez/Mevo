@@ -13,6 +13,6 @@
     <p><strong>Usuario:</strong> {{$data['email']}}</p>
     <p><strong>Contraseñá temporal:</strong> {{$data['password']}}</p>
     <br/>
-    <p>Inicia a <a href="conmevo.com">conmevo.com</a> inicia sesion, rellena el formulario, actualiza tu clave personal y disfrua de nuestro maravilloso servicio</p>
+    <p>Ingresa a <a href="conmevo.com" target="_blank">conmevo.com</a> inicia sesion, rellena el formulario, actualiza tu clave personal y disfrua de nuestro maravilloso servicio</p>
 </body>
 </html>

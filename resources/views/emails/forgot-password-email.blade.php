@@ -12,7 +12,7 @@
 
     <p><strong>Haz click en el boton de abajo</strong> para recuperar tu contraseña.</p>
 
-    <a href="{{$data['url']}}" class="btn-primary" style="text-decoration: none;color: white;display: inline-block;padding: 0.75rem 1rem;background-color: #2b8dc3;font-weight: 500;">Recuperar Contraseña</a>
+    <a href="{{$data['url']}}" target="_blank" class="btn-primary" style="text-decoration: none;color: white;display: inline-block;padding: 0.75rem 1rem;background-color: #2b8dc3;font-weight: 500;">Recuperar Contraseña</a>
     <p>O copia y pega el siguiente link en el navegador:<br><a href="{{$data['url']}}" style="text-decoration: none;color: #346bff;">{{$data['url']}}</a></p>
     <br/>
 </body>

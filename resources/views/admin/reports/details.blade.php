@@ -28,16 +28,18 @@
                             <div class="d-flex justify-content-between">
                                 <h2 class="text-secondary align-content-between font-weight-bold mb-4">Detalles del pedido:</h2>
                                 <div>
-                                    <form action="{{ URL::to('/change-status/' . $reserve->id ) }}" method="post">
-                                    @csrf
-                                        <select class="form-control" name="status">
-                                            <option {{ $reserve->status === 1 ? 'selected' : '' }} value="1">Esperando Confirmación</option>
-                                            <option {{ $reserve->status === 2 ? 'selected' : '' }} value="2">Concretado</option>
-                                            <option {{ $reserve->status === 3 ? 'selected' : '' }} value="3">En puerto</option>
-                                            <option {{ $reserve->status === 4 ? 'selected' : '' }} value="4">Cancelado</option>
-                                        </select>
-                                        <button type="submit" class="btn btn-success btn-block mb-3 font-weight-bold">Cambiar Estatus</button>
-                                    </form>
+                                    @if ($reserve->status !== 3)
+                                        <form action="{{ URL::to('admin/change-status/' . $reserve->id ) }}" method="post">
+                                        @csrf
+                                            <select class="form-control" name="status">
+                                                <option {{ $reserve->status === 1 ? 'selected' : '' }} value="1">Esperando Confirmación</option>
+                                                <option {{ $reserve->status === 2 ? 'selected' : '' }} value="2">Concretado</option>
+                                                <option {{ $reserve->status === 3 ? 'selected' : '' }} value="3">Entregado</option>
+                                                <option {{ $reserve->status === 4 ? 'selected' : '' }} value="4">Cancelado</option>
+                                            </select>
+                                            <button type="submit" class="btn btn-success btn-block mb-3 font-weight-bold">Cambiar Estatus</button>
+                                        </form>
+                                    @endif
                                 </div>
                             </div>
                             @for($i = 0; $i <= 0; $i++)
@@ -85,7 +87,7 @@
                                                             @if($reserve->status === 1)
                                                             <span class="badge bg-warning rounded-pill">Esperando Confirmación</span>
                                                             @elseif($reserve->status === 2)
-                                                            <span class="badge bg-success rounded-pill">En Tránsito</span>
+                                                            <span class="badge bg-success rounded-pill">Aprobado/En Tránsito</span>
                                                             @elseif($reserve->status === 3)
                                                             <span class="badge bg-success rounded-pill">Entregado</span>
                                                             @elseif($reserve->status === 4)

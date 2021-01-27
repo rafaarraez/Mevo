@@ -13,6 +13,7 @@ use App\User;
 use App\ReservationProducts;
 use App\Mail\NewProduct;
 use App\Mail\NewReserve;
+use App\Mail\changeStatusToOrders;
 class ProductsController extends Controller
 {
     /**
@@ -373,10 +374,19 @@ class ProductsController extends Controller
     }
 
     public function changeStatus(Request $request, $id){
-        $reserve = ReservationProducts::where('id', $id)->first();
+        $reserve = ReservationProducts::where('id', $id)->with('products','user')->first();
         $inputs = request()->all();
         $reserve->status = $inputs['status'];
         $reserve->save();
+
+        $data = [
+            'name' => $reserve->user->name,
+            'product_name' => $reserve->products->name,
+            'quantity' => $reserve->quantity,
+            'status' => $reserve->status
+        ];
+
+        Mail::to('rafa.arraez.gue@gmail.com')->send(new changeStatusToOrders($data));
         SWAL::message('Estado Actualizado','','success',['timer'=>5000]);
         return redirect()->back();
 

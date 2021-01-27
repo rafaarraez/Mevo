@@ -15,6 +15,6 @@
     <p><strong>Desde:</strong> {{$data['origin']}}</p>
     <p><strong>Puerto de llegada:</strong> {{$data['arrival_location']}}</p>
     <br/>
-    <p>Ingresa a <a href="conmevo.com">conmevo.com</a> para mas información!</p>
+    <p>Ingresa a <a href="conmevo.com" target="_blank">conmevo.com</a> para mas información!</p>
 </body>
 </html>
