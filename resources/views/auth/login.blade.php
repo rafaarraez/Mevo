@@ -85,7 +85,7 @@
                                         <label class="form-check-label text-light small mb-0" for="remember-me">Recordarme</label>
                                     </div>
                                     <div>
-                                        <a href="" class="text-light text-decoration-none small">¿Olvidó su contraseña?</a>
+                                        <a href="/forgotten-password" class="text-light text-decoration-none small">¿Olvidó su contraseña?</a>
                                     </div>
                                 </div>
 

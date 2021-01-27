@@ -20,8 +20,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/', 'StaticController@staticIndex')->name('landing');
-Route::post('/send-form', 'MessageController@sendContact');
+Route::post('/send-form', 'HelpersController@sendContact');
+Route::get('/forgotten-password', 'HelpersController@forgotPassword');
+Route::post('/forgot-password', 'HelpersController@postForgotPassword')->name('forgot-password');
 
+Route::get('/forgotten-password-form', 'HelpersController@getForgotPassword');
+Route::post('/forgot-password-form', 'HelpersController@postChangesForgotedPassword');
 /*
 * Grupo de rutas de usuarios
 */

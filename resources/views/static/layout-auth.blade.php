@@ -41,6 +41,8 @@
     @yield('content')
 
     <script src="{{ asset('js/app.js') }}" defer></script>
+    @include('sweetalert::cdn')
+    @include('sweetalert::view')
     @yield('scripts')
 
 </body>
