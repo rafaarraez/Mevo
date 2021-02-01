@@ -107,6 +107,6 @@ class User extends Authenticatable
 
     public function getRole(): HasOne
     {
-        return $this->hasOne('App\RoleUser', 'id');
+        return $this->hasOne('App\RoleUser', 'user_id');
     }
 }

@@ -136,15 +136,14 @@ class ProductsController extends Controller
             
             $correo = $item->email;
             try{
-                Mail::to('rafa.arraez.gue@gmail.com')->queue(new NewProduct($data));
+                Mail::to($correo)->queue(new NewProduct($data));
             }catch (\Exception $e) {
                 return back()->with('error' , 'Error al enviar el mensaje: ' . $e->getMessage());
             }
         }
 
         SWAL::message('Registro exitoso!','','success',['timer'=>5000]);
-        $products = Products::all();
-        return view('admin.products.index')->with(['products' => $products]);
+        return Redirect::to('/admin/products');
 
     }
 
@@ -349,7 +348,7 @@ class ProductsController extends Controller
                 'quantity' => $inputs['quantity']
             ];
 
-            Mail::to('rafa.arraez.gue@gmail.com')->queue(new NewReserve($data));
+            Mail::to('atencionalcliente@conmevo.com')->queue(new NewReserve($data));
             SWAL::message('Reserva satifactoria','','success',['timer'=>5000]);
             return redirect()->back();
 
@@ -386,7 +385,7 @@ class ProductsController extends Controller
             'status' => $reserve->status
         ];
 
-        Mail::to('rafa.arraez.gue@gmail.com')->send(new changeStatusToOrders($data));
+        Mail::to($reserve->user->email)->queue(new changeStatusToOrders($data));
         SWAL::message('Estado Actualizado','','success',['timer'=>5000]);
         return redirect()->back();
 

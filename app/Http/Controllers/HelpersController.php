@@ -17,7 +17,7 @@ class HelpersController extends Controller
 
         $data = request()->all();
     
-        Mail::to('rafa.arraez.gue@gmail.com')->send(new ContactForm($data));
+        Mail::to('atencionalcliente@conmevo.com')->queue(new ContactForm($data));
         
         return back();
     }
@@ -47,7 +47,7 @@ class HelpersController extends Controller
         ];
 
         SWAL::message('Se te ha enviado un correo de recuperación de contraseña.','','success',['timer'=>5000]);
-        Mail::to('rafa.arraez.gue@gmail.com')->send(new ForgotPasswordEmail($data));
+        Mail::to($user->email)->queue(new ForgotPasswordEmail($data));
         return Redirect::back()->with('success', 'Se ha enviado un correo de recuperación de contraseña.');
     }
 

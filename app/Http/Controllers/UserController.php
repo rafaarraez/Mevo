@@ -92,7 +92,7 @@ class UserController extends Controller
         //return view('emails.email-new-user-account')->with(compact('data'));
         
         
-       Mail::to('rafa.arraez.gue@gmail.com')->queue(new NewUserAccount($data));
+       Mail::to($request->email)->queue(new NewUserAccount($data));
        SWAL::message('Registro exitoso!','','success',['timer'=>5000]);
        return Redirect::to('/admin/usuarios');
     }
@@ -259,20 +259,9 @@ class UserController extends Controller
 
             // var_dump($request);
 
-            $products = Products::select('products.*', 'products.quantity AS cantidad_total')
-                                    ->where('products.is_delete', false)
-                                    ->selectRaw('SUM(r.quantity) AS total_reservado')
-                                    ->selectRaw('(products.quantity - SUM(r.quantity)) AS total_disponible')
-                                    ->leftjoin('reservation_products AS r', 'r.product_id', '=', 'products.id')
-                                    ->groupBy('products.id')
-                                    ->paginate(5);
-
-            SWAL::message('Perfil Actualizado','','c',['timer'=>5000]);
-
-            return view('users.home-user')->with(compact('products'));
-
+            SWAL::message('Perfil Actualizado','','sucecss',['timer'=>5000]);
+            return Redirect::to('/productos');
         }else{
-
             SWAL::message('Su contraseña no coinciden','','error',['timer'=>5000]);
             return back();
         }
