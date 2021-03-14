@@ -7,8 +7,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="keywords" content="Mevo">
-    <meta name="description" content="Mevo">
+    <meta name="description" content="Nuestra empresa no ofrece solo materias primas, ofrecemos energía química que usted transforma."/>
+    <meta name="keywords" content="quimicos, valencia, venezuela, caracas, venezuela, quimicos venezuela, materia prima, quimicos prima, entrega quimicos"/>
+    <meta name="robots" content="index"/>
+    <meta http-equiv=”Content-Language” content=”es”/>
+    <meta name=”distribution” content=”global”/>
+    <meta property="og:title" content="Mevo" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="http://conmevo.com/" />
+    <meta property="og:image" content="{{ asset('img/icon/apple-icon-180x180.png') }}" />
+    <meta property="og:description" content="Nuestra empresa no ofrece solo materias primas, ofrecemos energía química que usted transforma." />
     <link rel="apple-touch-icon" sizes="57x57" href="./img/icon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="./img/icon/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="./img/icon/apple-icon-72x72.png">
