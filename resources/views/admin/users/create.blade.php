@@ -56,6 +56,7 @@
 						<hr>
 						<div class="demo-btn-space">
 							<button type="submit" class="btn btn-primary">Registrar</button>
+							<a class="btn btn-secondary" href="{{ route('usuarios.index') }}">Salir</a>
 						</div>
 					</div>
 				</div>

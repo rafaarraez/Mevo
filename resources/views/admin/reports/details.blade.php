@@ -59,7 +59,7 @@
                                                             <h6 class="font-weight-bold lh-1 h5">{{ $reserve->products->name }}</h6>
                                                             <p class="text-muted fs-md lh-1 mb-0">{{ $reserve->products->synonymous }}</p>
                                                             <p class="text-muted fs-md lh-1 mt-1 mb-0">Cantidad: {{ $reserve->quantity }}</p>
-                                                            <p class="text-muted fs-md lh-1 mt-1 mb-0">Precio Individuak: ${{ $reserve->pricing }} USD</p>
+                                                            <p class="text-muted fs-md lh-1 mt-1 mb-0">Precio individual: ${{ $reserve->pricing }} USD</p>
                                                             <p class="text-muted fs-md lh-1 mt-1 mb-0">Total a cancelar: ${{ $reserve->pricing*$reserve->quantity  }} USD</p>
                                                             @if($reserve->delivery) 
                                                                 <p class="text-muted fs-md lh-1 mt-1 mb-0">Se pidio servicio de entrega</p>
@@ -76,9 +76,9 @@
                                                         <div class="font-weight-bold mr-3 h5 mb-0"></div>
                                                         <div>
                                                             @if($reserve->is_reserve === 0)
-                                                            <span class="badge bg-warning rounded-pill">Compra</span>
+                                                            <span class="badge bg-success rounded-pill me-2 mb-1">Compra</span>
                                                             @elseif($reserve->is_reserve === 1)
-                                                            <span class="badge bg-success rounded-pill">Reserva</span>
+                                                            <span class="badge bg-dark rounded-pill text-white me-2 mb-1">Reserva</span>
                                                             @endif
                                                         </div>
                                                         

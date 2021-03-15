@@ -153,7 +153,7 @@
                 console.log(info);
                 
                 $.ajax({
-                    url: "/get-charts",
+                    url: "/admin/get-charts",
                     method: "POST",
                     data: {
                         _token: $('input[name="_token"]').val(),

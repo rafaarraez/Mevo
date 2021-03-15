@@ -13,7 +13,7 @@
 			<div class="card">
 				<header class="card-header d-flex align-items-center">
 					<i class="far fa-user-circle u-sidebar-nav-menu__item-icon"></i>
-					<h2 class="h3 card-header-title">Registrar usuario</h2>
+					<h2 class="h3 card-header-title">Actualizar usuario</h2>
 				</header>
 
 				<div class="card-body">
@@ -58,7 +58,8 @@
 						</div>
 						<hr>
 						<div class="demo-btn-space">
-							<button type="submit" class="btn btn-primary">Registrar</button>
+							<button type="submit" class="btn btn-primary">Actualizar</button>
+							<a class="btn btn-secondary" href="{{ route('usuarios.index') }}">Salir</a>
 						</div>
 					</div>
 				</div>
