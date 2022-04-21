@@ -217,3 +217,26 @@ svg#hero-logo-svg
     100%
         transform: scale(1)
         opacity: 1
+
+.section-side-img
+    position: relative
+    aspect-ratio: 4/3
+    height: 100%
+    max-width: 100%
+    overflow: hidden
+    > img
+        +square(100%)
+        object-fit: cover
+        user-select: none
+        transition: all .7s ease-in-out
+    &:before
+        content: ''
+        +absolute(0, 0, 0, 0)
+        background-color: rgba($body-color, .5)
+        transition: all .2s ease-in-out
+        z-index: 10
+    &:hover
+        > img
+            transform: scale(1.1)
+        &:before
+            background-color: rgba($body-color, 0)

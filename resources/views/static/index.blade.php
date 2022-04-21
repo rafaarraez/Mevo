@@ -274,7 +274,7 @@
             </div>
         </section>
 
-        <section class="bg-blue-landing position-relative py-7 py-xl-9">
+        {{-- <section class="bg-blue-landing position-relative py-7 py-xl-9">
             <div class="container">
 
                 <div class="section-name-wrapper">
@@ -310,6 +310,41 @@
 
                 <div class="text-center">
                     <a href="" class="btn btn-primary px-4">Comenzar</a>
+                </div>
+            </div>
+        </section> --}}
+
+        <section class="bg-blue-landing position-relative">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 px-0">
+                        <div class="text-center py-5 px-4 px-xl-7">
+                            <h1 class="section-title lh-1 display-2">Primera plataforma de compra de<br><span class="text-secondary" style="font-size: 130%">materias primas</span></h1>
+                            {{-- <p class="section-desc mb-0">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis accusantium ex adipisci commodi. Tenetur, est!</p> --}}
+                        </div>
+                    </div>
+                    <div class="col-lg-6 px-0">
+                        <div class="section-side-img">
+                            <img class="img-fluid" src="{{ asset('img/assets/photo_s8dffsf.jpg') }}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="bg-blue-landing position-relative">
+            <div class="container-fluid">
+                <div class="row flex-column-reverse flex-md-row align-items-center">
+                    <div class="col-lg-6 px-0">
+                        <div class="section-side-img">
+                            <img class="img-fluid" src="{{ asset('img/assets/photo_gs8f7e.jpg') }}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 px-0">
+                        <div class="text-center py-5 px-4 px-xl-7">
+                            <h1 class="section-title lh-1 display-2"><span class="text-secondary" style="font-size: 130%">Acceso 24/7</span><br> a tus pedidos</h1>
+                            {{-- <p class="section-desc mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt numquam officia nesciunt nostrum voluptates? Tenetur dolor sit quam consequatur recusandae.</p> --}}
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
