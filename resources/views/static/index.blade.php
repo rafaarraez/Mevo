@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="Nuestra empresa no ofrece solo materias primas, ofrecemos energía química que usted transforma."/>
-    <meta name="keywords" content="quimicos, valencia, venezuela, caracas, venezuela, quimicos venezuela, materia prima, quimicos prima, entrega quimicos"/>
-    <meta name="robots" content="index"/>
-    <meta http-equiv=”Content-Language” content=”es”/>
-    <meta name=”distribution” content=”global”/>
+    <meta name="description" content="Nuestra empresa no ofrece solo materias primas, ofrecemos energía química que usted transforma." />
+    <meta name="keywords" content="quimicos, valencia, venezuela, caracas, venezuela, quimicos venezuela, materia prima, quimicos prima, entrega quimicos" />
+    <meta name="robots" content="index" />
+    <meta http-equiv=”Content-Language” content=”es” />
+    <meta name=”distribution” content=”global” />
     <meta property="og:title" content="Mevo" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="http://conmevo.com/" />
@@ -26,7 +27,7 @@
     <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('img/icon/apple-icon-144x144.png') }}">
     <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('img/icon/apple-icon-152x152.png') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/icon/apple-icon-180x180.png') }}">
-    <link rel="icon" type="image/png" sizes="192x192"  href="{{ asset('img/icon/android-icon-192x192.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('img/icon/android-icon-192x192.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('img/icon/favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('img/icon/favicon-96x96.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('img/icon/favicon-16x16.png') }}">
@@ -43,7 +44,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-	<!-- App Styles -->
+    <!-- App Styles -->
     <link rel="stylesheet" href="{{ asset('font-awesome/css/all.min.css')}}">
     <link rel="stylesheet" href="{{ asset('css/app.css')}}">
 
@@ -52,6 +53,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 </head>
+
 <body class="landing-body">
 
     <section class="landing-hero bg-image-cover" style="background-image: url('{{ asset('img/assets/photo_wf8df4ds.jpg') }}')">
@@ -61,8 +63,8 @@
             <div class="container-fluid">
                 <a href="/login" class="btn btn-blue-landing btn-sm px-4">
                     <svg class="me-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
-                        <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                        <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z" />
+                        <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
                     </svg> Ingresar
                 </a>
             </div>
@@ -80,7 +82,7 @@
                             <path class="e" d="M138.957 3.99451H246.924V19.9726H138.957V3.99451Z" fill="#2B8DC4" stroke-width="1" stroke="#2B8DC4" />
                             <path class="e" d="M138.957 61.9151H246.924V77.8932H138.957V61.9151Z" fill="#2B8DC4" stroke-width="1" stroke="#2B8DC4" />
                             <path class="e" d="M246.924 117.838H138.957V133.817H246.924V117.838Z" fill="#2B8DC4" stroke-width="1" stroke="#2B8DC4" />
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M415.372 140.807C454.296 140.807 485.85 109.286 485.85 70.4035C485.85 31.5207 454.296 0 415.372 0C376.448 0 344.893 31.5207 344.893 70.4035C344.893 109.286 376.448 140.807 415.372 140.807ZM415.372 123.83C436.865 123.83 445.862 99.9103 445.862 70.4035C445.862 40.8967 437.365 16.9767 415.372 16.9767C393.378 16.9767 384.881 40.8967 384.881 70.4035C384.881 99.9103 393.878 123.83 415.372 123.83Z"  stroke-width="1" stroke="white" />
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M415.372 140.807C454.296 140.807 485.85 109.286 485.85 70.4035C485.85 31.5207 454.296 0 415.372 0C376.448 0 344.893 31.5207 344.893 70.4035C344.893 109.286 376.448 140.807 415.372 140.807ZM415.372 123.83C436.865 123.83 445.862 99.9103 445.862 70.4035C445.862 40.8967 437.365 16.9767 415.372 16.9767C393.378 16.9767 384.881 40.8967 384.881 70.4035C384.881 99.9103 393.878 123.83 415.372 123.83Z" stroke-width="1" stroke="white" />
                             <path d="M3.249 170.766H0.999695V153.727H3.249V170.766Z" fill="white" stroke-width="1" stroke="white" />
                             <path d="M59.8298 170.766H57.5688L48.9816 157.636V170.766H46.7206V153.727H48.9816L57.5922 166.916V153.727H59.8298V170.766Z" fill="white" stroke-width="1" stroke="white" />
                             <path d="M103.173 170.766V153.727H107.987C109.471 153.727 110.783 154.055 111.924 154.71C113.064 155.365 113.943 156.298 114.56 157.507C115.184 158.716 115.501 160.105 115.509 161.673V162.761C115.509 164.369 115.196 165.777 114.571 166.986C113.954 168.195 113.068 169.124 111.912 169.771C110.764 170.419 109.424 170.75 107.894 170.766H103.173ZM105.422 155.576V168.929H107.788C109.522 168.929 110.869 168.39 111.83 167.314C112.798 166.237 113.283 164.704 113.283 162.715V161.72C113.283 159.785 112.826 158.283 111.912 157.214C111.006 156.138 109.717 155.591 108.046 155.576H105.422Z" fill="white" stroke-width="1" stroke="white" />
@@ -98,7 +100,7 @@
         </div>
 
         <div class="hero-sublogo">
-            <h4 class="text-uppercase">Aportamos la energía que transformas</h4>
+            <h4 class="text-uppercase">Con nosotros y con tu empresa</h4>
             <ul class="list-inline social-links-list mt-4">
                 <li class="list-inline-item">
                     <a href="" class="text-light">
@@ -150,38 +152,40 @@
                 <!-- mobile menu -->
                 <ul class="navbar-nav align-items-center flex-row d-md-none ms-auto">
                     @if (Auth::check())
-                        <li class="nav-item d-md-none dropdown">
-                            <a href="#" class="nav-link text-uppercase fs-md" id="mobile-profile-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <?php $first_name = explode(" ", Auth::user()->name); ?>
-                                {{ $first_name[0] }}<small class="fa fa-angle-down ms-2"></small>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end position-absolute" aria-labelledby="mobile-profile-dropdown">
-                                <div style="min-width: 200px"></div>
-                                <div><h6 class="dropdown-header">{{ Auth::user()->name }}</h6></div>
-                                @if(Auth::user()->hasRole('admin'))
-                                    <a class="dropdown-item py-2" href="{{ route('home') }}">
-                                        <i class="fas fa-desktop text-muted me-2"></i>Panel de Admin
-                                    </a>
-                                @else
-                                <a class="dropdown-item py-2" href="{{ route('user.profile') }}">
-                                    <i class="fas fa-history text-muted me-2"></i>Mis pedidos
-                                </a>
-                                <a class="dropdown-item py-2" href="{{ route('user.profile.edit') }}">
-                                    <i class="far fa-user-circle text-muted me-2"></i>Editar perfil
-                                </a>
-                                @endif
-                                <a class="dropdown-item py-2" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form-mobile').submit();">
-                                    <i class="far fa-share-square text-muted me-2"></i>Salir
-                                </a>
-                                <form id="logout-form-mobile" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
+                    <li class="nav-item d-md-none dropdown">
+                        <a href="#" class="nav-link text-uppercase fs-md" id="mobile-profile-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <?php $first_name = explode(" ", Auth::user()->name); ?>
+                            {{ $first_name[0] }}<small class="fa fa-angle-down ms-2"></small>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end position-absolute" aria-labelledby="mobile-profile-dropdown">
+                            <div style="min-width: 200px"></div>
+                            <div>
+                                <h6 class="dropdown-header">{{ Auth::user()->name }}</h6>
                             </div>
-                        </li>
+                            @if(Auth::user()->hasRole('admin'))
+                            <a class="dropdown-item py-2" href="{{ route('home') }}">
+                                <i class="fas fa-desktop text-muted me-2"></i>Panel de Admin
+                            </a>
+                            @else
+                            <a class="dropdown-item py-2" href="{{ route('user.profile') }}">
+                                <i class="fas fa-history text-muted me-2"></i>Mis pedidos
+                            </a>
+                            <a class="dropdown-item py-2" href="{{ route('user.profile.edit') }}">
+                                <i class="far fa-user-circle text-muted me-2"></i>Editar perfil
+                            </a>
+                            @endif
+                            <a class="dropdown-item py-2" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form-mobile').submit();">
+                                <i class="far fa-share-square text-muted me-2"></i>Salir
+                            </a>
+                            <form id="logout-form-mobile" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
                     @else
-                        <li class="nav-item">
-                            <a href="/login" class="btn btn-primary btn-sm">Ingresar</a>
-                        </li>
+                    <li class="nav-item">
+                        <a href="/login" class="btn btn-primary btn-sm">Ingresar</a>
+                    </li>
                     @endif
                 </ul>
 
@@ -192,11 +196,11 @@
                             <a class="nav-link text-center text-lg-left text-uppercase fs-md" href="{{ route('landing') }}">Home</a>
                         </li>
                         @if(Auth::check())
-                            @if(!Auth::user()->hasRole('admin'))
-                            <li class="nav-item">
-                                <a class="nav-link text-center text-lg-left text-uppercase fs-md" href="{{ route('user.products') }}">Productos</a>
-                            </li>
-                            @endif
+                        @if(!Auth::user()->hasRole('admin'))
+                        <li class="nav-item">
+                            <a class="nav-link text-center text-lg-left text-uppercase fs-md" href="{{ route('user.products') }}">Productos</a>
+                        </li>
+                        @endif
                         @endif
                     </ul>
                     <ul class="navbar-nav align-items-center d-none d-md-flex ms-auto">
@@ -219,11 +223,13 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-end position-absolute" aria-labelledby="profile-dropdown">
                                 <div style="min-width: 200px"></div>
-                                <div><h6 class="dropdown-header">{{ Auth::user()->name }}</h6></div>
+                                <div>
+                                    <h6 class="dropdown-header">{{ Auth::user()->name }}</h6>
+                                </div>
                                 @if(Auth::user()->hasRole('admin'))
-                                    <a class="dropdown-item py-2" href="{{ route('home') }}">
-                                        <i class="fas fa-desktop text-muted me-2"></i>Panel de Admin
-                                    </a>
+                                <a class="dropdown-item py-2" href="{{ route('home') }}">
+                                    <i class="fas fa-desktop text-muted me-2"></i>Panel de Admin
+                                </a>
                                 @else
                                 <a class="dropdown-item py-2" href="{{ route('user.profile') }}">
                                     <i class="fas fa-history text-muted me-2"></i>Mis pedidos
@@ -244,8 +250,8 @@
                         <li class="nav-item">
                             <a href="/login" class="btn btn-blue-landing btn-sm">
                                 <svg class="me-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
-                                    <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                                    <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z" />
+                                    <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
                                 </svg> Ingresar
                             </a>
                         </li>
@@ -261,7 +267,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-5">
-                        <h1 class="section-title lh-1 display-3 mb-4">Convierte<br> <span class="text-blue-landing" style="font-size: 130%">Energía Química</span><br> en grandes productos</h1>
+                        <h1 class="section-title lh-1 display-3 mb-4">Aqui y ahora <br> <span class="text-blue-landing" style="font-size: 130%">Energía Química</span><br> a tu alcance</h1>
                         <p class="section-desc mb-4">Nuestra empresa no ofrece solo materias primas, ofrecemos energía química que usted transforma.</p>
                         <a href="" class="btn btn-primary px-4">Registrarse</a>
                     </div>
@@ -319,7 +325,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6 px-0">
                         <div class="text-center py-5 px-4 px-xl-7">
-                            <h1 class="section-title lh-1 display-2">Primera plataforma de compra de<br><span class="text-secondary" style="font-size: 130%">materias primas</span></h1>
+                            <h1 class="section-title lh-1 display-2">Primera plataforma de economia colaborativa <br><span class="text-secondary" style="font-size: 130%"> para materias primas</span></h1>
                             {{-- <p class="section-desc mb-0">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis accusantium ex adipisci commodi. Tenetur, est!</p> --}}
                         </div>
                     </div>
@@ -336,7 +342,7 @@
                 <div class="row flex-column-reverse flex-md-row align-items-center">
                     <div class="col-lg-6 px-0">
                         <div class="section-side-img">
-                            <img class="img-fluid" src="{{ asset('img/assets/photo_gs8f7e.jpg') }}" alt="">
+                            <img class="img-fluid" src="{{ asset('img/assets/como-almacenar-productos-quimicos-seguridad.jpg') }}" alt="">
                         </div>
                     </div>
                     <div class="col-lg-6 px-0">
@@ -359,7 +365,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-xl-7 col-xxl-6">
                         <h2 class="section-title text-blue-landing text-uppercase">Acerca de nosotros</h2>
-                        <p class="mb-5">En Mevo Industrial, trabajamos día a día desarrollando nuevas alianzas con todos nuestros proveedores estratégicos alrededor del mundo; así como también, implementamos estrategias con nuestros clientes para mejorar su cadena de suministro así como también sus indicadores internos, tanto financieros como logísticos. </p>
+                        <p class="mb-5">En Mevo Industrial, trabajamos día a día desarrollando nuevas alianzas con todos nuestros proveedores estratégicos alrededor del mundo; así como también, implementamos estrategias con nuestros clientes para mejorar su cadena de suministro y sus indicadores internos, tanto financieros como logísticos. </p>
                         <h2 class="section-title text-blue-landing text-uppercase">Cómo lo hacemos</h2>
                         <p>Sumamos estrategias comerciales y tecnológicas. Para reducir los costos y, mejorar su eficiencia y trazabilidad.</p>
                         <p>Nuestra empresa no ofrece solo materias primas, ofrecemos energía química que usted transforma.</p>
@@ -373,7 +379,7 @@
                 <div class="row align-items-lg-center">
                     <div class="col-lg-6 col-xl-5 offset-xl-1">
                         <h1 class="section-title lh-1 display-3">Déjanos un <br><span class="text-blue-landing" style="font-size: 150%">mensaje</span></h1>
-                        <p class="h5">Estaríamos encantados en ayudarte en lo que necesites.</p>
+                        <p class="h5">Nuestro equipo especializado estará encanado de poder ayudarte.</p>
                     </div>
                     <div class="col-lg-6 col-xl-4 offset-xl-1">
                         <div class="img-frame">
@@ -431,4 +437,5 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
 </body>
+
 </html>

@@ -54,7 +54,7 @@
                     <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
                         <div class="text-center mb-4 mb-md-5">
                             <a href="/" class="d-inline-block">
-                                <img src="{{ asset('img/logo/LogoMEVOblanco2.png') }}" class="img-fluid" title="Ir al Inicio" alt="MEVO Logo" style="max-height: 5rem">
+                                <img src="{{ asset('img/logo/logo-light.svg') }}" class="img-fluid" title="Ir al Inicio" alt="MEVO Logo" style="max-height: 5rem; width: 100%; height: 100%;">
                             </a>
                         </div>
 
@@ -89,7 +89,7 @@
                                     </div>
                                 </div>
 
-                                <button class="btn btn-primary btn-block" type="submit">Iniciar sesión</button>
+                                <button class="btn btn-blue-landing btn-block" type="submit">Iniciar sesión</button>
                             </form>
                             <!-- <div class="small mt-4 font-sm">
                                 ¿No tienes cuenta? <a href="/static/signup" class="text-light">Crear cuenta</a>
