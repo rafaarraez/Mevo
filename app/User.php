@@ -2,6 +2,7 @@
 
 namespace App;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -35,6 +36,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'verification_token_expires_at' => 'datetime',
     ];
 
     /*
@@ -97,12 +99,12 @@ class User extends Authenticatable
 
     public function products(): HasMany
     {
-        return $this->hasMany('App\ReservationProdutcs', 'id');
+        return $this->hasMany('App\ReservationProducts', 'user_id');
     }
-    
+
     public function personProfile(): HasOne
     {
-        return $this->hasOne('App\UserProfile', 'id');
+        return $this->hasOne('App\UserProfile', 'user_id');
     }
 
     public function getRole(): HasOne

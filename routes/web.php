@@ -13,19 +13,15 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return redirect('/login');
-})->middleware('guest');
-
 Auth::routes();
 
 Route::get('/', 'StaticController@staticIndex')->name('landing');
-Route::post('/send-form', 'HelpersController@sendContact');
+Route::post('/send-form', 'HelpersController@sendContact')->middleware('throttle:6,1');
 Route::get('/forgotten-password', 'HelpersController@forgotPassword');
-Route::post('/forgot-password', 'HelpersController@postForgotPassword')->name('forgot-password');
+Route::post('/forgot-password', 'HelpersController@postForgotPassword')->name('forgot-password')->middleware('throttle:6,1');
 
 Route::get('/forgotten-password-form', 'HelpersController@getForgotPassword');
-Route::post('/forgot-password-form', 'HelpersController@postChangesForgotedPassword');
+Route::post('/forgot-password-form', 'HelpersController@postChangesForgotedPassword')->middleware('throttle:6,1');
 /*
 * Grupo de rutas de usuarios
 */
@@ -61,7 +57,6 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 	Route::get('/usuario/{usuario}', 'UserController@show')->name('usuarios.show');
 	Route::put('/usuarios/{usuario}', 'UserController@update')->name('usuarios.update');
 	Route::delete('/usuarios/{usuario}', 'UserController@destroy')->name('usuarios.destroy');
-	Route::post('/usuarios/{usuario}/update', 'UserController@UpdateUser');
 	Route::get('getroles', 'SearchController@getroles')->name('getroles');
 
 	// Rotuas de productos

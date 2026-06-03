@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Products extends Model
 {
@@ -28,6 +29,6 @@ class Products extends Model
      */
     public function reserve(): HasMany
     {
-        return $this->hasMany('App\ReservationProducts', 'id');
+        return $this->hasMany('App\ReservationProducts', 'product_id');
     }
 }

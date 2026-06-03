@@ -9,6 +9,7 @@ use Auth;
 use Redirect;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NewUserAccount;
+use App\Rules\ValidEmail;
 use App\User;
 use App\Products;
 use App\Role;
@@ -68,7 +69,7 @@ class UserController extends Controller
     {
         $request->validate([
             'name'     => 'required|string|max:255',
-            'email'    => 'required|email|max:255|unique:users,email',
+            'email'    => ['required', 'max:255', new ValidEmail, 'unique:users,email'],
             'password' => 'required|string|min:8',
             'rol_id'   => 'required|exists:roles,id',
         ]);
@@ -222,6 +223,13 @@ class UserController extends Controller
      */
     public function update(Request $request, $usuario)
     {
+        $request->validate([
+            'name'     => 'required|string|max:255',
+            'email'    => ['required', 'max:255', new ValidEmail, 'unique:users,email,'.$usuario],
+            'rol_id'   => 'required|exists:roles,id',
+            'password' => 'nullable|string|min:8',
+        ]);
+
         /*
         *   Actualizacion de un usuario en la base de datos.
         */
@@ -229,7 +237,10 @@ class UserController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = Hash::make($request->password);
+        // Solo actualiza la contraseña si se ingresó una nueva (antes la dejaba en blanco).
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
 
         $user->save();
 

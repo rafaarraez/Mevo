@@ -79,7 +79,12 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate($this->fileValidationRules());
+        $request->validate(array_merge($this->fileValidationRules(), [
+            'name'          => 'required|string|max:255',
+            'reserve_price' => 'required|numeric|min:0',
+            'sale_price'    => 'required|numeric|min:0',
+            'quantity'      => 'required|numeric|min:0',
+        ]));
 
         $product = new Products();
         $inputs = request()->all();
@@ -167,7 +172,12 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate($this->fileValidationRules());
+        $request->validate(array_merge($this->fileValidationRules(), [
+            'name'          => 'required|string|max:255',
+            'reserve_price' => 'required|numeric|min:0',
+            'sale_price'    => 'required|numeric|min:0',
+            'quantity'      => 'required|numeric|min:0',
+        ]));
 
         $product = Products::findOrFail($id);
 
@@ -256,6 +266,11 @@ class ProductsController extends Controller
 
     public function reserveProduct(Request $request, $userId, $productId){
 
+        $request->validate([
+            'quantity'   => 'required|numeric|min:1',
+            'is_reserve' => 'required|in:0,1',
+        ]);
+
         $product = Products::find($productId);
         // Seguridad: la reserva siempre es a nombre del usuario autenticado (se ignora el {user} de la URL).
         $user = Auth::user();
@@ -320,6 +335,8 @@ class ProductsController extends Controller
     }
 
     public function changeStatus(Request $request, $id){
+        $request->validate(['status' => 'required|in:1,2,3,4']);
+
         $reserve = ReservationProducts::where('id', $id)->with('products','user')->first();
         $inputs = request()->all();
         $reserve->status = $inputs['status'];
