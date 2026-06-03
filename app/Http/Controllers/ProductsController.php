@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
 use Softon\SweetAlert\Facades\SWAL;
 use Auth;
@@ -16,6 +17,31 @@ use App\Mail\NewReserve;
 use App\Mail\changeStatusToOrders;
 class ProductsController extends Controller
 {
+    /**
+     * Reglas de validación para los archivos subidos de un producto.
+     * Restringe tipo y tamaño para impedir subir ejecutables (.php, etc.).
+     */
+    private function fileValidationRules()
+    {
+        return [
+            'img'  => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4096',
+            'coa'  => 'nullable|mimes:pdf,jpg,jpeg,png|max:8192',
+            'msds' => 'nullable|mimes:pdf,jpg,jpeg,png|max:8192',
+        ];
+    }
+
+    /**
+     * Guarda un archivo subido con nombre ALEATORIO (no predecible ni
+     * sobrescribible) dentro de public/img/files/<subdir>/ y devuelve su ruta pública.
+     */
+    private function storeUploadedFile($file, $subdir)
+    {
+        $file_name = Str::random(40) . '.' . $file->getClientOriginalExtension();
+        $file->move(base_path() . '/public/img/files/' . $subdir . '/', $file_name);
+
+        return '/img/files/' . $subdir . '/' . $file_name;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -53,68 +79,29 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate($this->fileValidationRules());
+
         $product = new Products();
         $inputs = request()->all();
 
         $product->name              = $inputs['name'];
         $product->synonymous        = $inputs['synonymous'];
-        $product->coa               = $inputs['coa'];
-        $product->msds              = $inputs['msds'];
         $product->arrival_location  = $inputs['arrival_location'];
         $product->origin_product    = $inputs['origin_product'];
         $product->presentation      = $inputs['presentation'];
         $product->reserve_price     = $inputs['reserve_price'];
         $product->sale_price        = $inputs['sale_price'];
 
-        if (isset($inputs['img'])) {
-            $file_name = strtolower(str_replace(
-                ' ',
-                '',
-                $inputs['img']->getClientOriginalName()
-            ));
-            $file_name = preg_replace('/[^A-Za-z0-9 _ .-]/', '', $file_name);
-
-            $inputs['img']->move(
-                base_path() . '/public/img/files/img/',
-                $file_name
-            );
-
-            $product->file = '/img/files/img/' .
-                $file_name;
+        if ($request->hasFile('img')) {
+            $product->file = $this->storeUploadedFile($request->file('img'), 'img');
         }
 
-        if (isset($inputs['coa'])) {
-            $file_name = strtolower(str_replace(
-                ' ',
-                '',
-                $inputs['coa']->getClientOriginalName()
-            ));
-            $file_name = preg_replace('/[^A-Za-z0-9 _ .-]/', '', $file_name);
-
-            $inputs['coa']->move(
-                base_path() . '/public/img/files/coa/',
-                $file_name
-            );
-
-            $product->coa = '/img/files/coa/' .
-                $file_name;
+        if ($request->hasFile('coa')) {
+            $product->coa = $this->storeUploadedFile($request->file('coa'), 'coa');
         }
 
-        if (isset($inputs['msds'])) {
-            $file_name = strtolower(str_replace(
-                ' ',
-                '',
-                $inputs['msds']->getClientOriginalName()
-            ));
-            $file_name = preg_replace('/[^A-Za-z0-9 _ .-]/', '', $file_name);
-
-            $inputs['msds']->move(
-                base_path() . '/public/img/files/msds/',
-                $file_name
-            );
-
-            $product->msds = '/img/files/msds/' .
-                $file_name;
+        if ($request->hasFile('msds')) {
+            $product->msds = $this->storeUploadedFile($request->file('msds'), 'msds');
         }
 
         $product->deadline = $inputs['deadline'];
@@ -180,67 +167,26 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate($this->fileValidationRules());
+
         $product = Products::findOrFail($id);
 
         $inputs = request()->all();
 
         $product->name = $inputs['name'];
         $product->synonymous = $inputs['synonymous'];
-        if($inputs['coa'] !== null){
-            if (isset($inputs['coa'])) {
-                $file_name = strtolower(str_replace(
-                    ' ',
-                    '',
-                    $inputs['coa']->getClientOriginalName()
-                ));
-                $file_name = preg_replace('/[^A-Za-z0-9 _ .-]/', '', $file_name);
 
-                $inputs['coa']->move(
-                    base_path() . '/public/img/files/coa/',
-                    $file_name
-                );
-
-                $product->coa = '/img/files/coa/' .
-                    $file_name;
-            }
+        if ($request->hasFile('coa')) {
+            $product->coa = $this->storeUploadedFile($request->file('coa'), 'coa');
         }
 
-        if($inputs['msds'] !== null){
-            if (isset($inputs['msds'])) {
-                $file_name = strtolower(str_replace(
-                    ' ',
-                    '',
-                    $inputs['msds']->getClientOriginalName()
-                ));
-                $file_name = preg_replace('/[^A-Za-z0-9 _ .-]/', '', $file_name);
-
-                $inputs['msds']->move(
-                    base_path() . '/public/img/files/msds/',
-                    $file_name
-                );
-
-                $product->msds = '/img/files/msds/' .
-                    $file_name;
-            }
+        if ($request->hasFile('msds')) {
+            $product->msds = $this->storeUploadedFile($request->file('msds'), 'msds');
         }
 
-        if($inputs['img'] !== null){
-            if (isset($inputs['img'])) {
-                $file_name = strtolower(str_replace(
-                    ' ',
-                    '',
-                    $inputs['img']->getClientOriginalName()
-                ));
-                $file_name = preg_replace('/[^A-Za-z0-9 _ .-]/', '', $file_name);
-
-                $inputs['img']->move(
-                    base_path() . '/public/img/files/img/',
-                    $file_name
-                );
-
-                $product->img = '/img/files/img/' .
-                    $file_name;
-            }
+        if ($request->hasFile('img')) {
+            // Antes se guardaba en $product->img (columna inexistente); la columna real es 'file'.
+            $product->file = $this->storeUploadedFile($request->file('img'), 'img');
         }
         $product->reserve_price     = $inputs['reserve_price'];
         $product->sale_price        = $inputs['sale_price'];
@@ -311,7 +257,8 @@ class ProductsController extends Controller
     public function reserveProduct(Request $request, $userId, $productId){
 
         $product = Products::find($productId);
-        $user = User::findOrFail($userId);
+        // Seguridad: la reserva siempre es a nombre del usuario autenticado (se ignora el {user} de la URL).
+        $user = Auth::user();
         $inputs = request()->all();
 
         if ((int)$inputs['quantity'] > (int)$inputs['availible_quantity']) {
@@ -399,21 +346,20 @@ class ProductsController extends Controller
 
         $inputs = request()->all();
 
+        $chartInfo = collect();
+
         if(isset($inputs['chart'])){
 
             $date               = $inputs['chart'];
             $dateArray          = explode(" - ", $date);
             $dateStart          = trim(Carbon::parse($dateArray[0])->format('Y-m-d'));
             $dateEnd            = trim(Carbon::parse($dateArray[1])->format('Y-m-d'));
-            $dateStartChart     = '2019-09-01';
-            $dateEndChart       = '2019-10-01';
             $chartInfo          = ReservationProducts::selectRaw('DATE(created_at) AS created_date, COUNT(*) AS total')
                                     ->whereBetween('created_at', [$dateStart, $dateEnd])
                                     ->groupBy('created_date')
                                     ->get();
         }
 
-        // return response(json_encode($chartInfo),200)->header('Content-type', 'text/plain');
         return $chartInfo;
     }
 

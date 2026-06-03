@@ -31,18 +31,21 @@ Route::post('/forgot-password-form', 'HelpersController@postChangesForgotedPassw
 */
 Route::middleware(['auth', 'role:user'])->group(function () {
 	Route::get('/productos', 'HomeController@index')->name('user.products');
-	// Route::get('/perfil', 'UserController@showprofile')->name('user.profile');
 	Route::get('/perfil/editar', 'UserController@editProfileUser')->name('user.profile.edit');
 	Route::post('/usuarios/{user}', 'UserController@updateByUser')->name('usuarios.updateByuser');
-	Route::post('/updateProfile/{user}', 'UserController@updateProfile')->name('user.updateProfile');
-	Route::post('/changePassword/{user}', 'UserController@changePassword')->name('user.changePassword');
 	Route::post('/products/reserve/{user}/{product}', 'ProductsController@reserveProduct');
 	Route::get('/reserves', 'ProductsController@showReserves')->name('reserves');
 });
 
-Route::get('/perfil', 'UserController@showprofile')->name('user.profile')->middleware('auth');
-Route::post('/updateProfile/{user}', 'UserController@updateProfile')->name('user.updateProfile')->middleware('auth');;
-Route::post('/changePassword/{user}', 'UserController@changePassword')->name('user.changePassword')->middleware('auth');
+/*
+* Autogestión de la propia cuenta — cualquier usuario autenticado.
+* Los controladores SIEMPRE operan sobre Auth::user(); el {user} de la URL se ignora.
+*/
+Route::middleware('auth')->group(function () {
+	Route::get('/perfil', 'UserController@showprofile')->name('user.profile');
+	Route::post('/updateProfile/{user}', 'UserController@updateProfile')->name('user.updateProfile');
+	Route::post('/changePassword/{user}', 'UserController@changePassword')->name('user.changePassword');
+});
 
 /*
 * Grupo de rutas de administrador

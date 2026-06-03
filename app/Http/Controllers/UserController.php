@@ -66,6 +66,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name'     => 'required|string|max:255',
+            'email'    => 'required|email|max:255|unique:users,email',
+            'password' => 'required|string|min:8',
+            'rol_id'   => 'required|exists:roles,id',
+        ]);
 
         /*
         *   Registro de un usuario en la base de datos.
@@ -172,17 +178,19 @@ class UserController extends Controller
         return back();
 
     }
-    public function changePassword(Request $request, $id)
+    public function changePassword(Request $request, $id = null)
     {
-        $user = User::findOrFail($id);
+        // Seguridad: siempre se cambia la contraseña de la cuenta autenticada.
+        // Se ignora el {user} de la URL para evitar tomar cuentas ajenas (IDOR).
+        $user = Auth::user();
 
-        if($request->password === $request->password_confirmation && $request->filled('password')){
+        if($request->filled('password') && $request->password === $request->password_confirmation && strlen($request->password) >= 8){
             $user->password = Hash::make($request->password);
             $user->save();
             SWAL::message('Contraseña Actualizada','','success',['timer'=>5000]);
             return back();
         }else{
-            SWAL::message('Su contraseña no coincide con la confirmación','','error',['timer'=>5000]);
+            SWAL::message('La contraseña no coincide con la confirmación o es muy corta (mínimo 8 caracteres)','','error',['timer'=>5000]);
             return back();
         }
 
@@ -233,12 +241,13 @@ class UserController extends Controller
         return view('admin.users.index')->with(['usuarios' => $usuarios]);
     }
 
-    public function updateByUser(Request $request, $id){
+    public function updateByUser(Request $request, $id = null){
 
-
-        $user = User::findOrFail($id);
+        // Seguridad: siempre se opera sobre la cuenta autenticada (se ignora el {user} de la URL).
+        $user = Auth::user();
+        $id   = $user->id;
         $validatedData = $request->validate([
-                'password' => ['required', 'min:6', 'confirmed']
+                'password' => ['required', 'min:8', 'confirmed']
         ]);
 
         if($request->password === $request->password_confirmation){
@@ -259,7 +268,7 @@ class UserController extends Controller
 
             // var_dump($request);
 
-            SWAL::message('Perfil Actualizado','','sucecss',['timer'=>5000]);
+            SWAL::message('Perfil Actualizado','','success',['timer'=>5000]);
             return Redirect::to('/productos');
         }else{
             SWAL::message('Su contraseña no coinciden','','error',['timer'=>5000]);
@@ -277,7 +286,7 @@ class UserController extends Controller
     {
         User::destroy($usuario);
 
-        SWAL::message('Eliminado correctamente!','','sucecss',['timer'=>5000]);
+        SWAL::message('Eliminado correctamente!','','success',['timer'=>5000]);
 
         return redirect('usuarios');
     }
